@@ -1,4 +1,3 @@
-
 import Meta from "./meta";
 
 type Props = {

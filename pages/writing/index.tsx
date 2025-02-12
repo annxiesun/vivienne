@@ -1,6 +1,6 @@
 import { getAllPosts } from "../../lib/utils/api";
 
-import Post from "../../lib/interfaces/post";
+import Post from "../../lib/components/writing/interfaces/post";
 import Writing from "../../lib/components/writing/writing";
 
 type Props = {

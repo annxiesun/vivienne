@@ -1,6 +1,6 @@
 import Container from "../layout/container";
 
-import Post from "../../interfaces/post";
+import Post from "./interfaces/post";
 import WritingItem from "./writing-item";
 
 type WritingProps = {
