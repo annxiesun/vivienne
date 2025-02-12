@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-shade;
+  overflow: hidden;
+  user-select: none;
+  color: white;
+}
+
+@font-face {
+  font-family: "BRHendrix";
+  src: url("../public/assets/fonts/BRHendrix-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "BRHendrix";
+  src: url("../public/assets/fonts/BRHendrix-Black.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "BRHendrix";
+  src: url("../public/assets/fonts/BRHendrix-SemiBold.ttf");
+  font-weight: 700;
+}
+
