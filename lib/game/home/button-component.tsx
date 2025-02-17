@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function ButtonComponent({ label, children = null }) {
+interface ButtonComponentProps { 
+    label: string;
+    children?: ReactNode;
+}
+
+export default function ButtonComponent({ label, children = null }: ButtonComponentProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
