@@ -1,6 +1,6 @@
 import { GameContextProvider } from "../../state/context";
 import { GAME_NAME } from "../../constants";
-import ButtonComponent from "./button-component";
+import ButtonComponent from "../../components/button-component";
 
 export const Home = () => {
   return (
