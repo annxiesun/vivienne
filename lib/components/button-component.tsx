@@ -1,6 +1,5 @@
-"use client";
-
 import { ReactNode, useState } from "react";
+import AppBase from "../game/apps/app_base";
 
 interface ButtonComponentProps {
   label: string;
@@ -32,13 +31,15 @@ export default function ButtonComponent({
 
       {isVisible && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-400 flex justify-center items-center z-50">
-          <button
-            onClick={handleClose}
-            className="absolute top-2 right-2 text-gray-500 bg-gray-200 hover:bg-gray-300 transition p-1 rounded-md font-bold"
-          >
-            Exit App
-          </button>
-          {children}
+          <AppBase title={label}>
+            {children}
+            <button
+              onClick={handleClose}
+              className="absolute p-1 top-2 right-2 text-white bg-red-500 hover:bg-gray-300 transition font-bold"
+            >
+              &times;
+            </button>
+          </AppBase>
         </div>
       )}
     </div>
