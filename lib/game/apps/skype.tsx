@@ -143,7 +143,7 @@ const ProfileView = () => {
           </div>
           <hr className="border-white my-2" />
           {/* Contact Info */}
-          <div className="text-gray-600 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
+          <div className="text-gray-700 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
             <strong>Skype Name</strong> <span>vivienne22023</span>
             <strong>Phone</strong> <span>555-1234</span>
             <strong>Birthday</strong> <span>February 14, 2000</span>
@@ -171,25 +171,20 @@ export default function Skype() {
       <div className="w-1/4 h-full shadow-md bg-blue-50 border border-gray-300 flex flex-col">
         {/* Profile Area */}
         <div
-          className="flex flex-col items-center mb-6 cursor-pointer p-4 hover:bg-blue-100 transition-all"
+          className="flex items-center p-4 border-b border-gray-300 cursor-pointer hover:bg-blue-100 transition-all"
           onClick={handleProfileClick}
         >
-          <div className="flex items-center space-x-4">
-            <div className="relative">
-              <img
-                src="https://i.pravatar.cc/150?img=5"
-                alt="Your Profile"
-                className="w-full h-full rounded-full border-4 border-white"
-              />
-              {/* Online Status */}
-              <div className="absolute bottom-0 right-0 w-8 h-8 bg-green-500 border-2 border-white rounded-full"></div>
-            </div>
-            <div className="flex flex-col">
-              <p className="font-bold text-left text-black">Vivienne</p>
-              <div className="bg-blue-200 text-center rounded-lg py-1 px-2 text-sm">
-                status message ^_^
-              </div>
-            </div>
+          <div className="relative">
+            <img
+              src="https://i.pravatar.cc/150?img=5"
+              className="w-12 h-12 rounded-full"
+            />
+            <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border border-white rounded-full"></div>
+          </div>
+
+          <div className="ml-4">
+            <p className="font-bold text-gray-900">Vivienne</p>
+            <p className="text-sm text-gray-500">status message ^_^</p>
           </div>
         </div>
         {/* Chat History */}
@@ -207,10 +202,7 @@ export default function Skype() {
               setViewingProfile(false);
             }}
           >
-            <img
-              src={contact.picture}
-              className="w-12 h-12 rounded-full"
-            />
+            <img src={contact.picture} className="w-12 h-12 rounded-full" />
             {contact.name}
           </div>
         ))}

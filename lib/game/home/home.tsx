@@ -14,7 +14,7 @@ export const Home = () => {
           <ButtonComponent label="Messages" />
           <ButtonComponent label="Notes" />
           <ButtonComponent label="Mail" />
-          <ButtonComponent label="Skype">
+          <ButtonComponent label="Skype™">
             <Skype />
           </ButtonComponent>
         </div>
