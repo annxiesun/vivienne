@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Video, Phone, PhoneOutgoing, PhoneOff } from "lucide-react";
+import { Video, Phone, PhoneOutgoing } from "lucide-react";
 
 export type Message = {
   text?: string;
