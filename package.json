@@ -13,6 +13,7 @@
     "date-fns": "^2.28.0",
     "framer-motion": "^10.15.2",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.475.0",
     "next": "latest",
     "next-images": "^1.8.5",
     "react": "^18.2.0",

@@ -1,6 +1,7 @@
 import { GameContextProvider } from "../../state/context";
 import { GAME_NAME } from "../../constants";
 import ButtonComponent from "../../components/button-component";
+import Skype from "../apps/skype";
 
 export const Home = () => {
   return (
@@ -13,7 +14,9 @@ export const Home = () => {
           <ButtonComponent label="Messages" />
           <ButtonComponent label="Notes" />
           <ButtonComponent label="Mail" />
-          <ButtonComponent label="Skype" />
+          <ButtonComponent label="Skype™">
+            <Skype />
+          </ButtonComponent>
         </div>
       </div>
     </GameContextProvider>
