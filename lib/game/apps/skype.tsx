@@ -324,7 +324,7 @@ const ProfileView = () => {
           </div>
           <p className="mt-3 text-sm text-left max-w-xs">
             Hey there 💋 Looking for a personal call or exclusive pictures?
-            Let's chat! 💕 $500 per call, $100 per picture
+            Let&apos;s chat! 💕 $500 per call, $100 per picture
           </p>
         </div>
 
