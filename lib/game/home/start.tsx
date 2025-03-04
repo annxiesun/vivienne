@@ -51,7 +51,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           clearInterval(typingInterval);
           setIsTyping(false);
         }
-      }, 40);
+      }, 25);
 
       return () => clearInterval(typingInterval);
     }
@@ -84,7 +84,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           {!isTyping && (
             <button
               onClick={handleNextStep}
-              className="text-white text-lg rounded absolute bottom-10"
+              className="text-white text-3xl rounded-full absolute bottom-20 px-6 py-4 transition-all"
             >
               →
             </button>

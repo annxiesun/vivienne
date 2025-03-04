@@ -5,7 +5,7 @@ import Home from "../lib/game/home/home";
 import StartScreen from "../lib/game/home/start";
 
 export default function Index({ allPosts }: { allPosts: any[] }) {
-  const [hasStarted, setHasStarted] = useState<boolean>(false);
+  const [hasStarted, setHasStarted] = useState<boolean>(true); // DEBUG (skip intro when developing)
 
   const startGame = () => {
     setHasStarted(true); 
