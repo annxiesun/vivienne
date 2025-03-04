@@ -51,7 +51,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           clearInterval(typingInterval);
           setIsTyping(false);
         }
-      }, 25);
+      }, 15);
 
       return () => clearInterval(typingInterval);
     }
