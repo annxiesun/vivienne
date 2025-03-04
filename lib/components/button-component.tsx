@@ -5,6 +5,8 @@ interface ButtonComponentProps {
   imageSrc: string;
   altText: string;
   onClick: () => void;
+  onClose: () => void;
+  disabled?: boolean;
   children?: ReactNode;
 }
 
@@ -12,6 +14,8 @@ export default function ButtonComponent({
   imageSrc,
   altText,
   onClick,
+  onClose,
+  disabled = false,
   children = null,
 }: ButtonComponentProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,6 +36,7 @@ export default function ButtonComponent({
         className={`group w-32 h-32 flex justify-center items-center relative rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 ${
           isVisible ? "pointer-events-none" : ""
         }`}
+        disabled={disabled}
       >
         <img
           src={imageSrc}
@@ -45,7 +50,10 @@ export default function ButtonComponent({
           <AppBase title={altText}>
             {children}
             <button
-              onClick={handleClose}
+              onClick={() => {
+                handleClose();
+                onClose();
+              }}
               className="absolute p-1 top-2 right-2 text-white bg-red-500 transition font-bold"
             >
               &times;

@@ -19,9 +19,9 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
 
   const introductionText: string[] = [
     "You're a technician in a quiet repair shop.",
-    "An older man, <name>, brings in a damaged laptop. He claims it belongs to his granddaughter, Vivienne.",
+    "An older man, Mr. George Thompson, brings in a damaged laptop. He claims it belongs to his granddaughter, Vivienne.",
     "She's been missing for a while, and he wants the laptop wiped.",
-    "The laptop is in bad shape, but it's not the hardware that stands out. As you begin your work, you realize there's something strange about the files and messages on it.",
+    "The laptop is in bad shape, but it's not the hardware that stands out. As you begin your work, you realize there's something strange about the apps and messages on it.",
     "Vivienne's life may hold more mysteries than you expected.",
     "Your task is simple: wipe the laptop clean.",
   ];
@@ -41,7 +41,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
       const text = introductionText[step - 1] || "";
       let i = -1;
 
-      setTypedText("\u00A0");
+      setTypedText("");
       setIsTyping(true);
 
       const typingInterval = setInterval(() => {
@@ -51,7 +51,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           clearInterval(typingInterval);
           setIsTyping(false);
         }
-      }, 15);
+      }, 20);
 
       return () => clearInterval(typingInterval);
     }
