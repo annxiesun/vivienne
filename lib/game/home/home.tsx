@@ -7,7 +7,6 @@ export const Home = () => {
   return (
     <GameContextProvider>
       <div className="flex justify-center items-center flex-col h-screen">
-        <p className="text-[100px]">{GAME_NAME}</p>
         <div className="grid grid-cols-3 gap-2">
           <ButtonComponent label="Instagram" />
           <ButtonComponent label="ChatGPT" />
