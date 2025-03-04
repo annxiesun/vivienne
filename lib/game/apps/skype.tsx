@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Video, Phone, PhoneOutgoing, CircleAlert } from "lucide-react";
-import { contacts, Message } from "../../constants";
+import { contacts } from "../../constants";
 
 interface ProfileViewProps {
   handleEvidenceClick: (info: string) => void;
