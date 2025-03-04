@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Video, Phone, PhoneOutgoing, CircleAlert } from "lucide-react";
 import { contacts, Message } from "../../constants";
 
-const ProfileView = () => {
+interface ProfileViewProps {
+  handleEvidenceClick: (info: string) => void;
+}
+
+const ProfileView = ({ handleEvidenceClick }: ProfileViewProps) => {
   return (
     <div className="p-4 rounded-lg text-gray-700">
       <div className="grid grid-cols-[1fr_auto_1fr] gap-6">
@@ -17,6 +21,14 @@ const ProfileView = () => {
           <p className="mt-3 text-sm text-left max-w-xs">
             Hey there 💋 Looking for a personal call or exclusive pictures?
             Let&apos;s chat! 💕 $500 per call, $100 per picture
+            <CircleAlert
+              className="text-red-500 cursor-pointer ml-2 inline-block"
+              onClick={() =>
+                handleEvidenceClick(
+                  "Exclusive pictures? Something is sketchy..should I keep looking? (DECISION POINT)"
+                )
+              }
+            />
           </p>
         </div>
 
@@ -64,11 +76,9 @@ export default function Skype() {
     setSelectedImage(null);
   };
 
-  const handleEvidenceClick = (message: Message, info: string) => {
-    if (message.evidence) {
-      setModalMessage(info);
-      setShowModal(true);
-    }
+  const handleEvidenceClick = (info: string) => {
+    setModalMessage(info);
+    setShowModal(true);
   };
 
   return (
@@ -119,7 +129,7 @@ export default function Skype() {
       {/* Main Content */}
       <div className="w-3/4 px-4 py-2 h-full">
         {viewingProfile ? (
-          <ProfileView />
+          <ProfileView handleEvidenceClick={handleEvidenceClick} />
         ) : selectedChat ? (
           <div className="flex flex-col h-full text-gray-700">
             <div className="flex justify-between items-center border-b pb-2 mb-4">
@@ -211,9 +221,7 @@ export default function Skype() {
                         {msg.evidence && (
                           <CircleAlert
                             className="text-red-500 cursor-pointer ml-2 inline-block"
-                            onClick={() =>
-                              handleEvidenceClick(msg, msg.evidence)
-                            }
+                            onClick={() => handleEvidenceClick(msg.evidence)}
                           />
                         )}
                       </>
