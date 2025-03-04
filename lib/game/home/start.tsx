@@ -38,7 +38,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
   // Function to simulate typing effect
   useEffect(() => {
     if (step === 0 || step > 0) {
-      let text = introductionText[step - 1] || "";
+      const text = introductionText[step - 1] || "";
       let i = -1;
 
       setTypedText("\u00A0");
