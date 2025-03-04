@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Video, Phone, PhoneOutgoing } from "lucide-react";
+import { Video, Phone, PhoneOutgoing, CircleAlert } from "lucide-react";
 
 export type Message = {
   text?: string;
-  time: string;
+  time?: string;
   sender?: string;
   images?: string[];
   file?: string;
   callDuration?: string;
+  video?: boolean;
   emoji?: string;
+  blocked?: boolean;
+  evidence?: string;
 };
 
 export type Contact = {
@@ -81,28 +84,229 @@ const contacts: Contact[] = [
     ],
   },
   {
-    name: "User B",
-    picture: "https://i.pravatar.cc/150?img=2",
+    name: "MarkJ_89",
+    picture: "https://i.pravatar.cc/150?img=12",
     messages: [
-      { text: "Hello", time: "9:30" },
-      { text: "Hi", time: "9:35" },
-      { text: "what is up", time: "9:36", sender: "Me" },
+      { text: "Vivienne? It's really you? I am a huge fan!", time: "10:02" },
+      {
+        text: "I just sent $500. Please respond. 🥺",
+        time: "10:05",
+        evidence:
+          "Why are people paying to talk to her? Maybe I should look at her profile..",
+      },
+      { text: "I will call you in a minute ❤️", sender: "Me", time: "10:06" },
+      {
+        time: "10:07",
+        callDuration: "1 hour 3 minutes",
+      },
+      {
+        text: "You sound different..like a robot. Is this really Vivienne?",
+        time: "11:10",
+      },
+      {
+        text: "I am real!",
+        sender: "Me",
+        time: "11:11",
+      },
+      {
+        text: "Send me a picture to prove that it's you.",
+        time: "11:12",
+      },
+      {
+        time: "11:14",
+        sender: "Me",
+        images: ["https://placecats.com/1000/1000"],
+      },
+      {
+        time: "11:14",
+        sender: "Me",
+        text: "See? I am real",
+      },
+      {
+        text: "Something about you looks off..",
+        time: "11:16",
+        evidence:
+          "As I closely examine the picture, I notice something strange. The shadows and lighting in the image don't quite match up with the natural environment. The face looks a little too perfect, almost artificial. The background also seems unusually clean and flawless. It's like something from a computer-generated image. This doesn't seem like a real photo at all.",
+      },
     ],
   },
   {
-    name: "User C",
+    name: "Alex5531",
     picture: "https://i.pravatar.cc/150?img=3",
-    messages: [{ text: "meow!", time: "8:45" }],
+    messages: [
+      {
+        text: "Omg Vivienne 😍 I've been following you forever! Do you sell? 📷",
+        time: "4:22",
+      },
+      {
+        text: "Depends on what you're looking for 😉 What's your budget?",
+        sender: "Me",
+        time: "4:26",
+      },
+      { text: "What does $100 get me? 😏", time: "4:27" },
+      {
+        text: "For $100, you can get two teasing shots—nothing too crazy. If you want more, we can talk 😌",
+        sender: "Me",
+        time: "4:28",
+      },
+      {
+        time: "4:30",
+        text: "Just sent $200 😘",
+      },
+      {
+        time: "4:31",
+        sender: "Me",
+        text: "Give me just one second 😉",
+      },
+      {
+        time: "4:35",
+        sender: "Me",
+        images: [
+          "https://placecats.com/1000/1000",
+          "https://placecats.com/neo/1000/1000",
+        ],
+      },
+      {
+        time: "4:37",
+        text: "Wait..these look kinda AI-generated 👀",
+      },
+      {
+        time: "4:37",
+        sender: "Me",
+        text: "Huh? What do you mean? They're all me 🤨",
+      },
+      {
+        time: "4:38",
+        text: "Idk, something's off. The hands look weird, and your face kinda glitches in one of them…",
+        evidence:
+          "There's something weird going on here...all these images look fake! But who is faking these images? Vivienne's been missing..",
+      },
+      {
+        time: "4:37",
+        sender: "Me",
+        text: "You're overthinking. Do you want more or not? $50 a piece 😏",
+      },
+      {
+        time: "4:38",
+        text: "Are you even real? 😳",
+      },
+    ],
   },
   {
-    name: "User D",
+    name: "Ryan_07",
     picture: "https://i.pravatar.cc/150?img=7",
-    messages: [],
+    messages: [
+      { text: "Vivienne? Omg, is this really you?!", time: "10:01" },
+      { text: "Hey babe 😉 It's me!", sender: "Me", time: "10:02" },
+      {
+        time: "10:03",
+        callDuration: "1 hour 1 minute",
+      },
+      {
+        text: "I can't believe I'm actually talking to you! You sound… different than I imagined.",
+        time: "10:03",
+      },
+      {
+        text: "Haha, it's just the mic quality 😘 What's up?",
+        sender: "Me",
+        time: "10:04",
+      },
+      {
+        text: "I don't know… something feels off. Can we hop on a video call?",
+        time: "10:05",
+      },
+      {
+        text: "Ugh, I'm not camera-ready right now. But I promise, it's me!",
+        sender: "Me",
+        time: "10:06",
+      },
+      {
+        text: "I don't know… I just sent $300, and I wanna make sure I'm actually talking to Vivienne.",
+        time: "10:07",
+      },
+      {
+        text: "I swear, it's me! Don't you trust me? 😏",
+        sender: "Me",
+        time: "10:08",
+      },
+      {
+        text: "I ran your voice through an AI detector. It says it's synthetic.",
+        time: "10:09",
+        evidence:
+          "Wait a minute, this is strange. I never actually spoke to Vivienne, but it seems like someone's been pretending to be her. If the voice was synthetic, that could explain the odd feeling I got from the messages. With deepfakes and AI-generated voices popping up more recently(MAYBE LINK TO RESEARCH HERE), it's not surprising that someone could have cloned her voice.",
+      },
+      {
+        text: "Wait, what? That's crazy. Why would I fake my own voice? 🤨",
+        sender: "Me",
+        time: "10:10",
+      },
+      { text: "Then prove it. Send me a video, right now.", time: "10:11" },
+      {
+        time: "10:12",
+        sender: "Me",
+        images: ["https://placecats.com/1000/1000"],
+      },
+      {
+        text: "Nah… something's wrong. Who am I really talking to?",
+        time: "10:13",
+      },
+    ],
   },
   {
-    name: "User E",
+    name: "Tyler_77",
     picture: "https://i.pravatar.cc/150?img=9",
-    messages: [],
+    messages: [
+      { text: "Vivienne?! Is that really you? 😱", time: "9:45" },
+      { text: "Haha, yep, it's really me 😉", sender: "Me", time: "9:46" },
+      {
+        text: "I'm a huge fan! Can you send me a pic? I've been waiting forever! I sent $50 😍",
+        time: "9:47",
+      },
+      { text: "Sure thing 😘 One second!", sender: "Me", time: "9:48" },
+      {
+        time: "9:49",
+        sender: "Me",
+        images: ["https://placecats.com/1000/1000"],
+      },
+      {
+        text: "Omg, it's so amazing to talk to you! Can we do a video call? I sent $300!",
+        time: "9:50",
+      },
+      {
+        text: "I'm down 😏 Let's chat! Give me a minute to get ready.",
+        sender: "Me",
+        time: "9:51",
+      },
+      { time: "9:53", callDuration: "30 minutes", video: true },
+      { text: "You look.. off. Something doesn't feel right.", time: "10:23" },
+      { text: "What do you mean? It's me 😘", sender: "Me", time: "10:24" },
+      {
+        text: "No, I just checked the photo you sent. The eyes look weird and the smile doesn't match.",
+        time: "10:25",
+      },
+      {
+        text: "Are you trying to trick me? This doesn't look like you.",
+        time: "10:26",
+      },
+      { text: "I swear, it's me! 🤨", sender: "Me", time: "10:27" },
+      {
+        text: "Sorry, but I ran it through a deepfake detector… It's a fake. Your video also looked fake. I'm out. 😞",
+        time: "10:28",
+        evidence:
+          "Something is really off here. Deepfake..? I've read about these technologies before (RESEARCH HERE), where AI-generated videos are used to trick people. Could this be one of those cases?",
+      },
+      {
+        text: "Also, I just noticed I sent $250 to the wrong CashApp! It's not yours, it's $GeorgeT231! Who are you??",
+        time: "10:29",
+        evidence:
+          "The mention of the wrong CashApp is strange. GeorgeT231..like George Thompson?",
+      },
+      {
+        text: "vivienne22023 has blocked Tyler_77",
+        sender: "Me",
+        blocked: true,
+      },
+    ],
   },
 ];
 
@@ -119,8 +323,8 @@ const ProfileView = () => {
             />
           </div>
           <p className="mt-3 text-sm text-left max-w-xs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            interdum mauris ac ipsum facilisis, id elementum dui accumsan.
+            Hey there 💋 Looking for a personal call or exclusive pictures?
+            Let's chat! 💕 $500 per call, $100 per picture
           </p>
         </div>
 
@@ -130,7 +334,9 @@ const ProfileView = () => {
         <div className="flex flex-col justify-start">
           <div className="mb-3">
             <h3 className="text-2xl font-bold">Vivienne</h3>
-            <p className="text-sm text-gray-600">status message ^_^</p>
+            <p className="text-sm text-gray-600">
+              💰 Calls & Pics Available! DM me for details 💖
+            </p>
           </div>
           <hr className="border-white my-2" />
           <div className="text-gray-700 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
@@ -150,6 +356,8 @@ export default function Skype() {
   const [selectedChat, setSelectedChat] = useState(null);
   const [viewingProfile, setViewingProfile] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState<string | null>(null);
 
   const handleProfileClick = () => {
     setViewingProfile(!viewingProfile);
@@ -162,7 +370,14 @@ export default function Skype() {
 
   const closeModal = () => {
     setSelectedImage(null);
-  }
+  };
+
+  const handleEvidenceClick = (message: Message, info: string) => {
+    if (message.evidence) {
+      setModalMessage(info);
+      setShowModal(true);
+    }
+  };
 
   return (
     <div className="skype-app relative flex w-full h-screen max-h-screen bg-white overflow-hidden">
@@ -183,7 +398,9 @@ export default function Skype() {
 
           <div className="ml-4">
             <p className="font-bold text-gray-900">Vivienne</p>
-            <p className="text-sm text-gray-500">status message ^_^</p>
+            <p className="text-sm text-gray-500">
+              💰 Calls & Pics Available! DM me for details 💖
+            </p>
           </div>
         </div>
         {/* Chat History */}
@@ -209,7 +426,6 @@ export default function Skype() {
 
       {/* Main Content */}
       <div className="w-3/4 px-4 py-2 h-full">
-        {/* Profile View */}
         {viewingProfile ? (
           <ProfileView />
         ) : selectedChat ? (
@@ -237,7 +453,11 @@ export default function Skype() {
                 <div
                   key={index}
                   className={`flex mb-2 ${
-                    msg.sender === "Me" ? "justify-end" : "justify-start"
+                    msg.blocked
+                      ? "justify-center"
+                      : msg.sender === "Me"
+                      ? "justify-end"
+                      : "justify-start"
                   } relative`}
                 >
                   {msg.sender !== "Me" && !msg.callDuration && (
@@ -253,12 +473,23 @@ export default function Skype() {
                         : "text-left mr-12"
                     } max-w-full`}
                   >
-                    {msg.callDuration ? (
+                    {msg.blocked ? (
+                      <div className="flex items-center w-full h-full">
+                        <p className="text-gray-400 italic text-center">
+                          {msg.text}
+                        </p>
+                      </div>
+                    ) : msg.callDuration ? (
                       <>
                         <div className="flex items-center justify-center gap-2">
-                          <PhoneOutgoing className="text-blue-200" />
+                          {msg.video ? (
+                            <Video className="text-blue-200" />
+                          ) : (
+                            <PhoneOutgoing className="text-blue-200" />
+                          )}
                           <p className="text-center text-gray-500 text-sm my-2">
-                            <b>Call</b> {msg.callDuration}
+                            <b>{msg.video && "Video "} Call</b>{" "}
+                            {msg.callDuration}
                           </p>
                         </div>
                       </>
@@ -270,19 +501,30 @@ export default function Skype() {
                           <img
                             key={i}
                             src={img}
-                            className="w-40 h-40rounded-md shadow-md cursor-pointer hover:opacity-75"
+                            className="w-40 h-40 rounded-md shadow-md cursor-pointer hover:opacity-75"
                             onClick={() => handleImageClick(img)} // Click to enlarge image
                           />
                         ))}
                       </div>
                     ) : (
-                      <p
-                        className={`inline-block p-2 rounded-lg text-left ${
-                          msg.sender === "Me" ? "bg-blue-100" : "bg-blue-300"
-                        }`}
-                      >
-                        {msg.text}
-                      </p>
+                      <>
+                        <p
+                          className={`inline-block p-2 rounded-lg text-left ${
+                            msg.sender === "Me" ? "bg-blue-100" : "bg-blue-300"
+                          }`}
+                        >
+                          {msg.text}
+                        </p>
+
+                        {msg.evidence && (
+                          <CircleAlert
+                            className="text-red-500 cursor-pointer ml-2 inline-block"
+                            onClick={() =>
+                              handleEvidenceClick(msg, msg.evidence)
+                            }
+                          />
+                        )}
+                      </>
                     )}
                   </div>
 
@@ -300,6 +542,7 @@ export default function Skype() {
           </div>
         )}
       </div>
+
       {/* Image Preview */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
@@ -311,6 +554,28 @@ export default function Skype() {
             <button
               className="absolute top-0 right-0 text-white rounded-full"
               onClick={closeModal}
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal for Evidence */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-white p-6 rounded-lg max-w-sm shadow-xl opacity-90 backdrop-blur-md border border-gray-200">
+            <div className="flex justify-center mb-4">
+              <span className="text-3xl animate-pulse">💭</span>{" "}
+            </div>
+            <div className="relative">
+              <p className="text-gray-600 text-sm italic text-center">
+                {modalMessage}
+              </p>
+            </div>
+            <button
+              className="absolute top-0 right-0 text-gray-700 rounded-full p-2"
+              onClick={() => setShowModal(false)}
             >
               &times;
             </button>
