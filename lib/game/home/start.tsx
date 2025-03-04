@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface StartScreenProps {
   onStart: () => void;
@@ -6,6 +6,8 @@ interface StartScreenProps {
 
 const StartScreen = ({ onStart }: StartScreenProps) => {
   const [step, setStep] = useState<number>(0);
+  const [typedText, setTypedText] = useState<string>("");
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const handleNextStep = () => {
     if (step < 6) {
@@ -17,8 +19,8 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
 
   const introductionText: string[] = [
     "You're a technician in a quiet repair shop.",
-    "An older man, <name>, brings in a damaged laptop. He claims it's his granddaughter's, Vivienne.",
-    "She's been missing for a while, and he needs it repaired quickly.",
+    "An older man, <name>, brings in a damaged laptop. He claims it belongs to his granddaughter, Vivienne.",
+    "She's been missing for a while, and he wants the laptop wiped.",
     "The laptop is in bad shape, but it's not the hardware that stands out. As you begin your work, you realize there's something strange about the files and messages on it.",
     "Vivienne's life may hold more mysteries than you expected.",
     "Your task is simple: wipe the laptop clean.",
@@ -33,6 +35,28 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
     "/assets/intro/wipe.png",
   ];
 
+  // Function to simulate typing effect
+  useEffect(() => {
+    if (step === 0 || step > 0) {
+      let text = introductionText[step - 1] || "";
+      let i = -1;
+
+      setTypedText("\u00A0");
+      setIsTyping(true);
+
+      const typingInterval = setInterval(() => {
+        setTypedText((prev) => prev + text[i]);
+        i++;
+        if (i === text.length - 1) {
+          clearInterval(typingInterval);
+          setIsTyping(false);
+        }
+      }, 40);
+
+      return () => clearInterval(typingInterval);
+    }
+  }, [step]);
+
   return (
     <div className="flex justify-center items-center flex-col h-screen">
       {step === 0 && (
@@ -40,7 +64,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           <p className="text-[100px]">Vivienne</p>
           <button
             onClick={handleNextStep}
-            className="text-white text-lg p-4 rounded mt-5"
+            className="text-white text-lg p-4 rounded mt-5 transition-all duration-300 ease-in-out transform hover:scale-110"
           >
             START
           </button>
@@ -52,16 +76,19 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
           <img
             src={images[step - 1]}
             className="w-[300px] h-[300px] object-cover mb-5"
+            alt="Step image"
           />
           <p className="text-[24px] text-center max-w-[80%] mx-auto p-4">
-            {introductionText[step - 1]}
+            {typedText}
           </p>
-          <button
-            onClick={handleNextStep}
-            className="text-white text-lg p-4 rounded mt-5"
-          >
-            →
-          </button>
+          {!isTyping && (
+            <button
+              onClick={handleNextStep}
+              className="text-white text-lg rounded absolute bottom-10"
+            >
+              →
+            </button>
+          )}
         </>
       )}
     </div>
