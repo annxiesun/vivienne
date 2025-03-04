@@ -1,8 +1,4 @@
-import {
-  GameContextProvider,
-  useGameActions,
-  useGameState,
-} from "../../state/context";
+import { useGameActions, useGameState } from "../../state/context";
 import { useState } from "react";
 import ButtonComponent from "../../components/button-component";
 import Skype from "../apps/skype";
