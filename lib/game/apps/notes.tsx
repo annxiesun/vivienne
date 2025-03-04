@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Edit3, Trash2, PlusCircle } from "lucide-react";
+import { FileText, PlusCircle } from "lucide-react";
 
 export type Note = {
   title: string;
