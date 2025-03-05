@@ -64,8 +64,9 @@ export const Home = () => {
           imageSrc="/assets/apps/notes.png"
           altText="Notes"
           onClick={() => handleAppClick("Notes")}
-          onClose={handleCloseApp}
-        />
+          onClose={handleCloseApp}>
+            <Notes />
+          </ButtonComponent>
         <ButtonComponent
           imageSrc="/assets/apps/instagram.png"
           altText="Instagram"
