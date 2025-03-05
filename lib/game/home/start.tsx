@@ -37,17 +37,18 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
 
   // Function to simulate typing effect
   useEffect(() => {
-    if (step === 0 || step > 0) {
+    if (step > 0) {
       const text = introductionText[step - 1] || "";
-      let i = -1;
+      let i = 0;
 
-      setTypedText("");
+      setTypedText(text[0] || "");
       setIsTyping(true);
 
       const typingInterval = setInterval(() => {
-        setTypedText((prev) => prev + text[i]);
-        i++;
-        if (i === text.length - 1) {
+        if (i < text.length - 1) {
+          setTypedText((prev) => prev + text[i]);
+          i++;
+        } else {
           clearInterval(typingInterval);
           setIsTyping(false);
         }
@@ -75,10 +76,10 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         <>
           <img
             src={images[step - 1]}
-            className="w-[300px] h-[300px] object-cover mb-5"
+            className="w-[300px] h-[300px] object-cover"
             alt="Step image"
           />
-          <p className="text-[24px] text-center max-w-[80%] mx-auto p-4">
+          <p className="text-[24px] text-center max-w-[80%] mx-auto p-4 absolute bottom-48">
             {typedText}
           </p>
           {!isTyping && (

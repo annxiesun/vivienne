@@ -35,7 +35,7 @@ export const Home = () => {
         className="absolute top-6 right-6 cursor-pointer animate-pulse"
         onClick={() => setShowModal(true)}
       >
-        <BadgeAlert className="text-red-500 w-12 h-12" />
+        <BadgeAlert className="text-green-700 w-12 h-12" />
       </div>
       {/* Modal */}
       {showModal && (
