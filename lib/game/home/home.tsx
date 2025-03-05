@@ -2,6 +2,7 @@ import { useGameActions, useGameState } from "../../state/context";
 import { useState } from "react";
 import ButtonComponent from "../../components/button-component";
 import Skype from "../apps/skype";
+import Notes from "../apps/notes";
 import { BadgeAlert } from "lucide-react";
 import { HOME_THOUGHTS } from "../../constants";
 
