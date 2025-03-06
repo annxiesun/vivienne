@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { contacts } from "../game/apps/skype/common/constants";
+import { Contact } from "../constants";
 
 export type SkypePage = "chat" | "profile";
 
 export type SkypeState = {
-  selectedChat: any;
+  selectedChat: Contact | null;
   viewingProfile: boolean;
   modalMessage: string | null;
   showEvidenceModal: boolean;
@@ -12,7 +12,7 @@ export type SkypeState = {
 };
 
 export type SkypeActions = {
-  selectChat: (chat: any) => void;
+  selectChat: (chat: Contact | null) => void;
   viewProfile: (view: boolean) => void;
   setModalMessage: (message: string | null) => void;
   toggleEvidenceModal: (show: boolean) => void;
@@ -35,7 +35,7 @@ export const useSkypeContext = () => {
       showEvidenceModal,
     },
     skype_actions: {
-      selectChat: (chat: any) => {
+      selectChat: (chat: Contact | null) => {
         setSelectedChat(chat);
         setViewingProfile(false);
       },

@@ -23,7 +23,7 @@ type Context = {
 const GameContext = createContext<Context | null>(null);
 
 export const GameContextProvider = ({ children }: Props) => {
-  const [scene, setScene] = useState(5);
+  const [scene, setScene] = useState(5); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
   const { skype_state, skype_actions } = useSkypeContext();
 
   const state = {
