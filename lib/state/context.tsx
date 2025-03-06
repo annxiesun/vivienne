@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { NotesState, NotesActions, useNotesContext } from "./notes_state";
 
 type Props = {
   children: React.ReactNode;
@@ -6,10 +7,12 @@ type Props = {
 
 type GameState = {
   scene: number;
+  notes: NotesState;
 };
 
 type GameActions = {
   setScene: React.Dispatch<React.SetStateAction<number>>;
+  notes: NotesActions;
 };
 
 type Context = {
@@ -21,14 +24,18 @@ const GameContext = createContext<Context | null>(null);
 
 export const GameContextProvider = ({ children }: Props) => {
   const [scene, setScene] = useState(0);
+  const { notes_state, notes_actions } = useNotesContext();
 
   const state = {
     scene,
+    notes: notes_state,
   };
 
   const actions = {
     setScene,
+    notes: notes_actions,
   };
+
   return (
     <GameContext.Provider value={{ state, actions }}>
       {children}
