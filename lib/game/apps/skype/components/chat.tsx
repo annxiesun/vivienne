@@ -1,5 +1,6 @@
-import { CircleAlert, Phone, PhoneOutgoing, Video } from "lucide-react";
+import { Phone, PhoneOutgoing, Video } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
+import EvidenceButton from "../../../../components/evidence_button";
 
 const ChatWindow = () => {
   const state = useGameState();
@@ -103,15 +104,7 @@ const ChatWindow = () => {
                     {msg.text}
                   </p>
 
-                  {msg.evidence && (
-                    <CircleAlert
-                      className="text-red-500 cursor-pointer ml-2 animate-pulse inline-block"
-                      onClick={() => {
-                        setModalMessage(msg.evidence);
-                        toggleEvidenceModal(true);
-                      }}
-                    />
-                  )}
+                  {msg.evidence && <EvidenceButton evidence={msg.evidence} />}
                 </>
               )}
             </div>

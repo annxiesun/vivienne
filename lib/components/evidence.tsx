@@ -1,11 +1,11 @@
-import { useGameActions, useGameState } from "../../../../state/context";
+import { useGameActions, useGameState } from "../state/context";
 
 const EvidenceModal = () => {
   const state = useGameState();
   const actions = useGameActions();
 
-  const { modalMessage, showEvidenceModal } = state.skype;
-  const { toggleEvidenceModal } = actions.skype;
+  const { showEvidenceModal, evidence } = state;
+  const { toggleEvidenceModal } = actions;
 
   if (!showEvidenceModal) return null;
 
@@ -16,9 +16,7 @@ const EvidenceModal = () => {
           <span className="text-3xl animate-pulse">💭</span>{" "}
         </div>
         <div className="relative">
-          <p className="text-gray-600 text-sm italic text-center">
-            {modalMessage}
-          </p>
+          <p className="text-gray-600 text-sm italic text-center">{evidence}</p>
         </div>
         <button
           className="absolute top-0 right-0 text-gray-700 rounded-full p-2"

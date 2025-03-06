@@ -1,4 +1,4 @@
-import { CircleAlert } from "lucide-react";
+import EvidenceButton from "../../../../components/evidence_button";
 
 interface ProfileViewProps {
   handleEvidenceClick: (info: string) => void;
@@ -19,14 +19,7 @@ const ProfileView = ({ handleEvidenceClick }: ProfileViewProps) => {
           <p className="mt-3 text-sm text-left max-w-xs">
             Hey there 💋 Looking for a personal call or exclusive pictures?
             Let&apos;s chat! 💕 $500 per call, $100 per picture
-            <CircleAlert
-              className="text-red-500 cursor-pointer ml-2 inline-block"
-              onClick={() =>
-                handleEvidenceClick(
-                  "Exclusive pictures? Something is sketchy..should I keep looking? (DECISION POINT)"
-                )
-              }
-            />
+            <EvidenceButton evidence="Exclusive pictures? Something is sketchy..should I keep looking? (DECISION POINT)" />
           </p>
         </div>
 

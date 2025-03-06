@@ -3,7 +3,7 @@ import Sidebar from "./components/sidebar";
 import ChatWindow from "./components/chat";
 import ProfileView from "./components/profile";
 import ImageModal from "./components/image";
-import EvidenceModal from "./components/evidence";
+import EvidenceModal from "../../../components/evidence";
 
 const Skype = () => {
   const { skype } = useGameState();
