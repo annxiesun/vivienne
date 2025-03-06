@@ -1,6 +1,10 @@
 import { PlusCircle } from "lucide-react";
 
-const HintButton = ({ onClick }) => (
+interface HintButtonProps {
+  onClick: () => void;
+}
+
+const HintButton = ({ onClick }: HintButtonProps) => (
   <button
     className="flex items-center gap-3 px-4 py-3 bg-yellow-400 text-white rounded-lg shadow-md hover:bg-yellow-500 transition-colors mx-4 mb-4"
     onClick={onClick}

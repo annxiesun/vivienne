@@ -1,5 +1,4 @@
-import { FileText, PlusCircle } from "lucide-react";
-import { useGameActions, useGameState } from "../../../../state/context";
+import { useGameActions } from "../../../../state/context";
 import HintButton from "./hint_button";
 import PrivateNotes from "./private";
 import PublicNotes from "./public";
