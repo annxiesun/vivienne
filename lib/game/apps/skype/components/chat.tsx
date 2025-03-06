@@ -6,8 +6,7 @@ const ChatWindow = () => {
   const state = useGameState();
   const actions = useGameActions();
   const { selectedChat, viewingProfile } = state.skype;
-  const { setModalMessage, toggleEvidenceModal, toggleImageModal } =
-    actions.skype;
+  const { setModalMessage, toggleImageModal } = actions.skype;
 
   console.log(viewingProfile);
   if (!viewingProfile && !selectedChat) {

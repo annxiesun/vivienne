@@ -1,10 +1,6 @@
 import EvidenceButton from "../../../../components/evidence_button";
 
-interface ProfileViewProps {
-  handleEvidenceClick: (info: string) => void;
-}
-
-const ProfileView = ({ handleEvidenceClick }: ProfileViewProps) => {
+const ProfileView = () => {
   return (
     <div className="p-4 rounded-lg text-gray-700">
       <div className="grid grid-cols-[1fr_auto_1fr] gap-6">
