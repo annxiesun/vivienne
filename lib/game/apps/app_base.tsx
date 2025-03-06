@@ -11,7 +11,7 @@ export default function AppBase({ title = "Window Title", children = null }: App
       <div className="flex justify-between items-center bg-blue-500 text-white p-3">
         <span>{title}</span>
       </div>
-      {children}
+      <div className="flex-1 overflow-auto p-4">{children}</div>
     </div>
   );
 }

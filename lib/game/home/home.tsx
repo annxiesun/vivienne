@@ -5,6 +5,7 @@ import Skype from "../apps/skype";
 import Notes from "../apps/notes";
 import { BadgeAlert } from "lucide-react";
 import { HOME_THOUGHTS } from "../../constants";
+import ChatGPTScreen from "../apps/chatgpt";
 
 export const Home = () => {
   const { scene } = useGameState();
@@ -80,7 +81,9 @@ export const Home = () => {
           onClick={() => handleAppClick("ChatGPT")}
           onClose={handleCloseApp}
           disabled={scene < 2}
-        />
+        >
+          <ChatGPTScreen />
+        </ButtonComponent>
         <ButtonComponent
           imageSrc="/assets/apps/mail.png"
           altText="Mail"
