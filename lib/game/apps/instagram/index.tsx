@@ -44,7 +44,7 @@ export default function Instagram() {
   const actions = useGameActions();
   const { goToUser, goToPage } = actions.instagram;
   return (
-    <div className="w-full h-full text-black flex-1">
+    <div className="w-full h-0 text-black flex-1">
       <Tabs.Root defaultValue="tab1" className="flex flex-row w-full h-full">
         <Tabs.List
           aria-label="tabs example"

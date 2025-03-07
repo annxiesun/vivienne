@@ -15,13 +15,25 @@ export default function InstagramProfile(props: InstagramProfileProps) {
     <div className="flex w-full justify-center h-0">
       <div className="w-full h-full max-w-[600px] text-black p-2 flex flex-col gap-3 py-3">
         {/* profile */}
-        <div className="flex flex-row items-center gap-3 py-5">
-          <img src={user.profile_picture} className="w-12 h-12 rounded-full" />
+        <div className="flex flex-row items-center gap-8 py-5">
+          <img src={user.profile_picture} className="w-16 h-16 rounded-full" />
           <div>
             <p>{user.username}</p>
-            <p>{user.description}</p>
-            <p>{user.num_followers}</p>
-            <p>{user.num_following}</p>
+            <div className="flex flex-row gap-4">
+              <div className="flex flex-row gap-1">
+                <p className="font-bold">{user.posts.length}</p>
+                <p className="text-gray-500">{"posts"}</p>
+              </div>
+              <div className="flex flex-row gap-1">
+                <p className="font-bold">{user.num_followers}</p>
+                <p className="text-gray-500">{"followers"}</p>
+              </div>
+              <div className="flex flex-row gap-1">
+                <p className="font-bold">{user.num_following}</p>
+                <p className="text-gray-500">{"following"}</p>
+              </div>
+            </div>
+            <p className="mt-2">{user.description}</p>
           </div>
         </div>
         <Separator.Root className="w-full h-[1px] bg-gray-400" />
