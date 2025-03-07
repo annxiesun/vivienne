@@ -1,12 +1,13 @@
 import { Heart, X } from "lucide-react";
 import { Carousel } from "antd";
 import { Separator } from "radix-ui";
-import { InstagramPostObject } from "../common/types";
+import { InstagramPostType } from "../common/types";
 import { PROFILE_MAP } from "../common/users";
 import { useGameActions } from "../../../../state/context";
+import InstagramComment from "./instagram_comment";
 
 type InstagramPostProps = {
-  post: InstagramPostObject;
+  post: InstagramPostType;
 };
 
 export default function InstagramPost(props: InstagramPostProps) {
@@ -38,7 +39,7 @@ export default function InstagramPost(props: InstagramPostProps) {
               <div className="w-full">
                 <div className="flex items-center space-x-3 pb-4">
                   <img
-                    src={PROFILE_MAP[username]}
+                    src={PROFILE_MAP[username].profile_picture}
                     className="w-10 h-10 rounded-full"
                     alt="User Avatar"
                   />
@@ -56,16 +57,7 @@ export default function InstagramPost(props: InstagramPostProps) {
                 {/* COMMENT SECTION */}
                 <div className="flex flex-col gap-3">
                   {comments.map((comment, i) => (
-                    <div key={i}>
-                      <img
-                        src={PROFILE_MAP[comment.username]}
-                        className="w-5 h-5 rounded-full inline mr-2"
-                      />
-                      <span className="font-semibold mr-2">
-                        {comment.username}
-                      </span>
-                      {comment.text}
-                    </div>
+                    <InstagramComment key={i} comment={comment} />
                   ))}
                 </div>
               </div>

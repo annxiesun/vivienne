@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  InstagramPostObject,
-  InstagramUser,
-} from "../game/apps/instagram/common/types";
+import { InstagramPostType } from "../game/apps/instagram/common/types";
 
 export type InstagramPage =
   | "profile"
@@ -13,58 +10,84 @@ export type InstagramPage =
 
 export type InstagramState = {
   currentPage: InstagramPage;
-  currentPost?: InstagramPostObject;
+  currentPost?: InstagramPostType;
   currentUser?: string;
-  prevPage?: InstagramPage
+
+  prevPage?: InstagramPage;
+  prevPost?: InstagramPostType;
+  prevUser?: string;
 };
 
 export type InstagramActions = {
-  goToPost: (post: InstagramPostObject) => void;
+  goToPost: (post: InstagramPostType) => void;
   goToPage: (page: Omit<InstagramPage, "post" | "profile">) => void;
-  goToUser: (user: InstagramUser) => void;
-  goToPrev: () => void
+  goToUser: (username: string) => void;
+  goToPrev: () => void;
 };
 
 export const useInstagramContext = () => {
   const [currentPost, setPost] = useState(undefined);
   const [currentPage, setPage] = useState<InstagramPage>("home");
+  const [currentUser, setUser] = useState<string>(undefined);
+
   const [prevPage, setPrevPage] = useState<InstagramPage>(undefined);
-  const [currentUser, setUser] = useState(undefined);
+  const [prevPost, setPrevPost] = useState<InstagramPostType>(undefined);
+  const [prevUser, setPrevUser] = useState<string>(undefined);
 
   return {
     instagram_state: { currentPost, currentPage, currentUser },
     instagram_actions: {
-      goToPost: (post: InstagramPostObject) => {
-        setUser(undefined);
-        setPost(post);
+      goToPost: (post: InstagramPostType) => {
+        setPost((prev) => {
+          setPrevPost(prev);
+          return post;
+        });
+        setUser((prev) => {
+          setPrevUser(prev);
+          return undefined;
+        });
         setPage((prev) => {
-          setPrevPage(prev)
-          return "post"}
-        );
+          setPrevPage(prev);
+          return "post";
+        });
       },
       goToPage: (page: Omit<InstagramPage, "post" | "profile">) => {
-        setUser(undefined);
-        setPost(undefined);
+        setUser((prev) => {
+          setPrevUser(prev);
+          return undefined;
+        });
+        setPost((prev) => {
+          setPrevPost(prev);
+          return undefined;
+        });
         setPage((prev) => {
-          setPrevPage(prev)
-          console.log("prev", prev)
-          return page as InstagramPage}
-        );
+          setPrevPage(prev);
+          return page as InstagramPage;
+        });
       },
-      goToUser: (user: InstagramUser) => {
-        setUser(user);
-        setPost(undefined);
+      goToUser: (username: string) => {
+        setUser((prev) => {
+          setPrevUser(prev);
+          return username;
+        });
+        setPost((prev) => {
+          setPrevPost(prev);
+          return undefined;
+        });
         setPage((prev) => {
-          setPrevPage(prev)
-          return "profile"}
-        );
+          setPrevPage(prev);
+          return "profile";
+        });
       },
       goToPrev: () => {
-        setPage(prevPage)
-        setPrevPage(undefined)
-        setUser(undefined);
-        setPost(undefined);
-      }
+        console.log({prevPage, prevUser, prevPost})
+        setPage(prevPage);
+        setUser(prevUser);
+        setPost(prevPost);
+        setPrevPage(undefined);
+        setPrevUser(undefined);
+        setPrevPost(undefined);
+      },
     },
   };
 };

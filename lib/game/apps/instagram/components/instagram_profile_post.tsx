@@ -1,8 +1,8 @@
-import { InstagramPostObject } from "../common/types";
+import { InstagramPostType } from "../common/types";
 import { useGameActions } from "../../../../state/context";
 
 type InstagramProfilePostProps = {
-  post: InstagramPostObject;
+  post: InstagramPostType;
 };
 
 export default function InstagramProfilePost(props: InstagramProfilePostProps) {

@@ -11,6 +11,7 @@ import { InstagramPage } from "../../../state/instagram_state";
 import InstagramPost from "./components/instagram_post";
 
 const getTab = (page:InstagramPage) => {
+  console.log("switching")
   switch(page) {
     case "home":
       return <InstagramHome/>
@@ -18,19 +19,21 @@ const getTab = (page:InstagramPage) => {
       return <Notifications />
     case "messages":
       return <Messages />
-    case "profile":
-      return <Profile />
   }
 }
 
 function InstagramContent() {
   const state = useGameState();
 
-  const { currentPage, currentPost } = state.instagram;
+  const { currentPage, currentPost, currentUser } = state.instagram;
 
-
+  console.log("currentUser", currentUser)
   if (currentPost) {
     return <InstagramPost post={currentPost} />
+  }
+
+  if (currentUser) {
+    return <Profile username={currentUser} />
   }
 
   const tab = getTab(currentPage)

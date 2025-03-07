@@ -1,6 +1,6 @@
-import { InstagramPostObject } from "./types";
+import { InstagramPostType } from "./types";
 
-export const VIVIENNE_POSTS: InstagramPostObject[] = [
+export const VIVIENNE_POSTS: InstagramPostType[] = [
   {
     username: "sweetvivienne",
     images: [
