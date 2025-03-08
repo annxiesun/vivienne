@@ -5,6 +5,7 @@ import { InstagramPostType } from "../common/types";
 import { PROFILE_MAP } from "../common/users";
 import { useGameActions } from "../../../../state/context";
 import InstagramComment from "./instagram_comment";
+import InstagramUsernameButton from "./instagram_username_button";
 
 type InstagramPostProps = {
   post: InstagramPostType;
@@ -38,18 +39,13 @@ export default function InstagramPost(props: InstagramPostProps) {
             <div className="w-full h-full flex flex-col justify-between py-3 items-start">
               <div className="w-full">
                 <div className="flex items-center space-x-3 pb-4">
-                  <img
-                    src={PROFILE_MAP[username].profile_picture}
-                    className="w-10 h-10 rounded-full"
-                    alt="User Avatar"
-                  />
-                  <div className="font-semibold text-md">{username}</div>
+                <InstagramUsernameButton hasPicture pfp_size="md" username={username} />
                 </div>
 
                 <Separator.Root className="w-full h-[1px] bg-gray-400" />
 
                 <div className="py-4">
-                  <span className="font-[600] text-md">{username}</span>
+                <InstagramUsernameButton username={username} />
                   <span className="text-md text-gray-700 ml-1">
                     {description}
                   </span>
