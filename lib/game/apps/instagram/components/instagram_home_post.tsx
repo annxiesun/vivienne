@@ -1,8 +1,7 @@
-import { Heart, X } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Carousel } from "antd";
 import { Separator } from "radix-ui";
 import { InstagramPostType } from "../common/types";
-import { PROFILE_MAP } from "../common/users";
 import InstagramComment from "./instagram_comment";
 import InstagramUsernameButton from "./instagram_username_button";
 
