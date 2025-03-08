@@ -24,3 +24,10 @@ export type InstagramUser = {
   profile_picture: string
   description: string
 }
+
+export type InstagramNotificationCategory = "follow" | "like" 
+
+export type InstagramNotificationType = {
+  username: string
+  category: InstagramNotificationCategory
+}
