@@ -18,12 +18,6 @@ const ChatGPTScreen: FC = () => {
         }
     };
 
-    // Switch conversation and restore previous scroll position
-    const handleConversationSelect = (conversation: ChatGPTConversation) => {
-        saveScrollPosition(); // Save current scroll position
-        setSelectedConversation(conversation); // Switch conversation
-    };
-
     useEffect(() => {
         if (selectedConversation && messagesEndRef.current) {
             messagesEndRef.current.scrollTop = scrollPositions[selectedConversation.id] || 0;
