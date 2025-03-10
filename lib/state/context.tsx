@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
+import { NotesState, NotesActions, useNotesContext } from "./notes_state";
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ type GameState = {
   showEvidenceModal: boolean;
   evidence: string;
   skype: SkypeState;
+  notes: NotesState;
 };
 
 type GameActions = {
@@ -17,6 +19,7 @@ type GameActions = {
   setEvidence: (evidence: string) => void;
   toggleEvidenceModal: (show: boolean) => void;
   skype: SkypeActions;
+  notes: NotesActions;
 };
 
 type Context = {
@@ -34,12 +37,14 @@ export const GameContextProvider = ({ children }: Props) => {
 
   // APP STATE
   const { skype_state, skype_actions } = useSkypeContext();
+  const { notes_state, notes_actions } = useNotesContext();
 
   const state = {
     scene,
     evidence,
     showEvidenceModal,
     skype: skype_state,
+    notes: notes_state,
   };
 
   const actions = {
@@ -47,6 +52,7 @@ export const GameContextProvider = ({ children }: Props) => {
     setEvidence,
     toggleEvidenceModal,
     skype: skype_actions,
+    notes: notes_actions,
   };
 
   return (
