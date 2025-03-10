@@ -1,14 +1,13 @@
-import { useGameActions, useGameState } from "../../state/context";
+import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
-import ButtonComponent from "../../components/button-component";
-import Skype from "../apps/skype";
-import Notes from "../apps/notes";
+import ButtonComponent from "../../../components/button-component";
+import Skype from "../../apps/skype";
+import Notes from "../../apps/notes";
 import { BadgeAlert } from "lucide-react";
-import { HOME_THOUGHTS } from "../../constants";
+import { HOME_THOUGHTS } from "../../../constants";
 
 export const Home = () => {
   const { scene } = useGameState();
-  console.log(scene);
   const { setScene } = useGameActions();
   const [activeApp, setActiveApp] = useState(null);
   const [showModal, setShowModal] = useState(false); // thought modal to help guide the user through gameplay. set message based on game state

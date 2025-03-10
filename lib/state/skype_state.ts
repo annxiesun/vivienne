@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Contact } from "../constants";
+import { Contact } from "../game/apps/skype/common/constants";
 
 export type SkypePage = "chat" | "profile";
 
