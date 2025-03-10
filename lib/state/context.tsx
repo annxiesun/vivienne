@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
 
 type Props = {
   children: React.ReactNode;
@@ -6,10 +7,16 @@ type Props = {
 
 type GameState = {
   scene: number;
+  showEvidenceModal: boolean;
+  evidence: string;
+  skype: SkypeState;
 };
 
 type GameActions = {
   setScene: React.Dispatch<React.SetStateAction<number>>;
+  setEvidence: (evidence: string) => void;
+  toggleEvidenceModal: (show: boolean) => void;
+  skype: SkypeActions;
 };
 
 type Context = {
@@ -20,15 +27,28 @@ type Context = {
 const GameContext = createContext<Context | null>(null);
 
 export const GameContextProvider = ({ children }: Props) => {
-  const [scene, setScene] = useState(0);
+  // GLOBAL STATE
+  const [scene, setScene] = useState(5); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
+  const [showEvidenceModal, toggleEvidenceModal] = useState(false);
+  const [evidence, setEvidence] = useState("");
+
+  // APP STATE
+  const { skype_state, skype_actions } = useSkypeContext();
 
   const state = {
     scene,
+    evidence,
+    showEvidenceModal,
+    skype: skype_state,
   };
 
   const actions = {
     setScene,
+    setEvidence,
+    toggleEvidenceModal,
+    skype: skype_actions,
   };
+
   return (
     <GameContext.Provider value={{ state, actions }}>
       {children}

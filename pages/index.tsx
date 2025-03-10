@@ -6,7 +6,7 @@ import StartScreen from "../lib/game/home/start";
 import { GameContextProvider } from "../lib/state/context";
 
 export default function Index() {
-  const [hasStarted, setHasStarted] = useState<boolean>(true); // DEBUG (skip intro when developing)
+  const [hasStarted, setHasStarted] = useState<boolean>(true); // {DEBUG} (skip intro when developing)
 
   const startGame = () => {
     setHasStarted(true);
