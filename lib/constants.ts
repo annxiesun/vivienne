@@ -17,4 +17,3 @@ export type Decision = {
   option2: string;
   onClick2: () => void;
 };
-

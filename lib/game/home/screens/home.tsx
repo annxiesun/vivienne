@@ -1,13 +1,17 @@
 import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
 import AppButton from "../../../components/app_button";
+import AppButton from "../../../components/app_button";
 import Skype from "../../apps/skype";
 import Notes from "../../apps/notes/index";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import ThoughtButton from "../../../components/thought_button";
+import GlobalModal from "../../../components/global_modal";
 
 export const Home = () => {
+  const { scene, showModal } = useGameState();
   const { scene, showModal } = useGameState();
   const { setScene } = useGameActions();
   const [activeApp, setActiveApp] = useState(null);
