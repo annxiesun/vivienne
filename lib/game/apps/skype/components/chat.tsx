@@ -102,8 +102,15 @@ const ChatWindow = () => {
                   >
                     {msg.text}
                   </p>
-
-                  {msg.evidence && <EvidenceButton evidence={msg.evidence} />}
+                  {msg.evidence && (
+                    <EvidenceButton
+                      evidence={
+                        <p className="text-gray-600 text-sm italic text-center">
+                          {msg.evidence}
+                        </p>
+                      }
+                    />
+                  )}
                 </>
               )}
             </div>

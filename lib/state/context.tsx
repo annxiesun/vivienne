@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
 import { ScreenActions, ScreenState, useScreenContext } from "./screen_state";
 import { NotesState, NotesActions, useNotesContext } from "./notes_state";
@@ -10,7 +10,7 @@ type Props = {
 type GameState = {
   scene: number;
   showEvidenceModal: boolean;
-  evidence: string;
+  evidence: ReactNode;
   skype: SkypeState;
   screen: ScreenState;
   notes: NotesState;
@@ -36,7 +36,7 @@ export const GameContextProvider = ({ children }: Props) => {
   // GLOBAL STATE
   const [scene, setScene] = useState(5); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
   const [showEvidenceModal, toggleEvidenceModal] = useState(false);
-  const [evidence, setEvidence] = useState("");
+  const [evidence, setEvidence] = useState<ReactNode>("");
 
   // SCREEN STATE
   const { screen_state, screen_actions } = useScreenContext();
