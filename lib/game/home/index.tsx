@@ -6,15 +6,16 @@ import StartScreen from "./screens/start";
 const MainScreen = () => {
   const state = useGameState();
   const actions = useGameActions();
-  const { hasStarted, hasEnded, endingType } = state.screen;
-  const { startGame, restartGame } = actions.screen;
+  const { hasStarted, hasEnded } = state.screen;
+  const { startGame } = actions.screen;
+  const { restartGame } = actions
 
   return (
     <>
       {!hasStarted ? (
         <StartScreen onStart={startGame} />
       ) : hasEnded ? (
-        <EndScreen onRestart={restartGame} endingType={endingType} />
+        <EndScreen onRestart={restartGame} endingType={0} />
       ) : (
         <Home />
       )}

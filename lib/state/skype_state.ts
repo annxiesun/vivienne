@@ -16,6 +16,7 @@ export type SkypeActions = {
   setModalMessage: (message: string | null) => void;
   toggleEvidenceModal: (show: boolean) => void;
   toggleImageModal: (show: boolean) => void;
+  resetState: () => void;
 };
 
 export const useSkypeContext = () => {
@@ -49,6 +50,13 @@ export const useSkypeContext = () => {
       },
       toggleEvidenceModal: (show: boolean) => {
         setShowEvidenceModal(show);
+      },
+      resetState: () => {
+        setSelectedChat(null);
+        setViewingProfile(false);
+        setModalMessage(null);
+        setShowImageModal(false);
+        setShowEvidenceModal(false);
       },
     },
   };

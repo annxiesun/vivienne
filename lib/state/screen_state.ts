@@ -12,12 +12,12 @@ export type ScreenActions = {
   setEndingType: (ending: number) => void;
   startGame: () => void;
   endGame: () => void;
-  restartGame: () => void;
+  resetState: () => void;
 };
 
 export const useScreenContext = () => {
-  const [hasStarted, setHasStarted] = useState<boolean>(false); // {DEBUG}
-  const [hasEnded, setHasEnded] = useState<boolean>(false); // {DEBUG}
+  const [hasStarted, setHasStarted] = useState<boolean>(true); // {DEBUG}
+  const [hasEnded, setHasEnded] = useState<boolean>(true); // {DEBUG}
   const [endingType, setEndingType] = useState(0); // {DEBUG} pick ending
 
   return {
@@ -43,7 +43,7 @@ export const useScreenContext = () => {
       endGame: () => {
         setHasEnded(true);
       },
-      restartGame: () => {
+      resetState: () => {
         setHasEnded(false);
         setHasStarted(false);
       },
