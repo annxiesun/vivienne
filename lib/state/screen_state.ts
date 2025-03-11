@@ -16,9 +16,9 @@ export type ScreenActions = {
 };
 
 export const useScreenContext = () => {
-  const [hasStarted, setHasStarted] = useState<boolean>(true); // {DEBUG} (skip intro when developing)
-  const [hasEnded, setHasEnded] = useState<boolean>(true); // {DEBUG}
-  const [endingType, setEndingType] = useState(3); // {DEBUG} pick ending
+  const [hasStarted, setHasStarted] = useState<boolean>(false); // {DEBUG}
+  const [hasEnded, setHasEnded] = useState<boolean>(false); // {DEBUG}
+  const [endingType, setEndingType] = useState(0); // {DEBUG} pick ending
 
   return {
     screen_state: {

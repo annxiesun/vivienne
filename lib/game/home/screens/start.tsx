@@ -19,6 +19,12 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
     }
   };
 
+  const handlePreviousStep = () => {
+    if (step > 0) {
+      setStep(step - 1);
+    }
+  };
+
   useEffect(() => {
     if (step > 0) {
       const text = introductionText[step - 1] || "";
@@ -75,12 +81,21 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
             {typedText}
           </p>
           {!isTyping && (
-            <button
-              onClick={handleNextStep}
-              className="text-white text-3xl rounded-full absolute bottom-20 px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110"
-            >
-              →
-            </button>
+            <div className="flex justify-center gap-8 absolute bottom-20">
+              <button
+                onClick={handlePreviousStep}
+                className="text-white text-3xl rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110"
+                hidden={step === 1}
+              >
+                ←
+              </button>
+              <button
+                onClick={handleNextStep}
+                className="text-white text-3xl rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110"
+              >
+                →
+              </button>
+            </div>
           )}
         </>
       )}
