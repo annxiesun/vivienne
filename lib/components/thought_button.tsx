@@ -1,3 +1,4 @@
+import { Sparkle } from "lucide-react";
 import { useGameActions } from "../state/context";
 
 interface ThoughtButtonProps {
@@ -10,19 +11,16 @@ const ThoughtButton = ({ thought, className }: ThoughtButtonProps) => {
   const { toggleModal, setThought, setModalType } = actions;
 
   return (
-    <button
+    <Sparkle
       className={
-        className +
-        " cursor-pointer ml-2 animate-pulse inline-block text-2xl"
+        className + " text-blue-500 cursor-pointer ml-2 animate-pulse inline-block h-12 w-12"
       }
       onClick={() => {
         setThought(thought);
         setModalType("thought");
         toggleModal(true);
       }}
-    >
-      💭
-    </button>
+    />
   );
 };
 
