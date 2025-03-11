@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { endings } from "./common/constants";
+import { getEnding } from "./common/endings";
+import { useGameState } from "../../../state/context";
 
 interface EndScreenProps {
   onRestart: () => void;
-  endingType: number;
 }
 
-const EndScreen = ({ onRestart, endingType }: EndScreenProps) => {
+const EndScreen = ({ onRestart }: EndScreenProps) => {
   const [step, setStep] = useState<number>(0);
   const [typedText, setTypedText] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
+  const state = useGameState();
+  const { foundNote } = state.notes
+  // const { sentEmail } = state.email FILL LATER
+  const { reported, wiped } = state.screen
+
+  const ending = getEnding(reported, wiped, foundNote, false);
+
   const handleNextStep = () => {
-    if (step <= endings[endingType].length) {
+    if (step <= ending.length) {
       setStep(step + 1);
     } else {
       onRestart();
@@ -26,16 +33,17 @@ const EndScreen = ({ onRestart, endingType }: EndScreenProps) => {
   };
 
   // Function to simulate typing effect
+  // step = index of ending arr
   useEffect(() => {
-    if (step >= 0 && step <= endings[endingType].length) {
-      const text = endings[endingType];
+    if (step >= 0 && step <= ending.length - 1) {
+      const text = ending;
       let i = 0;
 
-      setTypedText((text[step] && text[step].info[0]) || "");
+      setTypedText(text[step].info[0] || "");
       setIsTyping(true);
 
       const typingInterval = setInterval(() => {
-        if (text[step] && i < text[step].info.length - 1) {
+        if (i < text[step].info.length - 1) {
           setTypedText((prev) => prev + text[step].info[i]);
           i++;
         } else {
@@ -46,9 +54,9 @@ const EndScreen = ({ onRestart, endingType }: EndScreenProps) => {
 
       return () => clearInterval(typingInterval);
     }
-  }, [step, endingType]);
+  }, [step]);
 
-  const isLastStep = step === endings[endingType].length;
+  const isLastStep = step === ending.length;
 
   return (
     <div className="flex justify-center items-center flex-col h-screen bg-black text-white">
@@ -73,7 +81,7 @@ const EndScreen = ({ onRestart, endingType }: EndScreenProps) => {
       ) : (
         <>
           <img
-            src={endings[endingType][step].image}
+            src={ending[step].image}
             className="object-cover w-[40vw] h-[40vw] max-w-[300px] max-h-[300px]"
             alt="Ending scene"
           />

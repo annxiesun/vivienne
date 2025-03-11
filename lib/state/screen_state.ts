@@ -3,28 +3,32 @@ import { useState } from "react";
 export type ScreenState = {
   hasStarted: boolean;
   hasEnded: boolean;
-  endingType: number;
+  reported: boolean;
+  wiped: boolean;
 };
 
 export type ScreenActions = {
   toggleStart: (start: boolean) => void;
   toggleEnd: (end: boolean) => void;
-  setEndingType: (ending: number) => void;
+  setReported: (reported: boolean) => void;
+  setWiped: (wiped: boolean) => void;
   startGame: () => void;
   endGame: () => void;
   restartGame: () => void;
 };
 
 export const useScreenContext = () => {
-  const [hasStarted, setHasStarted] = useState<boolean>(false); // {DEBUG}
-  const [hasEnded, setHasEnded] = useState<boolean>(false); // {DEBUG}
-  const [endingType, setEndingType] = useState(0); // {DEBUG} pick ending
+  const [hasStarted, setHasStarted] = useState<boolean>(true); // {DEBUG}
+  const [hasEnded, setHasEnded] = useState<boolean>(true); // {DEBUG}
+  const [reported, setReported] = useState<boolean>(false)
+  const [wiped, setWiped] = useState<boolean>(false);
 
   return {
     screen_state: {
       hasStarted,
       hasEnded,
-      endingType,
+      reported,
+      wiped,
     },
     screen_actions: {
       toggleStart: (start: boolean) => {
@@ -33,8 +37,11 @@ export const useScreenContext = () => {
       toggleEnd: (end: boolean) => {
         setHasEnded(end);
       },
-      setEndingType: (ending: number) => {
-        setEndingType(ending);
+      setReported: (reported: boolean) => {
+        setReported(reported);
+      },
+      setWiped: (wiped: boolean) => {
+        setWiped(wiped);
       },
       startGame: () => {
         setHasStarted(true);
