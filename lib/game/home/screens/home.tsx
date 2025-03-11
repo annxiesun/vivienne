@@ -13,6 +13,8 @@ export const Home = () => {
   const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
+  console.log(activeApp)
+
   const handleAppClick = (appName) => {
     setActiveApp(appName);
   };
