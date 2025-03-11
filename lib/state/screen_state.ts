@@ -24,7 +24,7 @@ export const useScreenContext = () => {
     screen_state: {
       hasStarted,
       hasEnded,
-      endingType,
+      endingType
     },
     screen_actions: {
       toggleStart: (start: boolean) => {
@@ -34,7 +34,7 @@ export const useScreenContext = () => {
         setHasEnded(end);
       },
       setEndingType: (ending: number) => {
-        setEndingType(ending);
+        setEndingType(ending)
       },
       startGame: () => {
         setHasStarted(true);
