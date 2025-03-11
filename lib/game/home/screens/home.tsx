@@ -1,11 +1,11 @@
 import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
-import ButtonComponent from "../../components/app_button";
-import Skype from "../apps/skype";
-import Notes from "../apps/notes";
-import { HOME_THOUGHTS } from "../../constants";
-import ThoughtButton from "../../components/thought_button";
-import GlobalModal from "../../components/global_modal";
+import AppButton from "../../../components/app_button";
+import Skype from "../../apps/skype";
+import Notes from "../../apps/notes";
+import { HOME_THOUGHTS } from "../../../constants";
+import ThoughtButton from "../../../components/thought_button";
+import GlobalModal from "../../../components/global_modal";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
@@ -32,41 +32,41 @@ export const Home = () => {
     >
       <ThoughtButton
         thought={modalMessage}
-        className="absolute top-6 right-6 cursor-pointer animate-pulse text-3xl"
+        className="absolute top-6 right-6 cursor-pointer animate-pulse h-12 w-12"
       />
       {showModal && <GlobalModal />}
 
       <div className="grid gap-6 p-6 absolute top-6 left-6 lg:grid-cols-1 md:grid-cols-2">
-        <ButtonComponent
+        <AppButton
           imageSrc="/assets/apps/notes.png"
           altText="Notes"
           onClick={() => handleAppClick("Notes")}
           onClose={handleCloseApp}
         >
           <Notes />
-        </ButtonComponent>
-        <ButtonComponent
+        </AppButton>
+        <AppButton
           imageSrc="/assets/apps/instagram.png"
           altText="Instagram"
           onClick={() => handleAppClick("Instagram")}
           onClose={handleCloseApp}
           disabled={scene < 1}
         />
-        <ButtonComponent
+        <AppButton
           imageSrc="/assets/apps/chatgpt.png"
           altText="ChatGPT"
           onClick={() => handleAppClick("ChatGPT")}
           onClose={handleCloseApp}
           disabled={scene < 2}
         />
-        <ButtonComponent
+        <AppButton
           imageSrc="/assets/apps/mail.png"
           altText="Mail"
           onClick={() => handleAppClick("Mail")}
           onClose={handleCloseApp}
           disabled={scene < 3}
         />
-        <ButtonComponent
+        <AppButton
           imageSrc="/assets/apps/skype.png"
           altText="Skype™"
           onClick={() => handleAppClick("Skype")}
@@ -74,7 +74,7 @@ export const Home = () => {
           disabled={scene < 4}
         >
           <Skype />
-        </ButtonComponent>
+        </AppButton>
       </div>
 
       {/* Taskbar at the bottom of the screen */}
