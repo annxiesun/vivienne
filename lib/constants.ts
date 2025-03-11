@@ -8,3 +8,12 @@ export const HOME_THOUGHTS = [
   "let's open skype",
   "let's unlock the notes (pswd 1234)",
 ];
+
+export type Decision = {
+  question: string;
+  info: string;
+  option1: string;
+  onClick1: () => void;
+  option2: string;
+  onClick2: () => void;
+};
