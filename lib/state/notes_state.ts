@@ -18,18 +18,19 @@ export type NotesActions = {
   setHintState: (state: number) => void;
   setNotes: (notes: Note[]) => void;
   setPassword: (password: string) => void;
+  setIsPasswordCorrect:(correct: boolean) => void;
   selectNote: (note: Note) => void;
   createHint: () => void;
   submitPassword: () => void;
+  resetState: () => void;
 };
-
-let isPasswordCorrect = false;
 
 export const useNotesContext = () => {
   const [hintState, setHintState] = useState(0);
   const [notes, setNotes] = useState<Note[]>(initialNotes);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [passwordInput, setPasswordInput] = useState("");
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
 
   return {
     notes_state: {
@@ -49,6 +50,7 @@ export const useNotesContext = () => {
       setPassword: (password: string) => {
         setPasswordInput(password);
       },
+      setIsPasswordCorrect,
       selectNote: (note: Note) => {
         setSelectedNote(note);
       },
@@ -65,11 +67,18 @@ export const useNotesContext = () => {
       },
       submitPassword: () => {
         if (passwordInput === lockedFolderPassword) {
-          isPasswordCorrect = true;
+          setIsPasswordCorrect(true);
           setPasswordInput("");
         } else {
           alert("Incorrect password!");
         }
+      },
+      resetState: () => {
+        setHintState(0);
+        setNotes(initialNotes);
+        setSelectedNote(null);
+        setIsPasswordCorrect(false);
+        setPasswordInput("");
       },
     },
   };
