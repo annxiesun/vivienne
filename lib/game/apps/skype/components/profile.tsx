@@ -1,4 +1,4 @@
-import EvidenceButton from "../../../../components/evidence_button";
+import EvidenceButton from "../../../../components/thought_button";
 
 const ProfileView = () => {
   return (

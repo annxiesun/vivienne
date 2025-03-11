@@ -2,6 +2,7 @@ import React, { createContext, ReactNode, useContext, useState } from "react";
 import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
 import { ScreenActions, ScreenState, useScreenContext } from "./screen_state";
 import { NotesState, NotesActions, useNotesContext } from "./notes_state";
+import { Decision } from "../constants";
 
 type Props = {
   children: React.ReactNode;
@@ -9,8 +10,10 @@ type Props = {
 
 type GameState = {
   scene: number;
-  showEvidenceModal: boolean;
-  evidence: ReactNode;
+  showModal: boolean;
+  modalType: "thought" | "decision";
+  thought: ReactNode;
+  decision: Decision;
   skype: SkypeState;
   screen: ScreenState;
   notes: NotesState;
@@ -18,8 +21,10 @@ type GameState = {
 
 type GameActions = {
   setScene: (scene: number) => void;
-  setEvidence: (evidence: string) => void;
-  toggleEvidenceModal: (show: boolean) => void;
+  setThought: (thought: string) => void;
+  setDecision: (decision: Decision) => void;
+  setModalType: (type: "thought" | "decision") => void;
+  toggleModal: (show: boolean) => void;
   skype: SkypeActions;
   screen: ScreenActions;
   notes: NotesActions;
@@ -35,8 +40,17 @@ const GameContext = createContext<Context | null>(null);
 export const GameContextProvider = ({ children }: Props) => {
   // GLOBAL STATE
   const [scene, setScene] = useState(5); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
-  const [showEvidenceModal, toggleEvidenceModal] = useState(false);
-  const [evidence, setEvidence] = useState<ReactNode>("");
+  const [showModal, toggleModal] = useState(false);
+  const [thought, setThought] = useState("");
+  const [decision, setDecision] = useState<Decision>({
+    question: "?",
+    info: "?",
+    option1: "?",
+    onClick1: () => console.log("chose option 1"),
+    option2: "?",
+    onClick2: () => toggleModal(false),
+  });
+  const [modalType, setModalType] = useState<"thought" | "decision">("thought");
 
   // SCREEN STATE
   const { screen_state, screen_actions } = useScreenContext();
@@ -47,8 +61,10 @@ export const GameContextProvider = ({ children }: Props) => {
 
   const state = {
     scene,
-    evidence,
-    showEvidenceModal,
+    thought,
+    decision,
+    showModal,
+    modalType,
     skype: skype_state,
     screen: screen_state,
     notes: notes_state,
@@ -56,8 +72,10 @@ export const GameContextProvider = ({ children }: Props) => {
 
   const actions = {
     setScene,
-    setEvidence,
-    toggleEvidenceModal,
+    setThought,
+    setDecision,
+    toggleModal,
+    setModalType,
     skype: skype_actions,
     screen: screen_actions,
     notes: notes_actions,

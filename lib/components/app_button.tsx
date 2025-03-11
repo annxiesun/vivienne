@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
 import AppBase from "../game/apps/app_base";
 
-interface ButtonComponentProps {
+interface AppButtonProps {
   imageSrc: string;
   altText: string;
   onClick: () => void;
@@ -10,14 +10,14 @@ interface ButtonComponentProps {
   children?: ReactNode;
 }
 
-export default function ButtonComponent({
+export default function AppButton({
   imageSrc,
   altText,
   onClick,
   onClose,
   disabled = false,
   children = null,
-}: ButtonComponentProps) {
+}: AppButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
