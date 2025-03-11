@@ -1,6 +1,8 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
 import { Decision } from "../constants";
+import { ScreenActions, ScreenState, useScreenContext } from "./screen_state";
+import { NotesState, NotesActions, useNotesContext } from "./notes_state";
 
 type Props = {
   children: React.ReactNode;
@@ -13,6 +15,8 @@ type GameState = {
   thought: ReactNode;
   decision: Decision;
   skype: SkypeState;
+  screen: ScreenState;
+  notes: NotesState;
 };
 
 type GameActions = {
@@ -22,6 +26,8 @@ type GameActions = {
   setModalType: (type: "thought" | "decision") => void;
   toggleModal: (show: boolean) => void;
   skype: SkypeActions;
+  screen: ScreenActions;
+  notes: NotesActions;
 };
 
 type Context = {
@@ -46,8 +52,12 @@ export const GameContextProvider = ({ children }: Props) => {
   });
   const [modalType, setModalType] = useState<"thought" | "decision">("thought");
 
+  // SCREEN STATE
+  const { screen_state, screen_actions } = useScreenContext();
+
   // APP STATE
   const { skype_state, skype_actions } = useSkypeContext();
+  const { notes_state, notes_actions } = useNotesContext();
 
   const state = {
     scene,
@@ -56,6 +66,8 @@ export const GameContextProvider = ({ children }: Props) => {
     showModal,
     modalType,
     skype: skype_state,
+    screen: screen_state,
+    notes: notes_state,
   };
 
   const actions = {
@@ -65,6 +77,8 @@ export const GameContextProvider = ({ children }: Props) => {
     toggleModal,
     setModalType,
     skype: skype_actions,
+    screen: screen_actions,
+    notes: notes_actions,
   };
 
   return (

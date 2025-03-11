@@ -1,4 +1,4 @@
-import { useGameActions, useGameState } from "../../state/context";
+import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
 import ButtonComponent from "../../components/app_button";
 import Skype from "../apps/skype";
