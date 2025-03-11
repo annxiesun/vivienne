@@ -14,7 +14,7 @@ export type ScreenActions = {
   setWiped: (wiped: boolean) => void;
   startGame: () => void;
   endGame: () => void;
-  restartGame: () => void;
+  resetState: () => void;
 };
 
 export const useScreenContext = () => {
@@ -50,7 +50,7 @@ export const useScreenContext = () => {
       endGame: () => {
         setHasEnded(true);
       },
-      restartGame: () => {
+      resetState: () => {
         setHasEnded(false);
         setHasStarted(false);
       },

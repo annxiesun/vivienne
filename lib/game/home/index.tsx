@@ -7,7 +7,8 @@ const MainScreen = () => {
   const state = useGameState();
   const actions = useGameActions();
   const { hasStarted, hasEnded } = state.screen;
-  const { startGame, restartGame } = actions.screen;
+  const { startGame } = actions.screen;
+  const { restartGame } = actions
 
   return (
     <>

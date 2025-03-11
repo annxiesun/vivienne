@@ -25,6 +25,7 @@ type GameActions = {
   setDecision: (decision: Decision) => void;
   setModalType: (type: "thought" | "decision") => void;
   toggleModal: (show: boolean) => void;
+  restartGame: () => void;
   skype: SkypeActions;
   screen: ScreenActions;
   notes: NotesActions;
@@ -76,6 +77,11 @@ export const GameContextProvider = ({ children }: Props) => {
     setDecision,
     toggleModal,
     setModalType,
+    restartGame: () => {
+      screen_actions.resetState();
+      skype_actions.resetState();
+      notes_actions.resetState();
+    },
     skype: skype_actions,
     screen: screen_actions,
     notes: notes_actions,

@@ -24,6 +24,7 @@ export type NotesActions = {
   selectNote: (note: Note) => void;
   createHint: () => void;
   submitPassword: () => void;
+  resetState: () => void;
 };
 
 export const useNotesContext = () => {
@@ -53,11 +54,9 @@ export const useNotesContext = () => {
       setPassword: (password: string) => {
         setPasswordInput(password);
       },
+      setIsPasswordCorrect,
       selectNote: (note: Note) => {
         setSelectedNote(note);
-      },
-      setIsPasswordCorrect: (correct: boolean) => {
-        setIsPasswordCorrect(correct);
       },
       setFoundNote: (found: boolean) => {
         setFoundNote(found);
@@ -79,6 +78,13 @@ export const useNotesContext = () => {
         } else {
           alert("Incorrect password!");
         }
+      },
+      resetState: () => {
+        setHintState(0);
+        setNotes(initialNotes);
+        setSelectedNote(null);
+        setIsPasswordCorrect(false);
+        setPasswordInput("");
       },
     },
   };
