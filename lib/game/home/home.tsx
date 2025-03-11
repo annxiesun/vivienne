@@ -1,17 +1,16 @@
 import { useGameActions, useGameState } from "../../state/context";
 import { useState } from "react";
-import ButtonComponent from "../../components/button-component";
+import ButtonComponent from "../../components/app_button";
 import Skype from "../apps/skype";
 import Notes from "../apps/notes";
-import { BadgeAlert } from "lucide-react";
 import { HOME_THOUGHTS } from "../../constants";
+import ThoughtButton from "../../components/thought_button";
+import GlobalModal from "../../components/global_modal";
 
 export const Home = () => {
-  const { scene } = useGameState();
-  console.log(scene);
+  const { scene, showModal } = useGameState();
   const { setScene } = useGameActions();
   const [activeApp, setActiveApp] = useState(null);
-  const [showModal, setShowModal] = useState(false); // thought modal to help guide the user through gameplay. set message based on game state
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
   const handleAppClick = (appName) => {
@@ -31,42 +30,21 @@ export const Home = () => {
         backgroundImage: "url('/assets/bg/bg.png')",
       }}
     >
-      {/* Alert */}
-      <div
-        className="absolute top-6 right-6 cursor-pointer animate-pulse"
-        onClick={() => setShowModal(true)}
-      >
-        <BadgeAlert className="text-green-700 w-12 h-12" />
-      </div>
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="relative bg-white p-6 rounded-lg max-w-sm shadow-xl opacity-90 backdrop-blur-md border border-gray-200">
-            <div className="flex justify-center mb-4">
-              <span className="text-3xl animate-pulse">💭</span>
-            </div>
-            <div className="relative">
-              <p className="text-gray-600 text-sm italic text-center">
-                {modalMessage}
-              </p>
-            </div>
-            <button
-              className="absolute top-0 right-0 text-gray-700 rounded-full p-2"
-              onClick={() => setShowModal(false)}
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
+      <ThoughtButton
+        thought={modalMessage}
+        className="absolute top-6 right-6 cursor-pointer animate-pulse text-3xl"
+      />
+      {showModal && <GlobalModal />}
+
       <div className="grid gap-6 p-6 absolute top-6 left-6 lg:grid-cols-1 md:grid-cols-2">
         <ButtonComponent
           imageSrc="/assets/apps/notes.png"
           altText="Notes"
           onClick={() => handleAppClick("Notes")}
-          onClose={handleCloseApp}>
-            <Notes />
-          </ButtonComponent>
+          onClose={handleCloseApp}
+        >
+          <Notes />
+        </ButtonComponent>
         <ButtonComponent
           imageSrc="/assets/apps/instagram.png"
           altText="Instagram"

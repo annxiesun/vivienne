@@ -1,6 +1,7 @@
 import { Phone, PhoneOutgoing, Video } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
-import EvidenceButton from "../../../../components/evidence_button";
+import EvidenceButton from "../../../../components/thought_button";
+import ThoughtButton from "../../../../components/thought_button";
 
 const ChatWindow = () => {
   const state = useGameState();
@@ -8,7 +9,6 @@ const ChatWindow = () => {
   const { selectedChat, viewingProfile } = state.skype;
   const { setModalMessage, toggleImageModal } = actions.skype;
 
-  console.log(viewingProfile);
   if (!viewingProfile && !selectedChat) {
     return (
       <p className="text-center text-gray-500">Select a contact to chat.</p>
@@ -103,12 +103,8 @@ const ChatWindow = () => {
                     {msg.text}
                   </p>
                   {msg.evidence && (
-                    <EvidenceButton
-                      evidence={
-                        <p className="text-gray-600 text-sm italic text-center">
-                          {msg.evidence}
-                        </p>
-                      }
+                    <ThoughtButton
+                      thought={msg.evidence}
                     />
                   )}
                 </>
