@@ -33,7 +33,7 @@ export default function AppButton({
     <div>
       <button
         onClick={handleClick}
-        className={`group w-32 h-32 flex justify-center items-center relative rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 ${
+        className={`flex justify-center items-center relative rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 ${
           isVisible ? "pointer-events-none" : ""
         }`}
         disabled={disabled}
@@ -41,7 +41,7 @@ export default function AppButton({
         <img
           src={imageSrc}
           alt={altText}
-          className="object-contain w-[100px] h-[100px]"
+          className="object-contain w-[12vh] h-[12vh]"
         />
       </button>
 
