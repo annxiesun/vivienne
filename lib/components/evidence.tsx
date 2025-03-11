@@ -15,9 +15,7 @@ const EvidenceModal = () => {
         <div className="flex justify-center mb-4">
           <span className="text-3xl animate-pulse">💭</span>{" "}
         </div>
-        <div className="relative">
-          <p className="text-gray-600 text-sm italic text-center">{evidence}</p>
-        </div>
+        <div className="relative">{evidence}</div>
         <button
           className="absolute top-0 right-0 text-gray-700 rounded-full p-2"
           onClick={() => toggleEvidenceModal(false)}

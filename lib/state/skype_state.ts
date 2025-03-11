@@ -7,7 +7,6 @@ export type SkypeState = {
   selectedChat: Contact | null;
   viewingProfile: boolean;
   modalMessage: string | null;
-  showEvidenceModal: boolean;
   showImageModal: boolean;
 };
 
