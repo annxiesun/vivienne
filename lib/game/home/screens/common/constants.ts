@@ -19,7 +19,7 @@ export const images: string[] = [
 
 // END SCREEN CONSTANTS
 export const endings: { info: string; image: string }[][] = [
-  // FULLY EXPLORED, REPORTED
+  // DID NOT WIPE + FOUND SUICIDE NOTE + REPORTED
   [
     {
       info: "You explored the entire laptop and learned Vivienne's fate.",
@@ -50,10 +50,10 @@ export const endings: { info: string; image: string }[][] = [
       image: "/assets/end/sky.png",
     },
   ],
-  // DID NOT FULLY EXPLORE, REPORTED
+  // WIPED LAPTOP + REPORTED (no suicide note)
   [
     {
-      info: "You reported George Thompson to the authorities, but you didn't dig deep enough into the laptop.",
+      info: "You reported George Thompson to the authorities, but you wiped a lot of evidence.",
       image: "/assets/end/laptop.png",
     },
     {
@@ -73,7 +73,7 @@ export const endings: { info: string; image: string }[][] = [
       image: "/assets/intro/missing.png",
     },
   ],
-  // FULLY EXPLORED, DID NOT REPORT
+  // DID NOT WIPE + DID NOT REPORT
   [
     {
       info: "You explored the entire laptop and learned Vivienne's fate.",
@@ -96,7 +96,7 @@ export const endings: { info: string; image: string }[][] = [
       image: "/assets/end/mirror.png",
     },
   ],
-  // DID NOT FULLY EXPLORE, DID NOT REPORT
+  // EXPLORED + WIPED + DID NOT REPORT
   [
     {
       info: "You never uncovered the full truth about Vivienne.",
@@ -115,7 +115,7 @@ export const endings: { info: string; image: string }[][] = [
       image: "/assets/intro/missing.png",
     },
   ],
-  // WIPED LAPTOP
+  // WIPED LAPTOP (no option to report)
   [
     {
       info: "You wiped the laptop, just as George requested.",
