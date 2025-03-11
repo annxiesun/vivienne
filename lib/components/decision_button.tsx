@@ -12,6 +12,7 @@ const DecisionButton = ({ decision, className }: DecisionButtonProps) => {
   const { toggleModal, setDecision, setModalType } = actions;
 
   return (
+    // need to figure out what icon/symbol to use for this
     <MessageCircleQuestion
       className={
         className +

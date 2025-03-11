@@ -32,7 +32,7 @@ export const Home = () => {
     >
       <ThoughtButton
         thought={modalMessage}
-        className="absolute top-6 right-6 cursor-pointer animate-pulse text-3xl"
+        className="absolute top-6 right-6 cursor-pointer animate-pulse h-12 w-12"
       />
       {showModal && <GlobalModal />}
 
