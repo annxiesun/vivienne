@@ -6,7 +6,7 @@ const PrivateNotes = () => {
   const actions = useGameActions();
 
   const { setPassword, submitPassword, selectNote } = actions.notes;
-  const { passwordInput, isPasswordCorrect, notes, selectedNote } = state.notes;
+  const { password, isPasswordCorrect, notes, selectedNote } = state.notes;
 
   return (
     <>
@@ -19,7 +19,7 @@ const PrivateNotes = () => {
             type="password"
             placeholder="Enter Password"
             className="p-2 border rounded w-full text-gray-700"
-            value={passwordInput}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
