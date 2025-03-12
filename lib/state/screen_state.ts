@@ -18,9 +18,9 @@ export type ScreenActions = {
 };
 
 export const useScreenContext = () => {
-  const [hasStarted, setHasStarted] = useState<boolean>(true); // {DEBUG}
-  const [hasEnded, setHasEnded] = useState<boolean>(true); // {DEBUG}
-  const [reported, setReported] = useState<boolean>(false)
+  const [hasStarted, toggleStart] = useState<boolean>(true); // {DEBUG}
+  const [hasEnded, toggleEnd] = useState<boolean>(true); // {DEBUG}
+  const [reported, setReported] = useState<boolean>(false);
   const [wiped, setWiped] = useState<boolean>(false);
 
   return {
@@ -31,28 +31,20 @@ export const useScreenContext = () => {
       wiped,
     },
     screen_actions: {
-      toggleStart: (start: boolean) => {
-        setHasStarted(start);
-      },
-      toggleEnd: (end: boolean) => {
-        setHasEnded(end);
-      },
-      setReported: (reported: boolean) => {
-        setReported(reported);
-      },
-      setWiped: (wiped: boolean) => {
-        setWiped(wiped);
-      },
+      toggleStart,
+      toggleEnd,
+      setReported,
+      setWiped,
       startGame: () => {
-        setHasStarted(true);
-        setHasEnded(false);
+        toggleStart(true);
+        toggleEnd(false);
       },
       endGame: () => {
-        setHasEnded(true);
+        toggleEnd(true);
       },
       resetState: () => {
-        setHasEnded(false);
-        setHasStarted(false);
+        toggleEnd(false);
+        toggleStart(false);
       },
     },
   };
