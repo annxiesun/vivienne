@@ -17,12 +17,12 @@ export const getEnding = (
   wiped: boolean,
   foundNote: boolean,
   sentEmail: boolean,
-  defaultEnding: boolean = true
+  defaultEnding: boolean = false
 ): { info: string; image: string }[] => {
   const emailEnding = sentEmailEnding(sentEmail);
 
   if (defaultEnding) {
-    // Default ending (i.e. if player deletes)
+    // Default ending (i.e. if player wipes without investigating anything)
     return [
       {
         info: "You wiped the laptop, just as George requested.",

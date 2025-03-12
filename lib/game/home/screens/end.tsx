@@ -13,7 +13,7 @@ const EndScreen = ({ onRestart }: EndScreenProps) => {
 
   const state = useGameState();
   const { foundNote } = state.notes
-  // const { sentEmail } = state.email FILL LATER
+  // const { sentEmail } = state.email FILL LATER (ANNA)
   const { reported, wiped } = state.screen
 
   const ending = getEnding(reported, wiped, foundNote, false);
