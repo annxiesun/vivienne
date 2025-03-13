@@ -1,6 +1,6 @@
 
 import { useGameActions } from "../../../../state/context";
-import { PROFILE_MAP } from "../common/users";
+import InstagramProfilePicture from "./instagram_profile_picture";
 
 type InstagramUsernameButtonProps = {
   username: string
@@ -17,10 +17,7 @@ export default function InstagramUsernameButton(props: InstagramUsernameButtonPr
   const open = () => goToUser(username);
   return (
     <button onClick={open} className="inline items-center">
-      {hasPicture && <img
-        src={PROFILE_MAP[username].profile_picture}
-        className={`rounded-full inline mr-2 ${pfp_size == "sm" ? "w-5 h-5" : "w-8 h-8"}`}
-      />}
+      {hasPicture && <InstagramProfilePicture username={username} pfp_size={pfp_size}/>}
       <span className="font-semibold mr-2">{username}</span>
       {children}
     </button>

@@ -6,6 +6,7 @@ import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import Instagram from "../../apps/instagram";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
@@ -13,7 +14,7 @@ export const Home = () => {
   const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
-  console.log(activeApp)
+  console.log(activeApp);
 
   const handleAppClick = (appName) => {
     setActiveApp(appName);
@@ -53,7 +54,9 @@ export const Home = () => {
           onClick={() => handleAppClick("Instagram")}
           onClose={handleCloseApp}
           disabled={scene < 1}
-        />
+        >
+          <Instagram />
+        </AppButton>
         <AppButton
           imageSrc="/assets/apps/chatgpt.png"
           altText="ChatGPT"
@@ -82,8 +85,7 @@ export const Home = () => {
       {/* Taskbar at the bottom of the screen */}
       <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
         <div className="text-lg font-bold text-white"></div>
-        <div className="flex items-center">
-        </div>
+        <div className="flex items-center"></div>
       </div>
     </div>
   );

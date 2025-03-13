@@ -80,7 +80,7 @@ export default function Instagram() {
             Profile
           </div>
         </Tabs.List>
-        <div className="flex-1 overflow-y-scroll overflow-hidden">
+        <div className="flex-1 overflow-y-scroll overflow-hidden border-l-2 border-l-gray-200">
             <InstagramContent />
         </div>
       </Tabs.Root>
