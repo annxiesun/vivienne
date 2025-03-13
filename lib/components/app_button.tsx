@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import AppBase from "../game/apps/app_base";
-
+import { X } from "lucide-react";
 interface AppButtonProps {
   imageSrc: string;
   altText: string;
@@ -54,9 +54,9 @@ export default function AppButton({
                 handleClose();
                 onClose();
               }}
-              className="absolute p-1 top-2 right-2 text-white bg-red-500 transition font-bold"
+              className="absolute p-1 top-[0.6rem] right-2 text-white bg-red-500 transition font-bold rounded-sm"
             >
-              &times;
+              <X />
             </button>
           </AppBase>
         </div>
