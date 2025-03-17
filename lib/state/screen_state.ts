@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export type ScreenState = {
+  defaultEnd: boolean;
   hasStarted: boolean;
   hasEnded: boolean;
   reported: boolean;
@@ -9,6 +10,7 @@ export type ScreenState = {
 
 export type ScreenActions = {
   toggleStart: (start: boolean) => void;
+  toggleDefaultEnd: (end: boolean) => void;
   toggleEnd: (end: boolean) => void;
   setReported: (reported: boolean) => void;
   setWiped: (wiped: boolean) => void;
@@ -18,6 +20,7 @@ export type ScreenActions = {
 };
 
 export const useScreenContext = () => {
+  const [defaultEnd, toggleDefaultEnd] = useState<boolean>(true); 
   const [hasStarted, toggleStart] = useState<boolean>(true); // {DEBUG}
   const [hasEnded, toggleEnd] = useState<boolean>(false); // {DEBUG}
   const [reported, setReported] = useState<boolean>(false);
@@ -25,12 +28,14 @@ export const useScreenContext = () => {
 
   return {
     screen_state: {
+      defaultEnd,
       hasStarted,
       hasEnded,
       reported,
       wiped,
     },
     screen_actions: {
+      toggleDefaultEnd,
       toggleStart,
       toggleEnd,
       setReported,

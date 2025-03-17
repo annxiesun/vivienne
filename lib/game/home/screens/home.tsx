@@ -6,14 +6,17 @@ import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import DecisionButton from "../../../components/decision_button";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
-  const { setScene } = useGameActions();
+  const actions = useGameActions();
+  const { setScene, toggleModal } = actions;
+  const { setWiped, toggleEnd } = actions.screen;
   const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
-  console.log(activeApp)
+  console.log(activeApp);
 
   const handleAppClick = (appName) => {
     setActiveApp(appName);
@@ -32,10 +35,28 @@ export const Home = () => {
         backgroundImage: "url('/assets/bg/bg.png')",
       }}
     >
-      <ThoughtButton
-        thought={modalMessage}
-        className="absolute top-6 right-6 cursor-pointer animate-pulse text-3xl"
-      />
+      <div className="absolute top-6 right-6 flex flex-col gap-4">
+        <DecisionButton
+          decision={{
+            question: "Should I wipe the laptop?",
+            info: "idk",
+            option1: "WIPE",
+            option2: "DON'T WIPE",
+            onClick1: () => {
+              toggleEnd(true);
+            },
+            onClick2: () => {
+              toggleModal(false);
+            },
+          }}
+          className="cursor-pointer animate-pulse text-3xl"
+        />
+        <ThoughtButton
+          thought={modalMessage}
+          className="cursor-pointer animate-pulse text-3xl"
+        />
+      </div>
+
       {showModal && <GlobalModal />}
 
       <div className="grid gap-6 p-6 absolute top-6 left-6 grid-cols-1">
@@ -82,8 +103,7 @@ export const Home = () => {
       {/* Taskbar at the bottom of the screen */}
       <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
         <div className="text-lg font-bold text-white"></div>
-        <div className="flex items-center">
-        </div>
+        <div className="flex items-center"></div>
       </div>
     </div>
   );
