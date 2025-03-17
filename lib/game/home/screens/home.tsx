@@ -12,7 +12,7 @@ export const Home = () => {
   const { scene, showModal } = useGameState();
   const actions = useGameActions();
   const { setScene, toggleModal } = actions;
-  const { setWiped, toggleEnd } = actions.screen;
+  const { setWiped, toggleEnd, toggleDefaultEnd, setReported } = actions.screen;
   const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
@@ -36,6 +36,7 @@ export const Home = () => {
       }}
     >
       <div className="absolute top-6 right-6 flex flex-col gap-4">
+        {/*first wipe decision button*/}
         <DecisionButton
           decision={{
             question: "Should I wipe the laptop?",
@@ -50,6 +51,43 @@ export const Home = () => {
             },
           }}
           className="cursor-pointer animate-pulse text-3xl"
+        />
+        {/*final wipe decision button*/}
+        <DecisionButton
+          decision={{
+            question: "Should I wipe the laptop? (FINAL)",
+            info: "idk",
+            option1: "WIPE",
+            option2: "DON'T WIPE",
+            onClick1: () => {
+              setWiped(true);
+              toggleDefaultEnd(false);
+              toggleModal(false);
+            },
+            onClick2: () => {
+              toggleDefaultEnd(false);
+              toggleModal(false);
+            },
+          }}
+          className="text-red-500 cursor-pointer animate-pulse text-3xl"
+        />
+        {/*report decision button (if no wipe)*/}
+        <DecisionButton
+          decision={{
+            question: "Should I report George for impersonating Vivienne?",
+            info: "idk",
+            option1: "REPORT",
+            option2: "DON'T REPORT",
+            onClick1: () => {
+              setReported(true);
+              toggleEnd(true);
+            },
+            onClick2: () => {
+              setReported(false);
+              toggleEnd(true);
+            },
+          }}
+          className="text-green-500 cursor-pointer animate-pulse text-3xl"
         />
         <ThoughtButton
           thought={modalMessage}
