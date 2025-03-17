@@ -1,4 +1,4 @@
-import { PhoneOutgoing, Video } from "lucide-react";
+import { Phone, PhoneOutgoing, Video } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
 import ThoughtButton from "../../../../components/thought_button";
 import { useEffect, useRef, useState } from "react";
@@ -61,8 +61,11 @@ const ChatWindow = () => {
             {selectedChat.name}
           </h2>
         </div>
+        <div className="flex gap-2">
+          <Video className="text-blue-300" />
+          <Phone className="text-blue-300" />
+        </div>
       </div>
-
       <div
         ref={chatContainerRef}
         className="flex-1 overflow-y-scroll skype-scrollbar pr-2 h-full"
