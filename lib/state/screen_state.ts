@@ -19,7 +19,7 @@ export type ScreenActions = {
 
 export const useScreenContext = () => {
   const [hasStarted, toggleStart] = useState<boolean>(true); // {DEBUG}
-  const [hasEnded, toggleEnd] = useState<boolean>(true); // {DEBUG}
+  const [hasEnded, toggleEnd] = useState<boolean>(false); // {DEBUG}
   const [reported, setReported] = useState<boolean>(false);
   const [wiped, setWiped] = useState<boolean>(false);
 
