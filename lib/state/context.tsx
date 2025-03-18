@@ -3,6 +3,7 @@ import { SkypeActions, SkypeState, useSkypeContext } from "./skype_state";
 import { ScreenActions, ScreenState, useScreenContext } from "./screen_state";
 import { NotesState, NotesActions, useNotesContext } from "./notes_state";
 import { Decision } from "../constants";
+import { InstagramActions, InstagramState, useInstagramContext } from "./instagram_state";
 
 type Props = {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ type GameState = {
   skype: SkypeState;
   screen: ScreenState;
   notes: NotesState;
+  instagram: InstagramState
 };
 
 type GameActions = {
@@ -25,9 +27,11 @@ type GameActions = {
   setDecision: (decision: Decision) => void;
   setModalType: (type: "thought" | "decision") => void;
   toggleModal: (show: boolean) => void;
+  restartGame: () => void;
   skype: SkypeActions;
   screen: ScreenActions;
   notes: NotesActions;
+  instagram: InstagramActions
 };
 
 type Context = {
@@ -58,6 +62,7 @@ export const GameContextProvider = ({ children }: Props) => {
   // APP STATE
   const { skype_state, skype_actions } = useSkypeContext();
   const { notes_state, notes_actions } = useNotesContext();
+  const { instagram_state, instagram_actions } = useInstagramContext();
 
   const state = {
     scene,
@@ -68,6 +73,7 @@ export const GameContextProvider = ({ children }: Props) => {
     skype: skype_state,
     screen: screen_state,
     notes: notes_state,
+    instagram: instagram_state
   };
 
   const actions = {
@@ -76,9 +82,15 @@ export const GameContextProvider = ({ children }: Props) => {
     setDecision,
     toggleModal,
     setModalType,
+    restartGame: () => {
+      screen_actions.resetState();
+      skype_actions.resetState();
+      notes_actions.resetState();
+    },
     skype: skype_actions,
     screen: screen_actions,
     notes: notes_actions,
+    instagram: instagram_actions
   };
 
   return (

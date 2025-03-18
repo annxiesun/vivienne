@@ -10,49 +10,47 @@ export type NotesState = {
   hintState: number;
   notes: Note[];
   isPasswordCorrect: boolean;
-  passwordInput: string;
+  password: string;
   selectedNote: Note | null;
+  foundNote: boolean; // found Vivienne's suicide note
 };
 
 export type NotesActions = {
   setHintState: (state: number) => void;
   setNotes: (notes: Note[]) => void;
   setPassword: (password: string) => void;
+  setIsPasswordCorrect: (correct: boolean) => void;
+  setFoundNote: (found: boolean) => void;
   selectNote: (note: Note) => void;
   createHint: () => void;
   submitPassword: () => void;
+  resetState: () => void;
 };
-
-let isPasswordCorrect = false;
 
 export const useNotesContext = () => {
   const [hintState, setHintState] = useState(0);
   const [notes, setNotes] = useState<Note[]>(initialNotes);
-  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
-  const [passwordInput, setPasswordInput] = useState("");
+  const [selectedNote, selectNote] = useState<Note | null>(null);
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+  const [password, setPassword] = useState("");
+  const [foundNote, setFoundNote] = useState(false);
 
   return {
     notes_state: {
       hintState,
       notes,
       selectedNote,
-      passwordInput,
+      password,
       isPasswordCorrect,
+      foundNote,
     },
     notes_actions: {
-      setHintState: (state: number) => {
-        setHintState(state);
-      },
-      setNotes: (notes: Note[]) => {
-        setNotes(notes);
-      },
-      setPassword: (password: string) => {
-        setPasswordInput(password);
-      },
-      selectNote: (note: Note) => {
-        setSelectedNote(note);
-      },
-
+      setHintState,
+      setNotes,
+      setPassword,
+      setIsPasswordCorrect,
+      selectNote,
+      setFoundNote,
       createHint: () => {
         if (hintState < hintNotes.length) {
           const hintNote = hintNotes[hintState];
@@ -64,12 +62,19 @@ export const useNotesContext = () => {
         }
       },
       submitPassword: () => {
-        if (passwordInput === lockedFolderPassword) {
-          isPasswordCorrect = true;
-          setPasswordInput("");
+        if (password === lockedFolderPassword) {
+          setIsPasswordCorrect(true);
+          setPassword("");
         } else {
           alert("Incorrect password!");
         }
+      },
+      resetState: () => {
+        setHintState(0);
+        setNotes(initialNotes);
+        selectNote(null);
+        setIsPasswordCorrect(false);
+        setPassword("");
       },
     },
   };

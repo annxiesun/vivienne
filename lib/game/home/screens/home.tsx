@@ -6,12 +6,17 @@ import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import DecisionButton from "../../../components/decision_button";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
-  const { setScene } = useGameActions();
+  const actions = useGameActions();
+  const { setScene, toggleModal } = actions;
+  const { setWiped, toggleEnd, toggleDefaultEnd, setReported } = actions.screen;
   const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
+
+  console.log(activeApp);
 
   const handleAppClick = (appName) => {
     setActiveApp(appName);
@@ -30,13 +35,69 @@ export const Home = () => {
         backgroundImage: "url('/assets/bg/bg.png')",
       }}
     >
-      <ThoughtButton
-        thought={modalMessage}
-        className="absolute top-6 right-6 cursor-pointer animate-pulse text-3xl"
-      />
+      <div className="absolute top-6 right-6 flex flex-col gap-4">
+        {/*first wipe decision button*/}
+        <DecisionButton
+          decision={{
+            question: "Should I wipe the laptop?",
+            info: "idk",
+            option1: "WIPE",
+            option2: "DON'T WIPE",
+            onClick1: () => {
+              toggleEnd(true);
+            },
+            onClick2: () => {
+              toggleModal(false);
+            },
+          }}
+          className="cursor-pointer animate-pulse text-3xl"
+        />
+        {/*final wipe decision button*/}
+        <DecisionButton
+          decision={{
+            question: "Should I wipe the laptop? (FINAL)",
+            info: "idk",
+            option1: "WIPE",
+            option2: "DON'T WIPE",
+            onClick1: () => {
+              setWiped(true);
+              toggleDefaultEnd(false);
+              toggleModal(false);
+            },
+            onClick2: () => {
+              toggleDefaultEnd(false);
+              toggleModal(false);
+            },
+          }}
+          className="text-red-500 cursor-pointer animate-pulse text-3xl"
+        />
+        {/*report decision button (if no wipe)*/}
+        <DecisionButton
+          decision={{
+            question: "Should I report George for impersonating Vivienne?",
+            info: "idk",
+            option1: "REPORT",
+            option2: "DON'T REPORT",
+            onClick1: () => {
+              setReported(true);
+              toggleEnd(true);
+            },
+            onClick2: () => {
+              setReported(false);
+              toggleEnd(true);
+            },
+          }}
+          className="text-green-500 cursor-pointer animate-pulse text-3xl"
+        />
+        <ThoughtButton
+          thought={modalMessage}
+          className="cursor-pointer animate-pulse text-3xl"
+        />
+      </div>
+
       {showModal && <GlobalModal />}
 
-      <div className="grid gap-6 p-6 absolute top-6 left-6 lg:grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-6 p-6 absolute top-6 left-6 grid-cols-1">
         <AppButton
           imageSrc="/assets/apps/notes.png"
           altText="Notes"
@@ -78,13 +139,9 @@ export const Home = () => {
       </div>
 
       {/* Taskbar at the bottom of the screen */}
-      <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center shadow-xl">
+      <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
         <div className="text-lg font-bold text-white"></div>
-        <div className="flex items-center">
-          <div className="text-gray-800 font-medium text-sm">
-            {activeApp ? `Last App Opened: ${activeApp}` : "No app open"}
-          </div>
-        </div>
+        <div className="flex items-center"></div>
       </div>
     </div>
   );

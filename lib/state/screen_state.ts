@@ -1,51 +1,55 @@
 import { useState } from "react";
 
 export type ScreenState = {
+  defaultEnd: boolean;
   hasStarted: boolean;
   hasEnded: boolean;
-  endingType: number;
+  reported: boolean;
+  wiped: boolean;
 };
 
 export type ScreenActions = {
   toggleStart: (start: boolean) => void;
+  toggleDefaultEnd: (end: boolean) => void;
   toggleEnd: (end: boolean) => void;
-  setEndingType: (ending: number) => void;
+  setReported: (reported: boolean) => void;
+  setWiped: (wiped: boolean) => void;
   startGame: () => void;
   endGame: () => void;
-  restartGame: () => void;
+  resetState: () => void;
 };
 
 export const useScreenContext = () => {
-  const [hasStarted, setHasStarted] = useState<boolean>(false); // {DEBUG}
-  const [hasEnded, setHasEnded] = useState<boolean>(false); // {DEBUG}
-  const [endingType, setEndingType] = useState(0); // {DEBUG} pick ending
+  const [defaultEnd, toggleDefaultEnd] = useState<boolean>(true); 
+  const [hasStarted, toggleStart] = useState<boolean>(true); // {DEBUG}
+  const [hasEnded, toggleEnd] = useState<boolean>(false); // {DEBUG}
+  const [reported, setReported] = useState<boolean>(false);
+  const [wiped, setWiped] = useState<boolean>(false);
 
   return {
     screen_state: {
+      defaultEnd,
       hasStarted,
       hasEnded,
-      endingType,
+      reported,
+      wiped,
     },
     screen_actions: {
-      toggleStart: (start: boolean) => {
-        setHasStarted(start);
-      },
-      toggleEnd: (end: boolean) => {
-        setHasEnded(end);
-      },
-      setEndingType: (ending: number) => {
-        setEndingType(ending);
-      },
+      toggleDefaultEnd,
+      toggleStart,
+      toggleEnd,
+      setReported,
+      setWiped,
       startGame: () => {
-        setHasStarted(true);
-        setHasEnded(false);
+        toggleStart(true);
+        toggleEnd(false);
       },
       endGame: () => {
-        setHasEnded(true);
+        toggleEnd(true);
       },
-      restartGame: () => {
-        setHasEnded(false);
-        setHasStarted(false);
+      resetState: () => {
+        toggleEnd(false);
+        toggleStart(false);
       },
     },
   };

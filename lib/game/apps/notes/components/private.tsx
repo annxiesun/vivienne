@@ -5,8 +5,8 @@ const PrivateNotes = () => {
   const state = useGameState();
   const actions = useGameActions();
 
-  const { setPassword, submitPassword, selectNote } = actions.notes;
-  const { passwordInput, isPasswordCorrect, notes, selectedNote } = state.notes;
+  const { setPassword, submitPassword, selectNote, setFoundNote } = actions.notes;
+  const { password, isPasswordCorrect, notes, selectedNote } = state.notes;
 
   return (
     <>
@@ -19,7 +19,7 @@ const PrivateNotes = () => {
             type="password"
             placeholder="Enter Password"
             className="p-2 border rounded w-full text-gray-700"
-            value={passwordInput}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
@@ -40,7 +40,10 @@ const PrivateNotes = () => {
                 className={`px-6 py-3 cursor-pointer flex items-center gap-3 hover:bg-gray-200 transition-all text-gray-700 rounded-lg ${
                   selectedNote?.title === note.title ? "bg-gray-200" : ""
                 }`}
-                onClick={() => selectNote(note)}
+                onClick={() => {
+                  setFoundNote(true);
+                  selectNote(note);
+                }}
               >
                 <FileText size={20} />
                 <p className="text-sm truncate">{note.title}</p>

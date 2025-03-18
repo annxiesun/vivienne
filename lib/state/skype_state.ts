@@ -14,16 +14,15 @@ export type SkypeActions = {
   selectChat: (chat: Contact | null) => void;
   viewProfile: (view: boolean) => void;
   setModalMessage: (message: string | null) => void;
-  toggleEvidenceModal: (show: boolean) => void;
   toggleImageModal: (show: boolean) => void;
+  resetState: () => void;
 };
 
 export const useSkypeContext = () => {
-  const [selectedChat, setSelectedChat] = useState(null);
-  const [viewingProfile, setViewingProfile] = useState(false);
+  const [selectedChat, selectChat] = useState(null);
+  const [viewingProfile, viewProfile] = useState(false);
   const [modalMessage, setModalMessage] = useState<string | null>(null);
-  const [showImageModal, setShowImageModal] = useState(false);
-  const [showEvidenceModal, setShowEvidenceModal] = useState(false);
+  const [showImageModal, toggleImageModal] = useState(false);
 
   return {
     skype_state: {
@@ -31,24 +30,17 @@ export const useSkypeContext = () => {
       viewingProfile,
       modalMessage,
       showImageModal,
-      showEvidenceModal,
     },
     skype_actions: {
-      selectChat: (chat: Contact | null) => {
-        setSelectedChat(chat);
-        setViewingProfile(false);
-      },
-      viewProfile: (view: boolean) => {
-        setViewingProfile(view);
-      },
-      setModalMessage: (message: string | null) => {
-        setModalMessage(message);
-      },
-      toggleImageModal: (show: boolean) => {
-        setShowImageModal(show);
-      },
-      toggleEvidenceModal: (show: boolean) => {
-        setShowEvidenceModal(show);
+      selectChat,
+      viewProfile,
+      setModalMessage,
+      toggleImageModal,
+      resetState: () => {
+        selectChat(null);
+        viewProfile(false);
+        setModalMessage(null);
+        toggleImageModal(false);
       },
     },
   };
