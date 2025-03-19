@@ -7,6 +7,7 @@ import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
 import DecisionButton from "../../../components/decision_button";
+import ChatGPTScreen from "../../apps/chatgpt";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
@@ -119,7 +120,9 @@ export const Home = () => {
           onClick={() => handleAppClick("ChatGPT")}
           onClose={handleCloseApp}
           disabled={scene < 2}
-        />
+        >
+          <ChatGPTScreen />
+          </AppButton>
         <AppButton
           imageSrc="/assets/apps/mail.png"
           altText="Mail"
