@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AlignJustify, PencilLine, Inbox, Send, Trash2 } from "lucide-react";
+import PropTypes from "prop-types";
 
 export type Email = {
   sender: string;
@@ -69,78 +70,52 @@ const initialEmail: Email[] = [
   },
 ];
 
-const hintEmail: Email[] = [
-  {
-    sender: "Jane Doe",
-    title: "Hint 1",
-    content: "This is a hint.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 2",
-    content: "This is hint 2.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 3",
-    content: "This is hint 3.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 4",
-    content: "This is hint 4.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-];
+// const hintEmail: Email[] = [
+//   {
+//     sender: "Jane Doe",
+//     title: "Hint 1",
+//     content: "This is a hint.",
+//     date: "12/27/2025",
+//     hidden: false,
+//     folder: "Sent",
+//   },
+//   {
+//     sender: "Jane Doe",
+//     title: "Hint 2",
+//     content: "This is hint 2.",
+//     date: "12/27/2025",
+//     hidden: false,
+//     folder: "Sent",
+//   },
+//   {
+//     sender: "Jane Doe",
+//     title: "Hint 3",
+//     content: "This is hint 3.",
+//     date: "12/27/2025",
+//     hidden: false,
+//     folder: "Sent",
+//   },
+//   {
+//     sender: "Jane Doe",
+//     title: "Hint 4",
+//     content: "This is hint 4.",
+//     date: "12/27/2025",
+//     hidden: false,
+//     folder: "Sent",
+//   },
+// ];
 
 
 const headers = ["Inbox", "Sent", "Trash", "Drafts"];
 
-let isPasswordCorrect = false; // global state so it remembers if password is already correct (might want to turn into context)
-
 export default function EmailApp() {
   const [emailState, setEmailState] = useState(headers[0])
   const [showModal, setShowModal] = useState(false);
-  const [fakeState, setFakeState] = useState(0);
-  const [selectedChat, setSelectedChat] = useState(null);
-  const [emails, setEmail] = useState<Email[]>(initialEmail);
+  const [emails] = useState<Email[]>(initialEmail);
   const [selectedNote, setSelectedNote] = useState<Email | null>(null);
-  const [passwordInput, setPasswordInput] = useState("");
-  const lockedFolderPassword = "1234";
 
   const handleSelectNote = (email: Email) => {
     setSelectedNote(email);
-  };
-
-  const handleCreateHint = () => {
-    if (fakeState < hintEmail.length) {
-      const hintNote = hintEmail[fakeState];
-      setFakeState(fakeState + 1)
-      setEmail([
-        ...emails,
-        { ...hintNote, date: new Date().toLocaleDateString() },
-      ]);
-    }
-  };
-
-  const handlePasswordSubmit = () => {
-    if (passwordInput === lockedFolderPassword) {
-      isPasswordCorrect = true;
-      setPasswordInput("");
-    } else {
-      alert("Incorrect password!");
-    }
   };
 
   return (
@@ -186,7 +161,7 @@ export default function EmailApp() {
               </div>
             ))}
 
-        {showModal && <HeaderMenu setEmailState={setEmailState} setShowModal={setShowModal} />}
+        {showModal && <HeaderMenu setSelectedNote={setSelectedNote} setEmailState={setEmailState} setShowModal={setShowModal} />}
       </div>
       <div className="w-3/4 px-8 py-6 h-full">
         {selectedNote ? (
@@ -227,8 +202,14 @@ const HeaderIcon = ({ header, size }) => {
   return icons[header] || null;
 };
 
+// Add prop validation
+HeaderIcon.propTypes = {
+  header: PropTypes.oneOf(["Inbox", "Sent", "Trash", "Drafts"]).isRequired,
+  size: PropTypes.number.isRequired,
+};
 
-function HeaderMenu({ setEmailState, setShowModal }) {
+
+function HeaderMenu({ setSelectedNote, setEmailState, setShowModal }) {
     return (
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 fixed w-64 p-4 shadow-lg rounded-lg top-16 left-4 z-50">
         <ul className="flex flex-col space-y-2">
@@ -238,6 +219,7 @@ function HeaderMenu({ setEmailState, setShowModal }) {
                 onClick={() => {
                   setEmailState(header);
                   setShowModal(false);
+                  setSelectedNote(null)
                 }}
                 className="block w-full flex flex-row text-left py-2 px-4 text-gray-900 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white"
               >
@@ -252,4 +234,11 @@ function HeaderMenu({ setEmailState, setShowModal }) {
       </nav>
     );
   }
+
+  // Add prop validation
+HeaderMenu.propTypes = {
+  setSelectedNote: PropTypes.func.isRequired,
+  setEmailState: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+};
   
