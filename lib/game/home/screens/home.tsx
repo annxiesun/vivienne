@@ -1,6 +1,7 @@
 import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
 import AppButton from "../../../components/app_button";
+import Email from "../../apps/email";
 import Skype from "../../apps/skype";
 import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
@@ -126,7 +127,9 @@ export const Home = () => {
           onClick={() => handleAppClick("Mail")}
           onClose={handleCloseApp}
           disabled={scene < 3}
-        />
+        >
+            <Email />
+        </AppButton>
         <AppButton
           imageSrc="/assets/apps/skype.png"
           altText="Skype™"
