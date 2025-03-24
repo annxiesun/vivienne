@@ -5,7 +5,11 @@ const PrivateNotes = () => {
   const state = useGameState();
   const actions = useGameActions();
 
-  const { setPassword, submitPassword, selectNote, setFoundNote } = actions.notes;
+  const { scene } = state;
+  const { setScene } = actions;
+
+  const { setPassword, submitPassword, selectNote, setFoundNote } =
+    actions.notes;
   const { password, isPasswordCorrect, notes, selectedNote } = state.notes;
 
   return (
@@ -43,6 +47,7 @@ const PrivateNotes = () => {
                 onClick={() => {
                   setFoundNote(true);
                   selectNote(note);
+                  setScene(scene + 1);
                 }}
               >
                 <FileText size={20} />
