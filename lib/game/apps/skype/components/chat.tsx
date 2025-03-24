@@ -1,14 +1,49 @@
 import { Phone, PhoneOutgoing, Video } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
 import ThoughtButton from "../../../../components/thought_button";
+import { useEffect, useRef, useState } from "react";
 
 const ChatWindow = () => {
   const state = useGameState();
   const actions = useGameActions();
-  const { selectedChat, viewingProfile } = state.skype;
-  const { setModalMessage, toggleImageModal } = actions.skype;
+  const { selectedChat } = state.skype;
+  const { markEvidenceAsViewed } = actions.skype;
 
-  if (!viewingProfile && !selectedChat) {
+  const [evidenceClicked, setEvidenceClicked] = useState(new Set());
+
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    setEvidenceClicked(new Set());
+  }, [selectedChat]);
+
+  useEffect(() => {
+    if (!selectedChat) return;
+    const totalEvidence = selectedChat.messages.filter(
+      (m) => m.evidence
+    ).length;
+
+    if (evidenceClicked.size === totalEvidence) {
+      markEvidenceAsViewed(selectedChat.name);
+    }
+  }, [evidenceClicked, selectedChat, markEvidenceAsViewed]);
+
+  useEffect(() => {
+    // Scroll to the top when the selected chat changes
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = 0;
+    }
+  }, [selectedChat]);
+
+  const handleEvidenceClick = (evidence) => {
+    setEvidenceClicked((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(evidence);
+      return newSet;
+    });
+  };
+
+  if (!selectedChat) {
     return (
       <p className="text-center text-gray-500">Select a contact to chat.</p>
     );
@@ -26,15 +61,15 @@ const ChatWindow = () => {
             {selectedChat.name}
           </h2>
         </div>
-
         <div className="flex gap-2">
-          <Video className="text-blue-200 hover:text-blue-500 transition-all" />
-          <Phone className="text-blue-200 hover:text-blue-500 transition-all" />
+          <Video className="text-blue-300" />
+          <Phone className="text-blue-300" />
         </div>
       </div>
-
-      {/* Scrollable message area */}
-      <div className="flex-1 overflow-y-scroll skype-scrollbar pr-2 h-full">
+      <div
+        ref={chatContainerRef}
+        className="flex-1 overflow-y-scroll skype-scrollbar pr-2 h-full"
+      >
         {selectedChat.messages.map((msg, index) => (
           <div
             key={index}
@@ -52,12 +87,13 @@ const ChatWindow = () => {
                 className="w-8 h-8 mr-2 rounded-full"
               />
             )}
+
             <div
-              className={`${
+              className={`max-w-full ${
                 msg.sender === "Me"
                   ? "text-right ml-10 mr-12"
                   : "text-left mr-12"
-              } max-w-full`}
+              }`}
             >
               {msg.blocked ? (
                 <div className="flex items-center w-full h-full">
@@ -84,11 +120,7 @@ const ChatWindow = () => {
                     <img
                       key={i}
                       src={img}
-                      className="w-40 h-40 rounded-md shadow-md cursor-pointer hover:opacity-75"
-                      onClick={() => {
-                        setModalMessage(img);
-                        toggleImageModal(true);
-                      }} // Click to enlarge image
+                      className="w-40 h-40 rounded-md shadow-md"
                     />
                   ))}
                 </div>
@@ -104,13 +136,14 @@ const ChatWindow = () => {
                   {msg.evidence && (
                     <ThoughtButton
                       thought={msg.evidence}
+                      className="h-6 w-6"
+                      onClick={() => handleEvidenceClick(msg.evidence)}
                     />
                   )}
                 </>
               )}
             </div>
 
-            {/* Timestamp Container */}
             <p className="absolute right-0 text-xs text-gray-500 mr-2">
               {msg.time}
             </p>

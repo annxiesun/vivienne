@@ -4,6 +4,14 @@ const Main = () => {
   const state = useGameState();
   const { selectedNote } = state.notes;
 
+  const renderContentWithNewlines = (content) => {
+    return content.split("\n").map((line, index) => (
+      <p key={index} className="text-lg">
+        {line}
+      </p>
+    ));
+  };
+
   return (
     <div className="w-3/4 px-8 py-6 h-full">
       {selectedNote ? (
@@ -12,7 +20,7 @@ const Main = () => {
             {selectedNote.title}
           </h2>
           <p className="text-gray-500 mb-2">{selectedNote.date}</p>
-          <p className="text-lg">{selectedNote.content}</p>
+          {renderContentWithNewlines(selectedNote.content)}
         </div>
       ) : (
         <div className="text-center text-gray-500">
