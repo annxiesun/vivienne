@@ -3,7 +3,7 @@ import { PROFILE_MAP } from "./common/users";
 import InstagramProfilePost from "./components/instagram_profile_post";
 import { Separator } from "radix-ui";
 import { Lock } from "lucide-react";
-import { useGameActions, useGameState } from "../../../state/context";
+import { useGameActions } from "../../../state/context";
 
 type InstagramProfileProps = {
   username: string;
