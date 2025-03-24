@@ -2,6 +2,15 @@
 // POSTS IDENTIFIED BY `ID`
 // USERS IDENTIFIED BY `USERNAME`
 
+export type InstagramMessageType = {
+  is_me: boolean
+  value: string
+}
+export type InstagramChatType = {
+  username: string
+  messages: InstagramMessageType[]
+}
+
 export type InstagramPostType = {
   username: string
   images: string[]

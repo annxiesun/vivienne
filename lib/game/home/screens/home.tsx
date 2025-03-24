@@ -7,6 +7,7 @@ import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import Instagram from "../../apps/instagram";
 import DecisionButton from "../../../components/decision_button";
 
 export const Home = () => {
@@ -113,7 +114,9 @@ export const Home = () => {
           onClick={() => handleAppClick("Instagram")}
           onClose={handleCloseApp}
           disabled={scene < 1}
-        />
+        >
+          <Instagram />
+        </AppButton>
         <AppButton
           imageSrc="/assets/apps/chatgpt.png"
           altText="ChatGPT"
