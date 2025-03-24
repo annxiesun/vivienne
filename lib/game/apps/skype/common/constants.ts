@@ -149,6 +149,8 @@ export const contacts: Contact[] = [
       {
         time: "4:36",
         text: "You look so hot..😈",
+        evidence:
+          "A 16 year old should not be selling these pictures to strangers—are we sure this is really Vivienne?",
       },
       {
         time: "4:39",
@@ -201,7 +203,7 @@ export const contacts: Contact[] = [
         text: "It sounded off at some parts though? Like..robotic",
         time: "10:03",
         evidence:
-          "This is the second time someone's mentioned her voice sounding robotic. Maybe that's why this profile was reported as a deepfake? It's starting to feel less like a coincidence and more like someone is using AI to impersonate her.",
+          "This is the second time someone's mentioned her voice sounding robotic. It's starting to feel less like a coincidence and more like someone is using AI to impersonate her.",
       },
       {
         text: "Haha, it's just the mic quality, baby 😘 But trust me, I'm all real, just like you wanted. What's on your mind?",
@@ -242,7 +244,7 @@ export const contacts: Contact[] = [
       {
         time: "10:37",
         text: "I recorded our call and ran your voice through an AI detector. It says it's synthetic.",
-        evidence: `This could be why this profile was reported as a deepfake. If the voice is synthetic, someone is clearly trying to impersonate Vivienne. I've heard about many <a href="https://www.app.com/story/news/crime/2025/01/17/ai-used-to-clone-sons-voice-scam-attempt-philadelphia-father/77774861007/">scams using AI voice impersonation</a> lately...`,
+        evidence: `If the voice is synthetic, someone is clearly trying to impersonate Vivienne. I've heard about many <a href="https://www.app.com/story/news/crime/2025/01/17/ai-used-to-clone-sons-voice-scam-attempt-philadelphia-father/77774861007/">scams using AI voice impersonation</a> lately...`,
       },
       {
         text: "What? No way! That's insane. Why would I fake my own voice? 🤨",
@@ -320,7 +322,7 @@ export const contacts: Contact[] = [
       {
         text: "I don't know… your eyes didn't track right, and your smile felt kinda… off. Like it didn't match your face?",
         time: "10:25",
-        evidence: `It seems like whoever is impersonating Vivienne is using some kind of deepfake technology. <a href="https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/">I've read about this online</a>, where people can swap faces and mimic voices with alarming accuracy. This isn't just some glitch—it's a deliberate attempt to trick all these people. Whoever's behind this could be using deepfakes to steal Vivienne's identity.`,
+        evidence: `It seems like whoever is impersonating Vivienne is using some kind of deepfake technology. <a href="https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/">I've read about this online</a>, where people can swap faces and mimic voices with alarming accuracy. This explains why the profile was reported as a deepfake—someone is stealing Vivienne's identity.`,
       },
       {
         text: "You're overthinking, babe. It's just the video quality. Don't be weird 😏",
@@ -349,7 +351,7 @@ export const contacts: Contact[] = [
         text: "Wait… I just checked. I sent $250 to the wrong CashApp. It wasn't yours—it was $GeorgeT231. Who the hell is George?!",
         time: "10:31",
         evidence:
-          "GeorgeT231… Wait a second. I *know* George. He's the guy who brought in this laptop! This can't be a coincidence.",
+          "GeorgeT231… Hold on—I know that name. George is the one who brought this laptop in! So he's been using AI and deepfakes to impersonate his own granddaughter? This is messed up. I wonder if I should report this...",
       },
       {
         text: "Wtf are you talking about? You're being weird.",
