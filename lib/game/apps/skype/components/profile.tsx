@@ -1,6 +1,29 @@
+import { useEffect, useState } from "react";
 import ThoughtButton from "../../../../components/thought_button";
+import { useGameActions } from "../../../../state/context";
 
 const ProfileView = () => {
+  const actions = useGameActions();
+  const { toggleModal, setThought, setModalType } = actions;
+  const { markEvidenceAsViewed } = actions.skype;
+
+   const [evidenceClicked, setEvidenceClicked] = useState(new Set());
+
+  useEffect(() => {
+    // If all evidence has been clicked, mark as viewed
+    if (evidenceClicked.size === 2) {
+      markEvidenceAsViewed("profile");
+    }
+  }, [evidenceClicked, markEvidenceAsViewed]); // Re-run this effect when `evidenceClicked` changes
+
+  const handleEvidenceClick = (evidence) => {
+    setEvidenceClicked((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(evidence);
+      return newSet;
+    });
+  };
+
   return (
     <div className="p-4 rounded-lg text-gray-700">
       <div className="grid grid-cols-[1fr_auto_1fr] gap-6">
@@ -8,14 +31,31 @@ const ProfileView = () => {
         <div className="flex flex-col items-center">
           <div className="relative">
             <img
-              src="https://i.pravatar.cc/150?img=5"
+              src="/assets/skype/vivi.png"
               className="w-32 h-32 border-4 border-white rounded-full"
             />
+            <div
+              className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 text-xs font-semibold rounded-bl-lg animate-pulse cursor-pointer"
+              onClick={() => {
+                handleEvidenceClick("1");
+                setThought(
+                  "This profile has been reported for deepfaking. Maybe I should investigate further.."
+                );
+                setModalType("thought");
+                toggleModal(true);
+              }}
+            >
+              ⚠️ Deepfake
+            </div>
           </div>
           <p className="mt-3 text-sm text-left max-w-xs">
             Hey there 💋 Looking for a personal call or exclusive pictures?
-            Let&apos;s chat! 💕 $500 per call, $100 per picture
-            <ThoughtButton thought="Exclusive pictures? Something is sketchy..should I keep looking? (DECISION POINT)" />
+            Let&apos;s chat! 💕 $250 per call, $100 per picture
+            <ThoughtButton
+              thought="Why is she charging for this stuff? Something doesn't seem right.."
+              className="h-6 w-6"
+              onClick={() => handleEvidenceClick("2")}
+            />
           </p>
         </div>
 
