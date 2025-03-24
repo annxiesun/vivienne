@@ -92,7 +92,7 @@ export default function InstagramPost(props: InstagramPostProps) {
                       {date.toLocaleDateString()}
                     </div>
                   </div>
-                  {thought && <ThoughtButton thought={thought} onClick={stage ? pageStage == stage && incrementPageStage : null} />}
+                  {thought && <ThoughtButton thought={thought} onClick={stage ?()=> incrementPageStage(stage): null} />}
                 </div>
               </div>
             </div>

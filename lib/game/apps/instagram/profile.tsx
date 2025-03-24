@@ -22,9 +22,6 @@ export default function InstagramProfile(props: InstagramProfileProps) {
 
   const actions = useGameActions();
   const { incrementPageStage } = actions.instagram
-  const state = useGameState();
-  const { pageStage } = state.instagram
-
   return (
     <div className="flex w-full justify-center h-0">
       <div className="w-full h-full max-w-[600px] text-black p-2 flex flex-col gap-3 py-3">
@@ -50,7 +47,7 @@ export default function InstagramProfile(props: InstagramProfileProps) {
             <p className="mt-2">{user.description}</p>
           </div>
           {user.profile_thought && (
-            <ThoughtButton thought={user.profile_thought} onClick={user.stage ? pageStage == user.stage && incrementPageStage : null} />
+            <ThoughtButton thought={user.profile_thought} onClick={user.stage ? () => incrementPageStage(user.stage) :null} />
           )}
         </div>
         <Separator.Root className="w-full h-[1px] bg-gray-400" />
