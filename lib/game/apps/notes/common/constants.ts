@@ -1,4 +1,4 @@
-export const lockedFolderPassword = "1234"
+export const lockedFolderPassword = "02142022"
 
 export type Note = {
   title: string;
