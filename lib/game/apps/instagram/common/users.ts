@@ -1,111 +1,148 @@
-import { VIVIENNE_POSTS } from "./posts";
+import { ASHLEY_POSTS, CARRIE_POSTS, EXPOSE_POST, MAKEUP_POSTS, RACHEL_POSTS, SKINCARE_POSTS, VIVIENNE_POSTS } from "./posts";
 import { InstagramUser } from "./types";
 
 export const PROFILE_MAP: Record<string, InstagramUser> = {
   sweetvivienne: {
-    description: "Travel & lifestyle blogger, sharing my adventures!",
+    description: "beauty & wellness // losangeles ♡",
     username: "sweetvivienne",
-    num_followers: 15000,
-    num_following: 300,
+    num_followers: "800K",
+    num_following: 301,
     posts: VIVIENNE_POSTS,
-    profile_picture: "https://i.pravatar.cc/150?img=1"
+    profile_picture: "/assets/instagram/pfps/sweetvivienne.png",
+    profile_thought: "Oh, she's an influencer... Wait wasn’t she only 16? Did George know about this?",
+    stage: 1,
   },
-  alex_journey: {
-    description: "Exploring the world, one step at a time.",
-    username: "alex_journey",
-    num_followers: 8500,
-    num_following: 250,
+  alan6: {
+    description: "father // banker",
+    username: "alan6",
+    num_followers: 101,
+    num_following: 400,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=2"
+    profile_picture: "/assets/instagram/pfps/alan6.png"
   },
-  wanderlust_22: {
-    description: "Chasing sunsets and new destinations.",
-    username: "wanderlust_22",
-    num_followers: 9200,
+  benji_23: {
+    description: "bnss '27",
+    username: "benji_23",
+    num_followers: 417,
     num_following: 310,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=3"
+    profile_picture: "/assets/instagram/pfps/benji_23.png"
   },
-  naturelover: {
-    description: "Passionate about the great outdoors.",
-    username: "naturelover",
-    num_followers: 7300,
-    num_following: 280,
+  bunbunbunny: {
+    description: "",
+    username: "bunbunbunny",
+    num_followers: 20,
+    num_following: 1000,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=4"
+    profile_picture: "/assets/instagram/pfps/bunbunbunny.png"
   },
-  bookworm95: {
-    description: "Living between the pages of a good book.",
-    username: "bookworm95",
-    num_followers: 6700,
-    num_following: 190,
+  i_know_your_secret_vivienne: {
+    description: "",
+    username: "i_know_your_secret_vivienne",
+    num_followers: 20,
+    num_following: 0,
+    posts: EXPOSE_POST,
+    profile_picture: "/assets/instagram/pfps/i_know_your_secret_vivienne.png",
+    profile_thought: "What the- what kind of account is this!",
+  },
+  leidylovelies: {
+    description: "<3",
+    username: "leidylovelies",
+    num_followers: 413,
+    num_following: 330,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=5"
+    profile_picture: "/assets/instagram/pfps/leidylovelies.png"
   },
-  caffeineaddict: {
-    description: "Powered by coffee and good vibes.",
-    username: "caffeineaddict",
-    num_followers: 8100,
-    num_following: 230,
-    posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=6"
-  },
-  litlover: {
+  olivveee: {
     description: "A lover of literature and poetry.",
-    username: "litlover",
-    num_followers: 6200,
-    num_following: 220,
+    username: "olivveee",
+    num_followers: 878,
+    num_following: 640,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=7"
+    profile_picture: "/assets/instagram/pfps/olivveee.png"
   },
-  outdoorlover: {
-    description: "Hiking trails and chasing waterfalls.",
-    username: "outdoorlover",
-    num_followers: 9400,
+  realea: {
+    description: "",
+    username: "realea",
+    num_followers: 800,
     num_following: 270,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=8"
+    profile_picture: "/assets/instagram/pfps/realea.png"
   },
-  travelfan: {
+  sweetpotato2482: {
     description: "Dreaming of my next adventure.",
-    username: "travelfan",
+    username: "sweetpotato2482",
     num_followers: 10200,
     num_following: 340,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=9"
+    profile_picture: "/assets/instagram/pfps/sweetpotato2482.png"
   },
-  zenvibes: {
+  iheartkpop: {
     description: "Finding peace in the little things.",
-    username: "zenvibes",
+    username: "iheartkpop",
     num_followers: 8800,
     num_following: 290,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=10"
+    profile_picture: "/assets/instagram/pfps/iheartkpop.png"
   },
-  positivityqueen: {
-    description: "Spreading love and good energy!",
-    username: "positivityqueen",
-    num_followers: 7500,
-    num_following: 260,
+  ryan_kennedy: {
+    description: "bnss '27",
+    username: "ryan_kennedy",
+    num_followers: 320,
+    num_following: 290,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=11"
+    profile_picture: "/assets/instagram/pfps/ryan_kennedy.png"
   },
-  mindfulness_mike: {
-    description: "Living in the present, one breath at a time.",
-    username: "mindfulness_mike",
-    num_followers: 6800,
-    num_following: 210,
+  xavier27: {
+    description: "bnss '27",
+    username: " xavier27",
+    num_followers: 922,
+    num_following: 990,
     posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=12"
+    profile_picture: "/assets/instagram/pfps/xavier27.png"
   },
-  dailyinspo: {
-    description: "Sharing daily doses of motivation.",
-    username: "dailyinspo",
-    num_followers: 8900,
-    num_following: 300,
-    posts: [],
-    profile_picture: "https://i.pravatar.cc/150?img=13"
-  }
+
+
+  ashley_baby: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "ashley_baby",
+    num_followers: "1.2M",
+    num_following: 132,
+    posts: ASHLEY_POSTS,
+    profile_picture: "/assets/instagram/pfps/ashley_baby.png",
+  },
+  carriebunny: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "carriebunny",
+    num_followers: "683K",
+    num_following: 820,
+    posts: CARRIE_POSTS,
+    profile_picture: "/assets/instagram/pfps/carriebunny.png",
+  },
+  rachels_life: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "rachels_life",
+    num_followers: "222K",
+    num_following: 120,
+    posts: RACHEL_POSTS,
+    profile_picture: "/assets/instagram/pfps/rachels_life.png",
+  },
+  i_heart_makeup: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "i_heart_makeup",
+    num_followers: "222K",
+    num_following: 120,
+    posts: MAKEUP_POSTS,
+    profile_picture: "/assets/instagram/pfps/i_heart_makeup.png",
+  },
+  glow_skin: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "glow_skin",
+    num_followers: "58K",
+    num_following: 1220,
+    posts: SKINCARE_POSTS,
+    profile_picture: "/assets/instagram/pfps/glow_skin.png",
+  },
 };
 
-export const ME = "sweetvivienne"
+export const ME = "sweetvivienne";

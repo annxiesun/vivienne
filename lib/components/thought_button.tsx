@@ -4,9 +4,9 @@ import { useGameActions } from "../state/context";
 interface ThoughtButtonProps {
   thought: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: () => void
 }
-
+  
 const ThoughtButton = ({ thought, className, onClick = () => {} }: ThoughtButtonProps) => {
   const actions = useGameActions();
   const { toggleModal, setThought, setModalType } = actions;
@@ -22,6 +22,7 @@ const ThoughtButton = ({ thought, className, onClick = () => {} }: ThoughtButton
         setThought(thought);
         setModalType("thought");
         toggleModal(true);
+        if (onClick) onClick()
       }}
     />
   );

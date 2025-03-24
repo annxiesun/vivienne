@@ -1,21 +1,29 @@
 import { useState } from "react";
 import { InstagramPostType } from "../game/apps/instagram/common/types";
+import { INSTAGRAM_CHATS } from "../game/apps/instagram/common/chats";
 
 export type InstagramPage =
   | "profile"
   | "post"
   | "home"
   | "notifications"
-  | "messages";
+  | "messages"
+  | "settings";
 
 export type InstagramState = {
   currentPage: InstagramPage;
   currentPost?: InstagramPostType;
   currentUser?: string;
 
+  lastMessagedPerson?: string;
+
   prevPage?: InstagramPage;
   prevPost?: InstagramPostType;
   prevUser?: string;
+
+  blocked: boolean;
+  pageStage: number;
+  chatStage: number;
 };
 
 export type InstagramActions = {
@@ -23,20 +31,42 @@ export type InstagramActions = {
   goToPage: (page: Omit<InstagramPage, "post" | "profile">) => void;
   goToUser: (username: string) => void;
   goToPrev: () => void;
+  unblock: () => void;
+  setLastMessagedPerson: (username: string) => void;
+
+  incrementChatStage: () => void;
+  incrementPageStage: () => void;
 };
 
 export const useInstagramContext = () => {
   const [currentPost, setPost] = useState(undefined);
   const [currentPage, setPage] = useState<InstagramPage>("home");
   const [currentUser, setUser] = useState<string>(undefined);
+  const [lastMessagedPerson, setLastMessagedPerson] = useState<string>(
+    INSTAGRAM_CHATS[0].username
+  );
 
   const [prevPage, setPrevPage] = useState<InstagramPage>(undefined);
   const [prevPost, setPrevPost] = useState<InstagramPostType>(undefined);
   const [prevUser, setPrevUser] = useState<string>(undefined);
 
+  const [blocked, setBlocked] = useState<boolean>(true);
+  const [chatStage, setChatStage] = useState<number>(0);
+  const [pageStage, setPageStage] = useState<number>(0);
+
   return {
-    instagram_state: { currentPost, currentPage, currentUser },
+    instagram_state: {
+      currentPost,
+      currentPage,
+      currentUser,
+      lastMessagedPerson,
+      blocked,
+      pageStage,
+      chatStage,
+    },
     instagram_actions: {
+      setLastMessagedPerson: (username: string) =>
+        setLastMessagedPerson(username),
       goToPost: (post: InstagramPostType) => {
         setPost((prev) => {
           setPrevPost(prev);
@@ -80,7 +110,7 @@ export const useInstagramContext = () => {
         });
       },
       goToPrev: () => {
-        console.log({prevPage, prevUser, prevPost})
+        console.log({ prevPage, prevUser, prevPost });
         setPage(prevPage);
         setUser(prevUser);
         setPost(prevPost);
@@ -88,6 +118,16 @@ export const useInstagramContext = () => {
         setPrevUser(undefined);
         setPrevPost(undefined);
       },
+      unblock: () => {
+        setBlocked(false);
+      },
+      incrementChatStage: () => {
+        console.log(chatStage)
+        setChatStage(i => i+1)
+      },
+      incrementPageStage: () =>  {
+        setPageStage(i => i +1)
+      }
     },
   };
 };

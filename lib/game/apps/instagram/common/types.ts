@@ -5,10 +5,13 @@
 export type InstagramMessageType = {
   is_me: boolean
   value: string
+  thought?: string
 }
 export type InstagramChatType = {
   username: string
   messages: InstagramMessageType[]
+  unlocked_after_unblock?: boolean
+  stage?: number
 }
 
 export type InstagramPostType = {
@@ -18,6 +21,8 @@ export type InstagramPostType = {
   description: string
   comments: InstagramCommentType[]
   number_likes: number
+  thought?: string
+  stage?: number
 }
 
 export type InstagramCommentType = {
@@ -27,11 +32,13 @@ export type InstagramCommentType = {
 
 export type InstagramUser = {
   username: string
-  num_followers: number
+  num_followers: number | string
   num_following: number
   posts: InstagramPostType[]
   profile_picture: string
   description: string
+  profile_thought?: string
+  stage?: number
 }
 
 export type InstagramNotificationCategory = "follow" | "like" 
