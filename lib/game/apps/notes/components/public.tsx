@@ -21,6 +21,7 @@ const PublicNotes = () => {
       publicNotes[publicNotes.length - 1].title === note.title &&
       !hasTriggeredSceneChange
     ) {
+      // Update scene after last note has been examined
       setScene(scene + 1);
       setHasTriggeredSceneChange(true);
     }

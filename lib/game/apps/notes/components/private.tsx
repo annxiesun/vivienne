@@ -1,9 +1,11 @@
 import { FileText } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
+import { useState } from "react";
 
 const PrivateNotes = () => {
   const state = useGameState();
   const actions = useGameActions();
+  const [hasTriggeredSceneChange, setHasTriggeredSceneChange] = useState(false);
 
   const { scene } = state;
   const { setScene } = actions;
@@ -47,7 +49,10 @@ const PrivateNotes = () => {
                 onClick={() => {
                   setFoundNote(true);
                   selectNote(note);
-                  setScene(scene + 1);
+                  if (!hasTriggeredSceneChange) {
+                    setScene(scene + 1);
+                  }
+                  setHasTriggeredSceneChange(true);
                 }}
               >
                 <FileText size={20} />
