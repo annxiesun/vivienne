@@ -4,65 +4,302 @@ export const VIVIENNE_POSTS: InstagramPostType[] = [
   {
     username: "sweetvivienne",
     images: [
-      "https://picsum.photos/1000?random=101",
-      "https://picsum.photos/1000?random=102",
-      "https://picsum.photos/1000?random=103"
+      "/assets/instagram/posts/sweetvivienne_1.png",
     ],
     date: new Date("2024-03-05"),
     description: "Enjoying the sunset vibes! 🌅✨",
     comments: [
-      { username: "alex_journey", text: "So beautiful! 😍" },
-      { username: "wanderlust_22", text: "Where is this?" },
-      { username: "naturelover", text: "Love this view!" }
+      { username: "alan6", text: "So beautiful! 😍" },
+      { username: "benji_23", text: "Where is this?" },
+      { username: "bunbunbunny", text: "Love this view!" }
     ],
     number_likes: 10532
   },
   {
     username: "sweetvivienne",
     images: [
-      "https://picsum.photos/1000?random=201",
-      "https://picsum.photos/1000?random=202",
-      "https://picsum.photos/1000?random=203"
+      "/assets/instagram/posts/sweetvivienne_2.png",
     ],
     date: new Date("2024-03-04"),
     description: "Coffee and books kind of day ☕📖",
     comments: [
-      { username: "bookworm95", text: "My favorite combo!" },
-      { username: "caffeineaddict", text: "That mug is so cute!" },
-      { username: "litlover", text: "What are you reading?" }
+      { username: "i_know_your_secret_vivienne", text: "My favorite combo!" },
+      { username: "leidylovelies", text: "That mug is so cute!" },
+      { username: "olivveee", text: "What are you reading?" }
     ],
     number_likes: 12789
   },
+  // {
+  //   username: "sweetvivienne",
+  //   images: [
+  //     "/assets/instagram/posts/sweetvivienne_3.png",
+  //   ],
+  //   date: new Date("2024-03-03"),
+  //   description: "Weekend getaway 🏞️💙",
+  //   comments: [
+  //     { username: "realea", text: "Looks peaceful!" },
+  //     { username: "sweetpotato2482", text: "Where is this? I need to go!" },
+  //     { username: "iheartkpop", text: "Nature is healing." }
+  //   ],
+  //   number_likes: 15432
+  // },
+  // {
+  //   username: "sweetvivienne",
+  //   images: [
+  //     "/assets/instagram/posts/sweetvivienne_4.png",
+  //   ],
+  //   date: new Date("2024-03-02"),
+  //   description: "Feeling grateful for small moments 🌸💖",
+  //   comments: [
+  //   ],
+  //   number_likes: 18345
+  // },
   {
     username: "sweetvivienne",
     images: [
-      "https://picsum.photos/1000?random=301",
-      "https://picsum.photos/1000?random=302",
-      "https://picsum.photos/1000?random=303"
-    ],
-    date: new Date("2024-03-03"),
-    description: "Weekend getaway 🏞️💙",
-    comments: [
-      { username: "outdoorlover", text: "Looks peaceful!" },
-      { username: "travelfan", text: "Where is this? I need to go!" },
-      { username: "zenvibes", text: "Nature is healing." }
-    ],
-    number_likes: 15432
-  },
-  {
-    username: "sweetvivienne",
-    images: [
-      "https://picsum.photos/1000?random=401",
-      "https://picsum.photos/1000?random=402",
-      "https://picsum.photos/1000?random=403"
+      "/assets/instagram/posts/sweetvivienne_5.png",
     ],
     date: new Date("2024-03-02"),
     description: "Feeling grateful for small moments 🌸💖",
     comments: [
-      { username: "positivityqueen", text: "Such a mood 💕" },
-      { username: "mindfulness_mike", text: "Gratitude is everything!" },
-      { username: "dailyinspo", text: "This is so inspiring." }
     ],
     number_likes: 18345
-  }
+  },
+  {
+    username: "sweetvivienne",
+    images: [
+      "/assets/instagram/posts/sweetvivienne_6.png",
+    ],
+    date: new Date("2024-03-02"),
+    description: "Feeling grateful for small moments 🌸💖",
+    comments: [
+    ],
+    number_likes: 18345
+  },
+  {
+    username: "sweetvivienne",
+    images: [
+      "/assets/instagram/posts/sweetvivienne_7.png",
+    ],
+    date: new Date("2024-03-02"),
+    description: "Feeling grateful for small moments 🌸💖",
+    comments: [
+    ],
+    number_likes: 18345
+  },
+  {
+    username: "sweetvivienne",
+    images: [
+      "/assets/instagram/posts/sweetvivienne_8.png",
+    ],
+    date: new Date("2024-03-02"),
+    description: "Feeling grateful for small moments 🌸💖",
+    comments: [
+    ],
+    number_likes: 18345
+  },
+
+
 ];
+
+
+export const EXPOSE_POST = [
+  {
+    username: "i_know_your_secret_vivienne",
+    images: [
+      "/assets/instagram/posts/expose_post1.png",
+      "/assets/instagram/posts/expose_post2.png",
+      "/assets/instagram/posts/expose_post3.png",
+      "/assets/instagram/posts/expose_post4.png",
+      "/assets/instagram/posts/expose_post5.png",
+      "/assets/instagram/posts/expose_post6.png",
+    ],
+    date: new Date("2024-03-05"),
+    description: "@sweetvivienne is not what the internet thinks she is",
+    comments: [
+      { username: "ashley_baby", text: "Wow... I had no idea" },
+      { username: "ryan_kennedy", text: "thank-you for making this post, transgender-ism is a mental illness" },
+      { username: "iheartkpop", text: "ewwwwww, unfollowed" },
+      { username: "sweetpotato2482", text: "it's people like her that make the LGBTQ community look bad, just be honest!" },
+    ],
+    number_likes: 10532,
+    thought: "How are these comments allowed on here, they're so hateful. Ever since the changes at Meta, comments on Instagram have been so horrid. [INSERT LINK]",
+    stage: 2,
+  },
+]
+
+export const ASHLEY_POSTS = [
+  {
+    username: "ashley_baby",
+    images: ['/assets/instagram/posts/home/ashely_1.png'],
+    date: new Date("2025-03-20"),
+    description: "Sunny days and sweet vibes ☀️💖 #weekendchill",
+    number_likes: 12_300,
+    comments: [],
+  },
+  {
+    username: "ashley_baby",
+    images: ['/assets/instagram/posts/home/ashley_2.png'],
+    date: new Date("2025-03-18"),
+    description: "Just being me 💅✨",
+    number_likes: 15_700,
+    comments: [],
+  },
+];
+
+export const CARRIE_POSTS = [
+  {
+    username: "carriebunny",
+    images: ['/assets/instagram/posts/home/carrie_1.png'],
+    date: new Date("2025-03-19"),
+    description: "Cozy corners & coffee thoughts ☕🐰",
+    number_likes: 11_800,
+    comments: [],
+  },
+  {
+    username: "carriebunny",
+    images: ['/assets/instagram/posts/home/carrie_2.png'],
+    date: new Date("2025-03-16"),
+    description: "Mood: dreamy 🌸🌙",
+    number_likes: 13_200,
+    comments: [],
+  },
+  {
+    username: "carriebunny",
+    images: ['/assets/instagram/posts/home/carrie_3.png'],
+    date: new Date("2025-03-14"),
+    description: "Pastel skies & bunny eyes 🐇🎀",
+    number_likes: 10_600,
+    comments: [],
+  },
+];
+
+export const RACHEL_POSTS = [
+  {
+    username: "rachels_life",
+    images: ['/assets/instagram/posts/home/rachel_1.png'],
+    date: new Date("2025-03-21"),
+    description: "New chapter, same me 🌿",
+    number_likes: 102_400,
+    comments: [],
+  },
+  {
+    username: "rachels_life",
+    images: ['/assets/instagram/posts/home/rachel_2.png'],
+    date: new Date("2025-03-18"),
+    description: "Captured the calm before the storm 🌧️",
+    number_likes: 96_500,
+    comments: [],
+  },
+  {
+    username: "rachels_life",
+    images: ['/assets/instagram/posts/home/rachel_3.png'],
+    date: new Date("2025-03-15"),
+    description: "Moments that matter most 💫",
+    number_likes: 88_700,
+    comments: [],
+  },
+  {
+    username: "rachels_life",
+    images: ['/assets/instagram/posts/home/rachel_4.png'],
+    date: new Date("2025-03-12"),
+    description: "City lights & late night thoughts 🌆",
+    number_likes: 107_900,
+    comments: [],
+  },
+];
+
+export const SKINCARE_POSTS = [
+  {
+    username: "glow_skin",
+    images: ['/assets/instagram/posts/home/skincare_3.png'],
+    date: new Date("2025-03-17"),
+    description: "Your glow starts within 🌞 #SelfCare",
+    number_likes: 110_400,
+    comments: [],
+  },
+  {
+    username: "glow_skin",
+    images: ['/assets/instagram/posts/home/skincare_1.png'],
+    date: new Date("2025-03-22"),
+    description: "Hydration is the key 🔑💧 #GlowUp",
+    number_likes: 132_000,
+    comments: [],
+  },
+  {
+    username: "glow_skin",
+    images: ['/assets/instagram/posts/home/skincare_2.png'],
+    date: new Date("2025-03-20"),
+    description: "No filters, just healthy skin 💆‍♀️💖",
+    number_likes: 148_300,
+    comments: [],
+  },
+  {
+    username: "glow_skin",
+    images: ['/assets/instagram/posts/home/skincare_4.png'],
+    date: new Date("2025-03-15"),
+    description: "SALE!",
+    number_likes: 95_200,
+    comments: [],
+  },
+  {
+    username: "glow_skin",
+    images: ['/assets/instagram/posts/home/skincare_5.png'],
+    date: new Date("2025-03-12"),
+    description: "Consistency is beautiful 🌼",
+    number_likes: 101_900,
+    comments: [],
+  },
+];
+
+export const MAKEUP_POSTS = [
+  {
+    username: "i_heart_makeup",
+    images: ['/assets/instagram/posts/home/makeup_1.png'],
+    date: new Date("2025-03-23"),
+    description: "Bold lips, bold mood 💋🔥",
+    number_likes: 139_000,
+    comments: [],
+  },
+  {
+    username: "i_heart_makeup",
+    images: ['/assets/instagram/posts/home/makeup_2.png'],
+    date: new Date("2025-03-21"),
+    description: "Smokey eye, don't cry 😘",
+    number_likes: 127_800,
+    comments: [],
+  },
+  {
+    username: "i_heart_makeup",
+    images: ['/assets/instagram/posts/home/makeup_3.png'],
+    date: new Date("2025-03-19"),
+    description: "This beat took hours 🔥💄",
+    number_likes: 144_600,
+    comments: [],
+  },
+  {
+    username: "i_heart_makeup",
+    images: ['/assets/instagram/posts/home/makeup_4.png'],
+    date: new Date("2025-03-16"),
+    description: "Glossy goals achieved ✨💋",
+    number_likes: 111_300,
+    comments: [],
+  },
+  {
+    username: "i_heart_makeup",
+    images: ['/assets/instagram/posts/home/makeup_5.png'],
+    date: new Date("2025-03-13"),
+    description: "Color pop kinda day 💜🧡💚",
+    number_likes: 120_500,
+    comments: [],
+  },
+];
+
+
+export const HOME_POSTS = [
+  ASHLEY_POSTS[0],
+  SKINCARE_POSTS[0],
+  MAKEUP_POSTS[0],
+  CARRIE_POSTS[0],
+  RACHEL_POSTS[0],
+]
