@@ -2,7 +2,7 @@ import { Heart, X } from "lucide-react";
 import { Carousel } from "antd";
 import { Separator } from "radix-ui";
 import { InstagramPostType } from "../common/types";
-import { useGameActions, useGameState } from "../../../../state/context";
+import { useGameActions } from "../../../../state/context";
 import InstagramComment from "./instagram_comment";
 import InstagramUsernameButton from "./instagram_username_button";
 import ThoughtButton from "../../../../components/thought_button";
@@ -16,9 +16,6 @@ export default function InstagramPost(props: InstagramPostProps) {
 
   const actions = useGameActions();
   const { goToPrev, incrementPageStage  } = actions.instagram;
-
-  const state = useGameState();
-  const { pageStage } = state.instagram
   
   const {
     username,
@@ -92,7 +89,7 @@ export default function InstagramPost(props: InstagramPostProps) {
                       {date.toLocaleDateString()}
                     </div>
                   </div>
-                  {thought && <ThoughtButton thought={thought} onClick={stage ? pageStage == stage && incrementPageStage : null} />}
+                  {thought && <ThoughtButton thought={thought} onClick={stage ?()=> incrementPageStage(stage): null} />}
                 </div>
               </div>
             </div>

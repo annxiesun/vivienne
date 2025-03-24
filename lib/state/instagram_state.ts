@@ -35,7 +35,7 @@ export type InstagramActions = {
   setLastMessagedPerson: (username: string) => void;
 
   incrementChatStage: () => void;
-  incrementPageStage: () => void;
+  incrementPageStage: (stage:number) => void;
 };
 
 export const useInstagramContext = () => {
@@ -125,8 +125,11 @@ export const useInstagramContext = () => {
         console.log(chatStage)
         setChatStage(i => i+1)
       },
-      incrementPageStage: () =>  {
-        setPageStage(i => i +1)
+      incrementPageStage: (stage:number) =>  {
+        setPageStage(i =>{
+          if (i == stage) return i +1;
+          return i
+        })
       }
     },
   };
