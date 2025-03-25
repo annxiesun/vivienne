@@ -2,7 +2,6 @@ import { FC, useRef, useEffect } from "react";
 import MessageBubble from "./MessageBubble";
 import MessageOptions from "./MessageOptions";
 import { chatGPTAccounts, ChatGPTMessage } from "../common/constants";
-import ThoughtButton from "../../../../components/thought_button";
 
 interface ChatWindowProps {
     messages: ChatGPTMessage[];
