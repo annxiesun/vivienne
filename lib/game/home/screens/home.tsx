@@ -1,5 +1,5 @@
 import { useGameActions, useGameState } from "../../../state/context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppButton from "../../../components/app_button";
 import Email from "../../apps/email";
 import Skype from "../../apps/skype";
@@ -14,22 +14,13 @@ import ChatGPTScreen from "../../apps/chatgpt/index";
 export const Home = () => {
   const { scene, showModal } = useGameState();
   const actions = useGameActions();
-  const { setScene, toggleModal } = actions;
+  const { toggleModal } = actions;
   const { setWiped, toggleEnd, toggleDefaultEnd, setReported } = actions.screen;
-  const [activeApp, setActiveApp] = useState(null);
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
-  console.log(activeApp);
-
-  const handleAppClick = (appName) => {
-    setActiveApp(appName);
-  };
-
-  const handleCloseApp = () => {
-    setActiveApp(null);
-    setModalMessage(HOME_THOUGHTS[scene + 1]);
-    setScene(scene + 1);
-  };
+  useEffect(() => {
+    setModalMessage(HOME_THOUGHTS[scene]);
+  }, [scene]);
 
   return (
     <div
@@ -104,16 +95,12 @@ export const Home = () => {
         <AppButton
           imageSrc="/assets/apps/notes.png"
           altText="Notes"
-          onClick={() => handleAppClick("Notes")}
-          onClose={handleCloseApp}
         >
           <Notes />
         </AppButton>
         <AppButton
           imageSrc="/assets/apps/instagram.png"
           altText="Instagram"
-          onClick={() => handleAppClick("Instagram")}
-          onClose={handleCloseApp}
           disabled={scene < 1}
         >
           <Instagram />
@@ -121,8 +108,6 @@ export const Home = () => {
         <AppButton
           imageSrc="/assets/apps/chatgpt.png"
           altText="ChatGPT"
-          onClick={() => handleAppClick("ChatGPT")}
-          onClose={handleCloseApp}
           disabled={scene < 2}
         >
           <ChatGPTScreen />
@@ -130,8 +115,6 @@ export const Home = () => {
         <AppButton
           imageSrc="/assets/apps/mail.png"
           altText="Mail"
-          onClick={() => handleAppClick("Mail")}
-          onClose={handleCloseApp}
           disabled={scene < 3}
         >
             <Email />
@@ -139,8 +122,6 @@ export const Home = () => {
         <AppButton
           imageSrc="/assets/apps/skype.png"
           altText="Skype™"
-          onClick={() => handleAppClick("Skype")}
-          onClose={handleCloseApp}
           disabled={scene < 4}
         >
           <Skype />

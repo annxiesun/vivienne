@@ -109,7 +109,7 @@ export const contacts: Contact[] = [
         text: "Something feels off. Why does this feel like a scam? What's really going on?",
         time: "12:46",
         evidence:
-          "First, the weird vibe during the call, and now the request for another payment just for a picture after $250 was already sent. It's starting to feel like she's just playing a game—taking money without delivering anything real in return. The whole situation doesn't add up.",
+          "First the call felt off. Now she's charging again for a picture? She's taking money without delivering anything real. This isn't adding up.",
       },
     ],
   },
@@ -165,7 +165,7 @@ export const contacts: Contact[] = [
         time: "4:46",
         text: "Idk. Your face and hands glitch in the first picture, and the second picture looks fake.",
         evidence:
-          "These are classic signs of AI-generated images. The weird hands and face glitches just don't add up. Also with the weird voice calls..it seems like someone is impersonating Vivienne.",
+          "These are clear signs of AI-generated images—glitches in the hands and face don't add up. Combined with the fake birth year and odd voice calls, it looks like someone is impersonating Vivienne.",
       },
       {
         time: "4:37",
@@ -203,7 +203,7 @@ export const contacts: Contact[] = [
         text: "It sounded off at some parts though? Like..robotic",
         time: "10:03",
         evidence:
-          "This is the second time someone's mentioned her voice sounding robotic. It's starting to feel less like a coincidence and more like someone is using AI to impersonate her.",
+          "This is the second time someone's mentioned her voice sounding robotic. Maybe someone is using AI to impersonate her voice.",
       },
       {
         text: "Haha, it's just the mic quality, baby 😘 But trust me, I'm all real, just like you wanted. What's on your mind?",
@@ -244,7 +244,7 @@ export const contacts: Contact[] = [
       {
         time: "10:37",
         text: "I recorded our call and ran your voice through an AI detector. It says it's synthetic.",
-        evidence: `If the voice is synthetic, someone is clearly trying to impersonate Vivienne. I've heard about many <a href="https://www.app.com/story/news/crime/2025/01/17/ai-used-to-clone-sons-voice-scam-attempt-philadelphia-father/77774861007/">scams using AI voice impersonation</a> lately...`,
+        evidence: `This confirms my suspicions of impersonation. I've heard about many <a href="https://www.app.com/story/news/crime/2025/01/17/ai-used-to-clone-sons-voice-scam-attempt-philadelphia-father/77774861007/">scams using AI voice impersonation</a> lately...`,
       },
       {
         text: "What? No way! That's insane. Why would I fake my own voice? 🤨",
@@ -272,8 +272,6 @@ export const contacts: Contact[] = [
       {
         time: "10:47",
         text: "I've had enough of this. I'm done playing games. I'm going to find out who's really behind this and expose you.",
-        evidence:
-          "With everything that's happened—the robotic voice, the sketchy photos—it's clear something isn't right. Whoever this is, they're hiding something.",
       },
       {
         text: "You won't get away with this! I'm real. Don't you dare accuse me of being fake.",
@@ -322,7 +320,7 @@ export const contacts: Contact[] = [
       {
         text: "I don't know… your eyes didn't track right, and your smile felt kinda… off. Like it didn't match your face?",
         time: "10:25",
-        evidence: `It seems like whoever is impersonating Vivienne is using some kind of deepfake technology. <a href="https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/">I've read about this online</a>, where people can swap faces and mimic voices with alarming accuracy. This explains why the profile was reported as a deepfake—someone is stealing Vivienne's identity.`,
+        evidence: `It seems like whoever is impersonating Vivienne is also using some kind of deepfake technology. <a href="https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/">I've read about this online</a>, where people can swap faces and mimic voices with alarming accuracy. This explains why the profile was reported as a deepfake—someone is stealing Vivienne's identity.`,
       },
       {
         text: "You're overthinking, babe. It's just the video quality. Don't be weird 😏",

@@ -4,8 +4,6 @@ import AppBase from "../game/apps/app_base";
 interface AppButtonProps {
   imageSrc: string;
   altText: string;
-  onClick: () => void;
-  onClose: () => void;
   disabled?: boolean;
   children?: ReactNode;
 }
@@ -13,15 +11,12 @@ interface AppButtonProps {
 export default function AppButton({
   imageSrc,
   altText,
-  onClick,
-  onClose,
   disabled = false,
   children = null,
 }: AppButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
-    onClick();
     setIsVisible(true);
   };
 
@@ -52,7 +47,6 @@ export default function AppButton({
             <button
               onClick={() => {
                 handleClose();
-                onClose();
               }}
               className="absolute p-1 top-2 right-2 text-white bg-red-500 transition font-bold"
             >
