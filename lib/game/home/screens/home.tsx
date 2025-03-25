@@ -1,7 +1,7 @@
 import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
 import AppButton from "../../../components/app_button";
-import Email from "../../apps/email";
+import Email from "../../apps/email/email";
 import Skype from "../../apps/skype";
 import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";

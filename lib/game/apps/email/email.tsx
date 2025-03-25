@@ -5,11 +5,14 @@ import { initialEmail } from "./emails";
 
 export type Email = {
   index: number;
-  sender: string;
-  title: string;
+  from: string;
+  fromEmail: string;
+  to: string;
+  toEmail: string;
+  subject: string;
+  body: string| null;
   content: string | JSX.Element | JSX.Element[];
   date: string;
-  hidden: boolean;
   end: boolean;
   note: string | null | JSX.Element | JSX.Element[];
   folder: "Inbox" | "Sent" | "Trash" | "Drafts";
@@ -61,21 +64,21 @@ export default function EmailApp() {
               <div
                 key={index}
                 className={`px-4 py-3 cursor-pointer bg-gray-750 flex items-center gap-3  transition-all border-b border-gray-700 ${
-                  selectedNote?.title === email.title ? "bg-gray-700" : ""
+                  selectedNote?.index === email.index ? "bg-gray-700" : ""
                 } ${email.index <= gameState ? "text-gray-100 hover hover:bg-gray-700" : "text-gray-400"}
                 `}
                 onClick={() => handleSelectNote(email)}
                 >
                 <div className="flex flex-col w-full space-y-1">
                     <div className="flex items-center justify-between w-full">
-                        <p className="text-sm font-medium truncate">{email.sender}</p>
+                        <p className="text-sm font-medium truncate">{email.from}</p>
                         <p className="text-xs text-gray-400 font-thin truncate">{email.date}</p>
                     </div>
                     <div>
-                        <p className="text-xs font-medium truncate">{email.title}</p>
+                        <p className="text-xs font-medium truncate">{email.subject}</p>
                     </div>
                     <div>
-                        <p className="text-xs text-gray-400 font-medium truncate">{email.content}</p>
+                        <p className="text-xs text-gray-400 font-medium truncate">{email.body != null ? email.body : email.content}</p>
                     </div>
                     </div>
               </div>
@@ -89,17 +92,20 @@ export default function EmailApp() {
             <div className="pb-2 flex flex-col border-gray-700 border-b w-full">
               <div className="flex align-bottom justify-between w-full">
                 <h2 className="text-2xl text-gray-200 font-semibold">
-                  {selectedNote.sender}
+                  {selectedNote.from}
                 </h2>
                 <p className="text-gray-500">{selectedNote.date}</p>
               </div>
               <div>
-                <p className="text-gray-200">{selectedNote.title}</p>
-                <div className="flex space-x-2"><p className="text-gray-200">To: </p> <p className="text-gray-500">Vivienne Thompson</p></div>
+                <p className="text-gray-200">{selectedNote.subject}</p>
+
+                <div className="flex space-x-2"><p className="text-gray-200">From: </p> <p className="text-gray-500">{selectedNote.from + " <" + selectedNote.fromEmail + ">"}</p></div>
+                <div className="flex space-x-2"><p className="text-gray-200">To: </p> <p className="text-gray-500">{selectedNote.to + " <" + selectedNote.toEmail + ">"}</p></div>
                 
               </div>
             </div>
-            <p className="mt-4 text-gray-200">{selectedNote.content}</p>
+            <NoteRenderer content={selectedNote.content} />
+            {/* <p className="mt-4 text-gray-200 whitespace-pre-wrap">{selectedNote.content}</p> */}
           </div>
         ) : (
           <div className="text-center text-gray-500">
@@ -166,4 +172,13 @@ HeaderMenu.propTypes = {
   setEmailState: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
 };
-  
+
+const NoteRenderer = ({ content }: { content: string | React.ReactNode }) => {
+  return typeof content === "string" ? (
+    <div className="overflow-auto">
+      <p className="mt-4 text-gray-200 whitespace-pre-wrap">{content}</p>
+    </div>
+  ) : (
+    <div className="overflow-auto" >{content}</div>
+  );
+};
