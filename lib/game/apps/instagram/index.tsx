@@ -62,6 +62,7 @@ export default function Instagram() {
           aria-label="tabs example"
           className="flex flex-col items-start w-[200px] box-border pt-2"
         >
+          <div className="fixed">
           <div
             className={getClasses(pageStage, 0)}
             onClick={pageStage < 0 ? null : () => goToPage("home")}
@@ -100,8 +101,9 @@ export default function Instagram() {
             <SettingsIcon/>
             Settings
           </div>
+          </div>
         </Tabs.List>
-        <div className="flex-1 overflow-y-scroll overflow-hidden border-l-2 border-l-gray-200">
+        <div className="h-fit flex-1 overflow-hidden border-l-2 border-l-gray-200">
             <InstagramContent />
         </div>
       </Tabs.Root>
