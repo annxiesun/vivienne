@@ -7,7 +7,7 @@ import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
 import DecisionButton from "../../../components/decision_button";
-import ChatGPTScreen from "../../apps/chatgpt";
+import ChatGPTScreen from "../../apps/chatgpt/index";
 
 export const Home = () => {
   const { scene, showModal } = useGameState();
