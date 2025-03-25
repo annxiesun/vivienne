@@ -7,11 +7,11 @@ const ProfileView = () => {
   const { toggleModal, setThought, setModalType } = actions;
   const { markEvidenceAsViewed } = actions.skype;
 
-   const [evidenceClicked, setEvidenceClicked] = useState(new Set());
+  const [evidenceClicked, setEvidenceClicked] = useState(new Set());
 
   useEffect(() => {
     // If all evidence has been clicked, mark as viewed
-    if (evidenceClicked.size === 2) {
+    if (evidenceClicked.size === 3) {
       markEvidenceAsViewed("profile");
     }
   }, [evidenceClicked, markEvidenceAsViewed]); // Re-run this effect when `evidenceClicked` changes
@@ -52,7 +52,7 @@ const ProfileView = () => {
             Hey there 💋 Looking for a personal call or exclusive pictures?
             Let&apos;s chat! 💕 $250 per call, $100 per picture
             <ThoughtButton
-              thought="Why is she charging for this stuff? Something doesn't seem right.."
+              thought="Why is she charging for this stuff? She is way too young..."
               className="h-6 w-6"
               onClick={() => handleEvidenceClick("2")}
             />
@@ -71,9 +71,17 @@ const ProfileView = () => {
           </div>
           <hr className="border-white my-2" />
           <div className="text-gray-700 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
-            <strong>Skype Name</strong> <span>vivienne22023</span>
-            <strong>Phone</strong> <span>555-1234</span>
-            <strong>Birthday</strong> <span>February 14, 2000</span>
+            <strong>Skype Name</strong> <span>w3stw00d_doll</span>
+            <strong>Phone</strong> <span>555-3512</span>
+            <strong>Birthday</strong>
+            <span>
+              February 14, 2000
+              <ThoughtButton
+                thought="That's strange..wasn't she born in 2007?"
+                className="ml-1 h-5 w-5"
+                onClick={() => handleEvidenceClick("3")}
+              />
+            </span>
             <strong>Gender</strong> <span>Female</span>
             <strong>Language</strong> <span>English</span>
           </div>

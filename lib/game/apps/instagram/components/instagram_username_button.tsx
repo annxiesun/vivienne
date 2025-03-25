@@ -1,26 +1,35 @@
-
 import { useGameActions } from "../../../../state/context";
-import { PROFILE_MAP } from "../common/users";
+import InstagramProfilePicture from "./instagram_profile_picture";
 
 type InstagramUsernameButtonProps = {
-  username: string
-  hasPicture?: boolean
-  children?: React.ReactNode
-  pfp_size?: "sm" | "md"
+  username: string;
+  hasPicture?: boolean;
+  children?: React.ReactNode;
+  pfp_size?: "sm" | "md";
+  disabled?: boolean;
 };
 
-export default function InstagramUsernameButton(props: InstagramUsernameButtonProps) {
-  const { username, hasPicture, children, pfp_size } = props;
+export default function InstagramUsernameButton(
+  props: InstagramUsernameButtonProps
+) {
+  const { username, hasPicture, children, pfp_size, disabled } = props;
   const actions = useGameActions();
   const { goToUser } = actions.instagram;
 
   const open = () => goToUser(username);
-  return (
+  return disabled ? (
+    <div className="inline items-center">
+      {hasPicture && (
+        <InstagramProfilePicture username={username} pfp_size={pfp_size} />
+      )}
+      <span className="font-semibold mr-2">{username}</span>
+      {children}
+    </div>
+  ) : (
     <button onClick={open} className="inline items-center">
-      {hasPicture && <img
-        src={PROFILE_MAP[username].profile_picture}
-        className={`rounded-full inline mr-2 ${pfp_size == "sm" ? "w-5 h-5" : "w-8 h-8"}`}
-      />}
+      {hasPicture && (
+        <InstagramProfilePicture username={username} pfp_size={pfp_size} />
+      )}
       <span className="font-semibold mr-2">{username}</span>
       {children}
     </button>

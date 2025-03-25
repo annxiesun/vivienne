@@ -20,7 +20,7 @@ export default function InstagramHomePost(props: InstagramHomePostProps) {
     >
       <Carousel className="h-[500px] w-[500px]" arrows dots infinite={false}>
         {images.map((img, i) => (
-          <img key={i} src={img} className="h-full w-full" />
+          <img key={i} src={img} className="h-[500px] w-full object-cover object-center" />
         ))}
       </Carousel>
       <div className="w-full bg-white p-4 h-full">

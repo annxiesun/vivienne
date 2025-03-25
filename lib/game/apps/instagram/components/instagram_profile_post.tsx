@@ -15,7 +15,7 @@ export default function InstagramProfilePost(props: InstagramProfilePostProps) {
   const open = () => goToPost(post);
   return (
     <button onClick={open}>
-      <img src={images[0]} />
+      <img src={images[0]} className="h-[220px] w-[220px] object-cover object-center" />
     </button>
   );
 }

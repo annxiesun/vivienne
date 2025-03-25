@@ -1,11 +1,13 @@
 import { useGameActions, useGameState } from "../../../state/context";
 import { useState } from "react";
 import AppButton from "../../../components/app_button";
+import Email from "../../apps/email";
 import Skype from "../../apps/skype";
 import Notes from "../../apps/notes";
 import { HOME_THOUGHTS } from "../../../constants";
 import ThoughtButton from "../../../components/thought_button";
 import GlobalModal from "../../../components/global_modal";
+import Instagram from "../../apps/instagram";
 import DecisionButton from "../../../components/decision_button";
 import ChatGPTScreen from "../../apps/chatgpt/index";
 
@@ -113,7 +115,9 @@ export const Home = () => {
           onClick={() => handleAppClick("Instagram")}
           onClose={handleCloseApp}
           disabled={scene < 1}
-        />
+        >
+          <Instagram />
+        </AppButton>
         <AppButton
           imageSrc="/assets/apps/chatgpt.png"
           altText="ChatGPT"
@@ -129,7 +133,9 @@ export const Home = () => {
           onClick={() => handleAppClick("Mail")}
           onClose={handleCloseApp}
           disabled={scene < 3}
-        />
+        >
+            <Email />
+        </AppButton>
         <AppButton
           imageSrc="/assets/apps/skype.png"
           altText="Skype™"
