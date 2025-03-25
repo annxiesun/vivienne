@@ -1,121 +1,40 @@
 import { useState } from "react";
 import { AlignJustify, PencilLine, Inbox, Send, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
+import { initialEmail } from "./emails";
 
 export type Email = {
+  index: number;
   sender: string;
   title: string;
-  content: string;
+  content: string | JSX.Element | JSX.Element[];
   date: string;
   hidden: boolean;
+  end: boolean;
+  note: string | null | JSX.Element | JSX.Element[];
   folder: "Inbox" | "Sent" | "Trash" | "Drafts";
 };
 
-const initialEmail: Email[] = [
-  {
-    sender: "Jane Doe",
-    title: "Public Email 1",
-    content: "This is a public email.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Inbox",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Public Email 2",
-    content: "Another public email.",
-    date: "12/28/2025",
-    hidden: false,
-    folder: "Inbox",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Private Email 1",
-    content: "This is a private email.",
-    date: "12/29/2025",
-    hidden: true,
-    folder: "Trash",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 1",
-    content: "This is a hint.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 2",
-    content: "This is hint 2.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 3",
-    content: "This is hint 3.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-  {
-    sender: "Jane Doe",
-    title: "Hint 4",
-    content: "This is hint 4.",
-    date: "12/27/2025",
-    hidden: false,
-    folder: "Sent",
-  },
-];
-
-// const hintEmail: Email[] = [
-//   {
-//     sender: "Jane Doe",
-//     title: "Hint 1",
-//     content: "This is a hint.",
-//     date: "12/27/2025",
-//     hidden: false,
-//     folder: "Sent",
-//   },
-//   {
-//     sender: "Jane Doe",
-//     title: "Hint 2",
-//     content: "This is hint 2.",
-//     date: "12/27/2025",
-//     hidden: false,
-//     folder: "Sent",
-//   },
-//   {
-//     sender: "Jane Doe",
-//     title: "Hint 3",
-//     content: "This is hint 3.",
-//     date: "12/27/2025",
-//     hidden: false,
-//     folder: "Sent",
-//   },
-//   {
-//     sender: "Jane Doe",
-//     title: "Hint 4",
-//     content: "This is hint 4.",
-//     date: "12/27/2025",
-//     hidden: false,
-//     folder: "Sent",
-//   },
-// ];
-
-
-const headers = ["Inbox", "Sent", "Trash", "Drafts"];
+const headers = ["Inbox", "Trash", "Sent",  "Drafts"];
 
 export default function EmailApp() {
-  const [emailState, setEmailState] = useState(headers[0])
+  const [gameState, setGameState] = useState(0)
+  const [mailboxState, setMailboxState] = useState(0)
+  const [emailState, setEmailState] = useState(0)
   const [showModal, setShowModal] = useState(false);
   const [emails] = useState<Email[]>(initialEmail);
   const [selectedNote, setSelectedNote] = useState<Email | null>(null);
 
   const handleSelectNote = (email: Email) => {
-    setSelectedNote(email);
+    if (email.index <= gameState){
+      setSelectedNote(email);
+      if (email.index == gameState) {
+        setGameState(gameState + 1)
+      }
+      if (email.end){
+        setMailboxState(mailboxState + 1)
+      }
+    }
   };
 
   return (
@@ -126,10 +45,10 @@ export default function EmailApp() {
         <div className="p-4 flex items-stretch justify-between border-b border-gray-700">
             <div className="flex items-stretch space-x-2">
               <div className="">
-                <HeaderIcon header={emailState} size={6}/>
+                <HeaderIcon header={headers[emailState]} size={6}/>
               </div>
               <h2 className="text-2xl font-semibold text-gray-100">
-              {emailState}
+              {headers[emailState]}
               </h2>
             </div>
             <div className="cursor-pointer" onClick={() => setShowModal(true)}>
@@ -138,12 +57,13 @@ export default function EmailApp() {
         </div>
 
         {/* email menu */}
-        {emails.filter((email) => email.folder == emailState).map((email, index) => (
+        {emails.filter((email) => email.folder == headers[emailState]).map((email, index) => (
               <div
                 key={index}
-                className={`px-4 py-3 cursor-pointer bg-gray-750 flex items-center gap-3 hover:bg-gray-700 transition-all text-gray-100 border-b border-gray-700 ${
+                className={`px-4 py-3 cursor-pointer bg-gray-750 flex items-center gap-3  transition-all border-b border-gray-700 ${
                   selectedNote?.title === email.title ? "bg-gray-700" : ""
-                }`}
+                } ${email.index <= gameState ? "text-gray-100 hover hover:bg-gray-700" : "text-gray-400"}
+                `}
                 onClick={() => handleSelectNote(email)}
                 >
                 <div className="flex flex-col w-full space-y-1">
@@ -161,7 +81,7 @@ export default function EmailApp() {
               </div>
             ))}
 
-        {showModal && <HeaderMenu setSelectedNote={setSelectedNote} setEmailState={setEmailState} setShowModal={setShowModal} />}
+        {showModal && <HeaderMenu headerState={mailboxState} setSelectedNote={setSelectedNote} setEmailState={setEmailState} setShowModal={setShowModal} />}
       </div>
       <div className="w-3/4 px-8 py-6 h-full">
         {selectedNote ? (
@@ -209,19 +129,23 @@ HeaderIcon.propTypes = {
 };
 
 
-function HeaderMenu({ setSelectedNote, setEmailState, setShowModal }) {
+function HeaderMenu({ headerState, setSelectedNote, setEmailState, setShowModal }) {
     return (
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 fixed w-64 p-4 shadow-lg rounded-lg top-16 left-4 z-50">
         <ul className="flex flex-col space-y-2">
-          {headers.map((header) => (
+          {headers.map((header, index) => (
             <li key={header}>
               <button
                 onClick={() => {
-                  setEmailState(header);
+                  if (index <= headerState) {
+                    setEmailState(index);
+                  }
+                  
                   setShowModal(false);
                   setSelectedNote(null)
                 }}
-                className="block w-full flex flex-row text-left py-2 px-4 text-gray-900 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white"
+                className={`block w-full flex flex-row text-left py-2 px-4 rounded-sm 
+                ${index <= headerState ? "dark:hover:bg-gray-700  dark:text-white" : "text-gray-400"}`}
               >
                 <div className="pr-4">
                   <HeaderIcon header={header} size={0.5}/>
@@ -237,6 +161,7 @@ function HeaderMenu({ setSelectedNote, setEmailState, setShowModal }) {
 
   // Add prop validation
 HeaderMenu.propTypes = {
+  headerState: PropTypes.number,
   setSelectedNote: PropTypes.func.isRequired,
   setEmailState: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
