@@ -50,13 +50,13 @@ const Login = () => {
         <h2 className="text-xl text-white">Guest</h2>
 
         <div className="flex justify-center items-center gap-6 mt-6">
-          <button className="text-white hover:text-gray-300">
+          <button className="text-white">
             <Moon size={24} />
           </button>
-          <button className="text-white hover:text-gray-300">
+          <button className="text-white">
             <RefreshCcw size={24} />
           </button>
-          <button className="text-white hover:text-gray-300">
+          <button className="text-white">
             <Power size={24} />
           </button>
         </div>

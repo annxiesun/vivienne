@@ -23,7 +23,7 @@ export default function InstagramProfile(props: InstagramProfileProps) {
   const actions = useGameActions();
   const { incrementPageStage } = actions.instagram
   return (
-    <div className="flex w-full justify-center h-0">
+    <div className="flex flex-1 w-full justify-center h-fit">
       <div className="w-full h-full max-w-[600px] text-black p-2 flex flex-col gap-3 py-3">
         {/* profile */}
         <div className="flex flex-row items-center gap-8 py-5">

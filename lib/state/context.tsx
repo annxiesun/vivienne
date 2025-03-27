@@ -86,6 +86,8 @@ export const GameContextProvider = ({ children }: Props) => {
       screen_actions.resetState();
       skype_actions.resetState();
       notes_actions.resetState();
+      toggleModal(false);
+      setThought("");
     },
     skype: skype_actions,
     screen: screen_actions,

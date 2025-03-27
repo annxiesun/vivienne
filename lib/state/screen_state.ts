@@ -48,8 +48,11 @@ export const useScreenContext = () => {
         toggleEnd(true);
       },
       resetState: () => {
-        toggleEnd(false);
         toggleStart(false);
+        toggleEnd(false);
+        toggleDefaultEnd(true);
+        setReported(false);
+        setWiped(false);
       },
     },
   };

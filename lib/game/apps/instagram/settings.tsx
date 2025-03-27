@@ -10,7 +10,7 @@ export default function Settings() {
   const { unblock } = actions.instagram;
 
   return (
-    <div className="w-full h-full text-black flex flex-col p-20">
+    <div className="w-full h-full flex-1 flex text-black flex-col p-20">
       <div className="text-[36px] font-bold">Settings</div>
       <div className="text-xl font-black">App Version</div>
       <div className="mb-5">7.8.12</div>

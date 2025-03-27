@@ -3,7 +3,7 @@ export const sentEmailEnding = (sentEmail: boolean) => ({
   info: sentEmail
     ? "The email request to be forgotten was approved, and Vivienne's leaked data was successfully removed from the internet."
     : "The leaked data about Vivienne still remains online.",
-  image: sentEmail ? "/assets/end/news.png" : "/assets/end/missing.png",
+  image: sentEmail ? "/assets/end/removed.png" : "/assets/intro/missing.png",
 });
 
 // ENDINGS:
@@ -163,7 +163,7 @@ export const getEnding = (
               image: "/assets/end/funeral.png",
             },
             {
-              info: "Pleased with your work, George still refers new customers to you, but your conscience is uneasy.",
+              info: "Pleased with your work, George refers new customers to you, but your conscience is uneasy.",
               image: "/assets/end/money.png",
             },
           ]
@@ -173,7 +173,7 @@ export const getEnding = (
               image: "/assets/end/shadow.png",
             },
             {
-              info: "Pleased with your work, George still refers new customers to you, but your conscience is uneasy.",
+              info: "Pleased with your work, George refers new customers to you, but your conscience is uneasy.",
               image: "/assets/end/money.png",
             },
             {
@@ -195,7 +195,7 @@ export const getEnding = (
         ? [
             {
               info: "You found Vivienne's note and quietly reported her death.",
-              image: "/assets/end/note.png",
+              image: "/assets/end/text.png",
             },
             {
               info: "The police investigate and find her body, but George walks free.",
@@ -206,7 +206,7 @@ export const getEnding = (
               image: "/assets/end/funeral.png",
             },
             {
-              info: "You kept your silence, but the truth lingers in your mind.",
+              info: "You did the right thing, but the unsettling truth still lingers in your mind.",
               image: "/assets/end/mirror.png",
             },
           ]
@@ -224,7 +224,7 @@ export const getEnding = (
               image: "/assets/end/shadow.png",
             },
             {
-              info: "You alone carry the weight of what you know, haunted by the secrets you'll never share.",
+              info: "You are the only one who knows the truth.",
               image: "/assets/end/mirror.png",
             },
           ]),

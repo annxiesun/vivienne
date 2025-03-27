@@ -77,7 +77,7 @@ const ProfileView = () => {
             <span>
               February 14, 2000
               <ThoughtButton
-                thought="That's strange..wasn't she born in 2007?"
+                thought="That's strange..wasn't she born in 2006?"
                 className="ml-1 h-5 w-5"
                 onClick={() => handleEvidenceClick("3")}
               />
