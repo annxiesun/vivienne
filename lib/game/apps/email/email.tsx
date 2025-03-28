@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AlignJustify, PencilLine, Inbox, Send, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
-import { Email, initialEmail, headers } from "./emails";
+import { Email, headers } from "./emails";
 import ThoughtButton from "../../../components/thought_button";
 import { useGameActions, useGameState } from "../../../state/context";
 

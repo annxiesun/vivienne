@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 export type Email = {
   index: number;
@@ -31,6 +32,10 @@ function PDFViewer({ file }) {
     </object>
   );
 }
+
+PDFViewer.propTypes = {
+  file: PropTypes.string.isRequired,
+};
 
 const googleEmail = (<img src="/assets/email/goog_temp.png" alt="Google" />);
 const igEmail = (<img src="/assets/email/ig_temp.png" alt="Instagram" />);

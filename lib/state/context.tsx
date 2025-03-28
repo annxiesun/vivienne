@@ -8,6 +8,7 @@ import {
   InstagramState,
   useInstagramContext,
 } from "./instagram_state";
+import { EmailActions, EmailState, useEmailContext } from "./email_state";
 
 type Props = {
   children: React.ReactNode;

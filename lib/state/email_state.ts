@@ -1,9 +1,4 @@
 import { useState } from "react";
-import {
-
-  initialNotes,
-  lockedFolderPassword,
-} from "../game/apps/notes/common/constants";
 import { Email, initialEmail } from "../game/apps/email/emails";
 
 export type EmailState = {
