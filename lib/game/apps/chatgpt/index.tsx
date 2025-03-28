@@ -7,7 +7,7 @@ import LoginScreen from "./components/LoginScreen";
 // change the 2nd email to the email found in mail app
 const usersChatHistories: Record<string, ChatGPTAccount> = {
     "George1975@gmail.com" : chatGPTAccounts[0],
-    "vivienne22203@gmail.com": chatGPTAccounts[1],
+    "w3stw00d_doll@gmail.com": chatGPTAccounts[1],
 }
 
 const ChatGPTScreen: FC = () => {
@@ -37,8 +37,8 @@ const ChatGPTScreen: FC = () => {
     const sendMessage = (selectedMessage: string, index: number) => {
         if (!selectedConversation) return;
 
-        const newMessage: ChatGPTMessage = { sender: "user", text: selectedMessage };
-        const botResponse: ChatGPTMessage = { sender: "bot", text: ChatGPTMessageResponseOptions[index] };
+        const newMessage: ChatGPTMessage = { sender: "user", text: selectedMessage, last: false };
+        const botResponse: ChatGPTMessage = { sender: "bot", text: ChatGPTMessageResponseOptions[index], last: false };
 
         const updatesConversations = conversations.map((conv) =>
             conv.id === selectedConversation.id ? { ...conv, messages: [...conv.messages, newMessage, botResponse] } : conv
