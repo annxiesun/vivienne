@@ -155,7 +155,8 @@ export const INSTAGRAM_CHATS: InstagramChatType[] = [
     {
       is_me: false,
       value: "for future reference, password123 isn't a very secure password",
-      thought: "Maybe I can use this somewhere"
+      thought: "Maybe I can use this somewhere",
+      next_scene: true,
     },
     {
       is_me: true,

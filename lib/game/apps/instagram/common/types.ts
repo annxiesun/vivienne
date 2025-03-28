@@ -6,6 +6,7 @@ export type InstagramMessageType = {
   is_me: boolean
   value: string
   thought?: string
+  next_scene?: boolean
 }
 export type InstagramChatType = {
   username: string

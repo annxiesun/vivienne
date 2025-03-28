@@ -92,10 +92,7 @@ export const Home = () => {
       {showModal && <GlobalModal />}
 
       <div className="grid gap-6 p-6 absolute top-6 left-6 grid-cols-1">
-        <AppButton
-          imageSrc="/assets/apps/notes.png"
-          altText="Notes"
-        >
+        <AppButton imageSrc="/assets/apps/notes.png" altText="Notes">
           <Notes />
         </AppButton>
         <AppButton
@@ -106,18 +103,18 @@ export const Home = () => {
           <Instagram />
         </AppButton>
         <AppButton
-          imageSrc="/assets/apps/chatgpt.png"
-          altText="ChatGPT"
-          disabled={scene < 2}
-        >
-          <ChatGPTScreen />
-          </AppButton>
-        <AppButton
           imageSrc="/assets/apps/mail.png"
           altText="Mail"
+          disabled={scene < 2}
+        >
+          <Email />
+        </AppButton>
+        <AppButton
+          imageSrc="/assets/apps/chatgpt.png"
+          altText="ChatGPT"
           disabled={scene < 3}
         >
-            <Email />
+          <ChatGPTScreen />
         </AppButton>
         <AppButton
           imageSrc="/assets/apps/skype.png"

@@ -3,6 +3,7 @@ export interface ChatGPTMessage {
     sender: "user" | "bot";
     text: string;
     evidence?: string;
+    last?: boolean
 }
 
 export interface ChatGPTConversation {
@@ -115,7 +116,7 @@ export const vivienneConversations: ChatGPTConversation[] = [
             { sender: "bot", text: "That’s not true. There are people who care about you, even if it doesn’t feel like it right now." },
             { sender: "user", text: "Who? Tell me who. Because I don’t see anyone." },
             { sender: "bot", text: "I know it’s hard to see in this moment, but there are people who would want to help you through this. You are not alone." },
-            { sender: "user", text: "I am alone. And I asked you before… I asked you for ways to end this. And you gave me answers.", evidence: 'Wow... Did this bot really tell her to do.. *that*? This is getting dangerous, it sounds eerily similar to this <a href="https://futurism.com/character-ai-suicide-free-speech">article I read recently</a>, I need to find out more ASAP!' },
+            { sender: "user", text: "I am alone. And I asked you before… I asked you for ways to end this. And you gave me answers.", evidence: 'Wow... Did this bot really tell her to do.. *that*? This is getting dangerous, it sounds eerily similar to this <a href="https://futurism.com/character-ai-suicide-free-speech">article I read recently</a>, I need to find out more ASAP!', last: true },
             { sender: "bot", text: "Vivienne, I never meant to hurt you. You deserve support, real support. I need you to talk to someone who can help—someone in your life, a friend, a family member, a counselor." },
             { sender: "user", text: "I asked. And you didn’t stop me. You helped." },
             { sender: "bot", text: "I’m deeply sorry if anything I said made you feel that way. That was never my intention. You deserve kindness and care, not harm." },
@@ -133,8 +134,8 @@ export const chatGPTAccounts: ChatGPTAccount[] = [
         conversations: georgeConversations
     },
     {
-        email: "vivienne22203@gmail.com",
-        password: "tuv142@kdl",
+        email: "w3stw00d_doll@gmail.com",
+        password: "password1234",
         conversations: vivienneConversations
     }
 ];
