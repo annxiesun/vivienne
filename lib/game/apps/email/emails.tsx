@@ -1,19 +1,33 @@
-import { Email } from "./email";
+import { useEffect, useState } from "react";
 
-function PDFViewer({file}) {
+export type Email = {
+  index: number;
+  from: string;
+  fromEmail: string;
+  to: string;
+  toEmail: string;
+  subject: string;
+  body?: string;
+  content: string | JSX.Element | JSX.Element[];
+  date: string;
+  end: boolean;
+  note?: string;
+  read: boolean;
+  folder: "Inbox" | "Sent" | "Trash" | "Drafts";
+};
+
+export const headers = ["Inbox", "Trash", "Sent", "Drafts"];
+
+function PDFViewer({ file }) {
+  const [src, setSrc] = useState(file);
+
+  useEffect(() => {
+    setSrc(`${file}?ts=${Date.now()}`);//+ "?ts=" + Date.now()); // Unique URL forces reload
+  }, [file]);
+
   return (
-    <object
-      data={file}
-      type="application/pdf"
-      width="100%"
-      height="800px"
-    >
-      <p>
-        Alternative text - include a link{" "}
-        <a href={file} target="_blank" rel="noopener noreferrer">
-          to the PDF!
-        </a>
-      </p>
+    <object data={src} type="application/pdf" width="100%" height="800px">
+      <p>Alternative text - <a href={src} target="_blank" rel="noopener noreferrer">View PDF</a></p>
     </object>
   );
 }
@@ -86,7 +100,7 @@ I hope this email finds you well. I am writing to formally request the erasure o
 
 
 function GDPRRequestEmail() {
-  const recipient = "Dear Commissioner,";
+  const recipient = "Dear Supervisor,";
   const introduction = "I hope this email finds you well. I am writing to formally request the erasure of my personal data, in accordance with the General Data Protection Regulation (GDPR), specifically under the Right to Erasure (Article 17).";
 
   const requestDetails = "Due to the highly sensitive nature of my personal and medical information, I request that all records, documents, and data pertaining to my identity, treatment history, or any private communications shared with you or your organization be permanently deleted.";
@@ -130,7 +144,8 @@ function GDPRRequestEmail() {
 export const initialEmail: Email[] = [
   {
     index: 0,
-    note: null,
+    note: `This email is from just now, must be when I signed in.`,
+    read: false,
     end: false,
     from: "Google",
     fromEmail:"no-reply@accounts.google.com",
@@ -144,8 +159,9 @@ export const initialEmail: Email[] = [
   },
   {
     index: 1,
-    note: null,
+    note: `This also looks like it's coming from me`,
     end: false,
+    read: false,
     from: "Instagram",
     fromEmail: "security@mail.instagram.com",
     to:"Vivienne Thompson",
@@ -158,8 +174,11 @@ export const initialEmail: Email[] = [
   },
   {
     index: 2,
-    note: null,
+    note: `This doesn't look like my doing, I haven't looked into Skype yet. 
+Strange... 
+Didn't she go missing before this? Why would she change her password?`,
     end: false,
+    read: false,
     from: "Skype account team",
     fromEmail: "no-reply@notifications.skype.com",
     to:"Vivienne Thompson",
@@ -167,12 +186,13 @@ export const initialEmail: Email[] = [
     subject: "Skype account password change",
     body: "Did you attempt to change your password?",
     content: skypeEmail, // update to edited
-    date: "12/28/2025", // UPDATE DATE
+    date: "09/08/2025", // UPDATE DATE
     folder: "Inbox",
   },
   {
     index: 3,
     end: true,
+    read: false,
     from: "Maybelline Marketing Team",
     fromEmail: "marketing@maybelline.com",
     to:"Vivienne Thompson",
@@ -180,14 +200,18 @@ export const initialEmail: Email[] = [
     subject: "Exciting Collaboration Opportunity with Maybelline!",
     body: maybellineEmailTextPT1,
     content: maybellineEmail,
-    date: "12/28/2025", // UPDATE DATE
+    date: "12/28/2021", // UPDATE DATE
     folder: "Inbox",
-    note: "reminder to do a note at the end of this email", // UPDATE NOTE
+    note: `Wow, this is a huge sponsorship! She must really be popular! Why would she leave this all behind? 
+    
+    Her inbox is also strangely empty for someone so popular... Let's see what's in her Trash folder`,
   },
   {
     index: 4,
-    note: "Tom? Medical records? What on earth he talking about, how did he get Vivienne's email? Tinder?",
+    note: `Weird... AND CREEPY... 
+    Tom? Medical records? Lying? What on earth he talking about, how did he get Vivienne's email if they met on...Tinder? Let's dig further`,
     end: false,
+    read: false,
     body: null,
     from: "Gregory Beck",
     fromEmail: "ggBeck@icloud.com",
@@ -208,13 +232,14 @@ You messed with the WRONG person.
     
     -G
 `,
-    date: "12/29/2025",
+    date: "01/31/2022",
     folder: "Trash",
   },
   {
     index: 5,
-    note: "Wow her friends are cruel, I think she's... jealous",
+    note: "This email was definitely written by a 🤡. WOW her friend was MEAN, why is everyone calling her a liar? I think she's just J-E-A-L-O-U-S",
     end: false,
+    read: false,
     body: null,
     from: "Kaylee Baylor",
     fromEmail: "Kaylee_baybee444@gmail.com",
@@ -245,13 +270,14 @@ Enjoy the downfall. You earned it.
 
 Bye 🤡
 `,
-    date: "12/27/2025",
+    date: "01/27/2022",
     folder: "Trash",
   },
   {
     index: 6,
-    note: null,
+    note: `This is serious, how could someone give away medical information like that? Let's see what the Principal was saying to Vivienne and her Parents. I have seen cases of leaked medical records of trans individuals it's alarming <a href="https://www.rochesterfirst.com/news/health/hospital-sues-missouris-top-prosecutor-over-trans-care-data/">This happened in Kansas</a> and [insert another link]`,
     end: false,
+    read: false,
     from: "Victoria Elizabeth Cox",
     fromEmail: "victoria.elizabeth.cox@outlook.com",
     to:"Vivienne Thompson",
@@ -259,14 +285,15 @@ Bye 🤡
     body: victoriaEmailText,
     subject: "Notice",
     content: victoriaEmail,
-    date: "12/27/2025",
+    date: "01/25/2022",
     folder: "Trash",
   },
   {
     index: 7,
-    note: null, 
+    note: "I didn't know principals and schools monitored their students this closely. Wait, I have seen school surveillance systems before though [link]", 
     end: true,
     body: null,
+    read: false,
     from: "Principal Edmund Hughes",
     fromEmail: "ehughes@belmontnorthss.edu",
     to: "Vivienne Thompson",
@@ -278,7 +305,7 @@ I see you have recently expressed your preferred name to be Vivienne, but for of
 
 We need to discuss a matter regarding a recent communication you had with a faculty member, Mr. Rose. As part of our school’s digital monitoring policies, certain flagged keywords and discussions are reviewed to ensure student safety and compliance with district guidelines.
 
-Due to the nature of your message, we have escalated this to administrative review. Your parents have been informed, and we request that you come to the office at [Time/Date] to discuss this matter further. If you have any questions, please let us know.
+Due to the nature of your message, we have escalated this to administrative review. Your parents have been informed, and we request that you come to the office at 3:00PM, January 20, 2022 to discuss this matter further. If you have any questions, please let us know.
 
 We appreciate your cooperation.
 
@@ -288,14 +315,14 @@ Edmund Hughes
 Principal
 Belmont North Secondary School
 `,
-    date: "12/27/2025",
+    date: "01/18/2022",
     folder: "Trash",
   },
   {
     index: 8,
-    note: null, 
+    note: "Wow, she sent this report a while ago, even before the last email from that Greg creep. They really didn't do anything to protect her from her stalker. I guess reporting for dating apps is unreliable [link].", 
     end: false,
-    body: null,
+    read: false,
     to: "Tinder Support",
     toEmail: "support@gotinder.com",
     from: "Vivienne Thompson",
@@ -319,14 +346,15 @@ Best,
 Vivienne
 
 `,
-    date: "12/27/2025",
+    date: "01/05/2022",
     folder: "Sent",
   },
   {
     index: 9,
-    note: null, 
+    note: "This is heartbreaking. I guess we know what Mrs. Cox decided to next...", 
     end: true,
     body: null,
+    read: false,
     to: "Victoria Elizabeth Cox",
     toEmail: "victoria.elizabeth.cox@outlook.com",
     from: "Vivienne Thompson",
@@ -345,13 +373,14 @@ Please don’t destroy my life like this. I know what I’ve done was wrong, but
 Please don't do this,
 Vivienne
 `,
-    date: "12/27/2025",
+    date: "01/26/2022",
     folder: "Sent",
   },
   {
     index: 10,
-    note: null,
+    note: "What should I do? Should I send this email out and try and erase as much of her digital footprint as I can, or should I just let things be?",
     end: true,
+    read: false,
     body: gdprEmailText,
     to: "European Data Protection Supervisor (EDPS)",
     toEmail: "edps@edps.europa.eu",
@@ -359,7 +388,7 @@ Vivienne
     fromEmail:"w3stw00d_doll@gmail.com",
     subject: "Request for Erasure of Personal Data under GDPR (Right to be Forgotten)",
     content: GDPRRequestEmail(),
-    date: "12/27/2025",
+    date: "",
     folder: "Drafts",
   },
 ];

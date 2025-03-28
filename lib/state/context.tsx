@@ -4,6 +4,7 @@ import { ScreenActions, ScreenState, useScreenContext } from "./screen_state";
 import { NotesState, NotesActions, useNotesContext } from "./notes_state";
 import { Decision } from "../constants";
 import { InstagramActions, InstagramState, useInstagramContext } from "./instagram_state";
+import { EmailActions, EmailState, useEmailContext} from "./email_state";
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +19,8 @@ type GameState = {
   skype: SkypeState;
   screen: ScreenState;
   notes: NotesState;
-  instagram: InstagramState
+  instagram: InstagramState;
+  email: EmailState;
 };
 
 type GameActions = {
@@ -31,7 +33,8 @@ type GameActions = {
   skype: SkypeActions;
   screen: ScreenActions;
   notes: NotesActions;
-  instagram: InstagramActions
+  instagram: InstagramActions;
+  email: EmailActions;
 };
 
 type Context = {
@@ -60,6 +63,7 @@ export const GameContextProvider = ({ children }: Props) => {
   const { screen_state, screen_actions } = useScreenContext();
 
   // APP STATE
+  const { email_state, email_actions} = useEmailContext();
   const { skype_state, skype_actions } = useSkypeContext();
   const { notes_state, notes_actions } = useNotesContext();
   const { instagram_state, instagram_actions } = useInstagramContext();
@@ -73,6 +77,7 @@ export const GameContextProvider = ({ children }: Props) => {
     skype: skype_state,
     screen: screen_state,
     notes: notes_state,
+    email: email_state,
     instagram: instagram_state
   };
 
@@ -91,6 +96,7 @@ export const GameContextProvider = ({ children }: Props) => {
     },
     skype: skype_actions,
     screen: screen_actions,
+    email: email_actions,
     notes: notes_actions,
     instagram: instagram_actions
   };

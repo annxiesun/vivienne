@@ -1,42 +1,40 @@
 import { useState } from "react";
 import { AlignJustify, PencilLine, Inbox, Send, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
-import { initialEmail } from "./emails";
-
-export type Email = {
-  index: number;
-  from: string;
-  fromEmail: string;
-  to: string;
-  toEmail: string;
-  subject: string;
-  body: string| null;
-  content: string | JSX.Element | JSX.Element[];
-  date: string;
-  end: boolean;
-  note: string | null | JSX.Element | JSX.Element[];
-  folder: "Inbox" | "Sent" | "Trash" | "Drafts";
-};
-
-const headers = ["Inbox", "Trash", "Sent",  "Drafts"];
+import { Email, initialEmail, headers } from "./emails";
+import ThoughtButton from "../../../components/thought_button";
+import { useGameActions, useGameState } from "../../../state/context";
 
 export default function EmailApp() {
-  const [gameState, setGameState] = useState(0)
-  const [mailboxState, setMailboxState] = useState(0)
-  const [emailState, setEmailState] = useState(0)
+  const state = useGameState().email;
+  const actions = useGameActions().email;
+  const next = useGameActions()
+
+
+  // const [gameState, setGameState] = useState(0)
+  // const [mailboxState, setMailboxState] = useState(0)
+  // const [emailState, setEmailState] = useState(0)
   const [showModal, setShowModal] = useState(false);
-  const [emails] = useState<Email[]>(initialEmail);
-  const [selectedNote, setSelectedNote] = useState<Email | null>(null);
+  // const [emails] = useState<Email[]>(initialEmail);
+  // const [selectedEmail, setselectedEmail] = useState<Email | null>(null);
+
+  const handleClickThought = () => {
+    if (!state.selectedEmail.read) {
+      actions.setGameState(state.gameState + 1)
+      state.selectedEmail.read = true
+
+    if (state.selectedEmail.end && state.selectedEmail.folder == 'Drafts') { // add this to send email button
+      next.setScene(i => i+1)
+    }
+    if (state.selectedEmail.end) {
+      actions.setMailboxState(state.mailboxState + 1)
+    }
+    }
+    }
 
   const handleSelectNote = (email: Email) => {
-    if (email.index <= gameState){
-      setSelectedNote(email);
-      if (email.index == gameState) {
-        setGameState(gameState + 1)
-      }
-      if (email.end){
-        setMailboxState(mailboxState + 1)
-      }
+    if (email.index <= state.gameState){
+      actions.setSelectedEmail(email);
     }
   };
 
@@ -48,10 +46,10 @@ export default function EmailApp() {
         <div className="p-4 flex items-stretch justify-between border-b border-gray-700">
             <div className="flex items-stretch space-x-2">
               <div className="">
-                <HeaderIcon header={headers[emailState]} size={6}/>
+                <HeaderIcon header={headers[state.currentInbox]} size={6}/>
               </div>
               <h2 className="text-2xl font-semibold text-gray-100">
-              {headers[emailState]}
+              {headers[state.currentInbox]}
               </h2>
             </div>
             <div className="cursor-pointer" onClick={() => setShowModal(true)}>
@@ -60,12 +58,12 @@ export default function EmailApp() {
         </div>
 
         {/* email menu */}
-        {emails.filter((email) => email.folder == headers[emailState]).map((email, index) => (
+        {state.emails.filter((email) => email.folder == headers[state.currentInbox]).map((email, index) => (
               <div
                 key={index}
                 className={`px-4 py-3 cursor-pointer bg-gray-750 flex items-center gap-3  transition-all border-b border-gray-700 ${
-                  selectedNote?.index === email.index ? "bg-gray-700" : ""
-                } ${email.index <= gameState ? "text-gray-100 hover hover:bg-gray-700" : "text-gray-400"}
+                  state.selectedEmail?.index === email.index ? "bg-gray-700" : ""
+                } ${email.index <= state.gameState ? "text-gray-100 hover hover:bg-gray-700" : "text-gray-400"}
                 `}
                 onClick={() => handleSelectNote(email)}
                 >
@@ -84,28 +82,30 @@ export default function EmailApp() {
               </div>
             ))}
 
-        {showModal && <HeaderMenu headerState={mailboxState} setSelectedNote={setSelectedNote} setEmailState={setEmailState} setShowModal={setShowModal} />}
+        {showModal && <HeaderMenu setShowModal={setShowModal} />}
       </div>
       <div className="w-3/4 px-8 py-6 h-full">
-        {selectedNote ? (
+        {state.selectedEmail ? (
           <div className="flex flex-col h-full text-gray-700">
             <div className="pb-2 flex flex-col border-gray-700 border-b w-full">
               <div className="flex align-bottom justify-between w-full">
                 <h2 className="text-2xl text-gray-200 font-semibold">
-                  {selectedNote.from}
+                  {state.selectedEmail.from}
                 </h2>
-                <p className="text-gray-500">{selectedNote.date}</p>
+                <p className="text-gray-500">{state.selectedEmail.date}</p>
               </div>
               <div>
-                <p className="text-gray-200">{selectedNote.subject}</p>
+                <p className="text-gray-200">{state.selectedEmail.subject}</p>
 
-                <div className="flex space-x-2"><p className="text-gray-200">From: </p> <p className="text-gray-500">{selectedNote.from + " <" + selectedNote.fromEmail + ">"}</p></div>
-                <div className="flex space-x-2"><p className="text-gray-200">To: </p> <p className="text-gray-500">{selectedNote.to + " <" + selectedNote.toEmail + ">"}</p></div>
-                
+                <div className="flex space-x-2"><p className="text-gray-200">From: </p> <p className="text-gray-500">{state.selectedEmail.from + " <" + state.selectedEmail.fromEmail + ">"}</p></div>
+                <div className="flex space-x-2"><p className="text-gray-200">To: </p> <p className="text-gray-500">{state.selectedEmail.to + " <" + state.selectedEmail.toEmail + ">"}</p></div>
               </div>
             </div>
-            <NoteRenderer content={selectedNote.content} />
-            {/* <p className="mt-4 text-gray-200 whitespace-pre-wrap">{selectedNote.content}</p> */}
+            <NoteRenderer content={state.selectedEmail.content} />  
+            <div className="mt-4 w-full flex justify-center">
+              <ThoughtButton onClick={handleClickThought} thought={state.selectedEmail.note}/> 
+            </div>
+            {/* <p className="mt-4 text-gray-200 whitespace-pre-wrap">{selectedEmail.content}</p> */}
           </div>
         ) : (
           <div className="text-center text-gray-500">
@@ -135,7 +135,9 @@ HeaderIcon.propTypes = {
 };
 
 
-function HeaderMenu({ headerState, setSelectedNote, setEmailState, setShowModal }) {
+function HeaderMenu({ setShowModal }) {
+  const actions = useGameActions().email
+  const state = useGameState().email
     return (
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 fixed w-64 p-4 shadow-lg rounded-lg top-16 left-4 z-50">
         <ul className="flex flex-col space-y-2">
@@ -143,15 +145,15 @@ function HeaderMenu({ headerState, setSelectedNote, setEmailState, setShowModal 
             <li key={header}>
               <button
                 onClick={() => {
-                  if (index <= headerState) {
-                    setEmailState(index);
+                  if (index <= state.mailboxState) {
+                    actions.setCurrentInbox(index);
                   }
                   
                   setShowModal(false);
-                  setSelectedNote(null)
+                  actions.setSelectedEmail(null)
                 }}
                 className={`block w-full flex flex-row text-left py-2 px-4 rounded-sm 
-                ${index <= headerState ? "dark:hover:bg-gray-700  dark:text-white" : "text-gray-400"}`}
+                ${index <= state.mailboxState ? "dark:hover:bg-gray-700  dark:text-white" : "text-gray-400"}`}
               >
                 <div className="pr-4">
                   <HeaderIcon header={header} size={0.5}/>
@@ -167,9 +169,6 @@ function HeaderMenu({ headerState, setSelectedNote, setEmailState, setShowModal 
 
   // Add prop validation
 HeaderMenu.propTypes = {
-  headerState: PropTypes.number,
-  setSelectedNote: PropTypes.func.isRequired,
-  setEmailState: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
 };
 
