@@ -74,31 +74,38 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
 
       {step > 0 && step < 7 && (
         <>
-          <img
-            src={images[step - 1]}
-            className="object-cover w-[40vw] h-[40vw] max-w-[300px] max-h-[300px]"
-            alt="Step image"
-          />
-          <p className="text-center mx-auto p-4 absolute lg:bottom-44 md:bottom-40 bottom-24 xl:text-xl lg:text-lg md:text-md sm:text-sm">
-            {typedText}
-          </p>
-          {!isTyping && (
-            <div className="absolute lg:bottom-30 md:bottom-20 bottom-10 text-xl xl:text-xl lg:text-lg md:text-md sm:text-sm flex justify-center gap-6">
-              <button
-                onClick={handlePreviousStep}
-                className="text-white  rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110"
-                hidden={step === 1}
-              >
-                ←
-              </button>
-              <button
-                onClick={handleNextStep}
-                className="text-white rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110"
-              >
-                →
-              </button>
+          <div className="flex flex-col justify-center items-center h-screen px-4">
+            <img
+              src={images[step - 1]}
+              className="object-cover w-[40vw] h-[40vw] lg:max-w-[300px] lg:max-h-[300px] sm:max-w-[150px] sm:max-h-[150px] mb-6"
+              alt="Step image"
+            />
+
+            <p className="text-center mx-auto p-4 xl:text-xl lg:text-lg md:text-md sm:text-sm">
+              {typedText}
+            </p>
+
+            <div className="flex justify-center gap-6 mt-6 h-[60px]">
+              {!isTyping && (
+                <>
+                  <button
+                    onClick={handlePreviousStep}
+                    className={`text-white rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110 xl:text-xl lg:text-lg md:text-md sm:text-sm ${
+                      step === 1 ? "invisible" : ""
+                    }`}
+                  >
+                    ←
+                  </button>
+                  <button
+                    onClick={handleNextStep}
+                    className="text-white rounded-full px-6 py-4 transition-all duration-300 ease-in-out transform hover:scale-110 xl:text-xl lg:text-lg md:text-md sm:text-sm"
+                  >
+                    →
+                  </button>
+                </>
+              )}
             </div>
-          )}
+          </div>
         </>
       )}
     </div>

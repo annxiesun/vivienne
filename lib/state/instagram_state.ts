@@ -51,7 +51,7 @@ export const useInstagramContext = () => {
   const [prevUser, setPrevUser] = useState<string>(undefined);
 
   const [blocked, setBlocked] = useState<boolean>(true);
-  const [chatStage, setChatStage] = useState<number>(0);
+  const [chatStage, setChatStage] = useState<number>(9999); // ANNIE
   const [pageStage, setPageStage] = useState<number>(0);
 
   return {

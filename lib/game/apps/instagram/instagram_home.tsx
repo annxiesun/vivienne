@@ -18,7 +18,7 @@ export default function InstagramHome() {
         {HOME_POSTS.map((post, i) => (
           <InstagramHomePost key={i} post={post} className="mb-8" />
         ))}
-        <div className="flex flex-col items-center"><ThoughtButton onClick={handleClick} thought="Wow, this girl sure follows a lot of beauty accounts. I wonder if this affected her self-image. [INSERT LINK]"/></div>
+        <div className="flex flex-col items-center"><ThoughtButton className="w-[30px] h-[30px]" onClick={handleClick} thought="Wow, this girl sure follows a lot of beauty accounts."/></div>
         <div className="h-[50px]"/> {/** SCROLL FOOTER **/}
       </div>
     </div>

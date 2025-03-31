@@ -59,6 +59,7 @@ export const GameContextProvider = ({ children }: Props) => {
     option1: "?",
     onClick1: () => console.log("chose option 1"),
     option2: "?",
+    ignoreOption: "",
     onClick2: () => toggleModal(false),
   });
   const [modalType, setModalType] = useState<"thought" | "decision">("thought");
@@ -92,6 +93,7 @@ export const GameContextProvider = ({ children }: Props) => {
           console.log("scene set", i)
           return i;
         }
+        return prev
       }),
     setThought,
     setDecision,
