@@ -126,10 +126,10 @@ export const Home = () => {
       </div>
 
       {/* Taskbar at the bottom of the screen */}
-      <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
+      {/* <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
         <div className="text-lg font-bold text-white"></div>
         <div className="flex items-center"></div>
-      </div>
+      </div> */}
     </div>
   );
 };
