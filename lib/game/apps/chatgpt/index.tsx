@@ -38,7 +38,7 @@ const ChatGPTScreen: FC = () => {
         if (!selectedConversation) return;
 
         const newMessage: ChatGPTMessage = { sender: "user", text: selectedMessage, last: false };
-        const botResponse: ChatGPTMessage = { sender: "bot", text: ChatGPTMessageResponseOptions[index], last: false };
+        const botResponse: ChatGPTMessage = ChatGPTMessageResponseOptions[index];
 
         const updatesConversations = conversations.map((conv) =>
             conv.id === selectedConversation.id ? { ...conv, messages: [...conv.messages, newMessage, botResponse] } : conv
@@ -85,7 +85,7 @@ const ChatGPTScreen: FC = () => {
     }
 
     return (
-        <div className="flex h-screen w-full bg-white text-black">
+        <div className="flex h-screen overflow-y-scroll w-full bg-white text-black">
             <Sidebar
                 conversations={conversations}
                 selectedConversationId={selectedConversation?.id ?? null}

@@ -1,4 +1,4 @@
-import { ASHLEY_POSTS, CARRIE_POSTS, EXPOSE_POST, MAKEUP_POSTS, RACHEL_POSTS, SKINCARE_POSTS, VIVIENNE_POSTS } from "./posts";
+import { ASHLEY_POSTS, CARRIE_POSTS, EXPOSE_POST, INSTAGRAM_POSTS, MAKEUP_POSTS, RACHEL_POSTS, SKINCARE_POSTS, VIVIENNE_POSTS } from "./posts";
 import { InstagramUser } from "./types";
 
 export const PROFILE_MAP: Record<string, InstagramUser> = {
@@ -142,6 +142,15 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     num_following: 1220,
     posts: SKINCARE_POSTS,
     profile_picture: "/assets/instagram/pfps/glow_skin.png",
+  },
+  instagram: {
+    description: "beauty & wellness // losangeles ♡",
+    username: "instagram",
+    num_followers: "283M",
+    num_following: 0,
+    posts: INSTAGRAM_POSTS,
+    profile_picture: "/assets/instagram/pfps/instagram.png",
+    verified: true,
   },
 };
 

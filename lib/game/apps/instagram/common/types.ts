@@ -42,6 +42,7 @@ export type InstagramUser = {
   description: string
   profile_thought?: string
   stage?: number
+  verified?: boolean
 }
 
 export type InstagramNotificationCategory = "follow" | "like" 
