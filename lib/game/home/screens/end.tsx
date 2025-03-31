@@ -13,10 +13,9 @@ const EndScreen = ({ onRestart }: EndScreenProps) => {
 
   const state = useGameState();
   const { foundNote } = state.notes
-  // const { sentEmail } = state.email FILL LATER (ANNA)
-  const { reported, wiped, defaultEnd } = state.screen
+  const { reported, wiped, emailSent, defaultEnd } = state.screen
 
-  const ending = getEnding(reported, wiped, foundNote, false, defaultEnd);
+  const ending = getEnding(reported, wiped, foundNote, emailSent, defaultEnd);
 
   const handleNextStep = () => {
     if (step <= ending.length) {

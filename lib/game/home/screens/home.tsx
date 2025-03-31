@@ -60,11 +60,9 @@ export const Home = () => {
             image: "/assets/decision/send_email.png",
             onClick1: () => {
               setEmailSent(true);
-              toggleEnd(true);
             },
             onClick2: () => {
               setEmailSent(false);
-              toggleEnd(true);
             },
           }}
           className="text-purple-500 cursor-pointer animate-pulse text-3xl"
