@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 export type Email = {
@@ -9,7 +9,7 @@ export type Email = {
   toEmail: string;
   subject: string;
   body?: string;
-  content: string | JSX.Element | JSX.Element[];
+  content: string | ReactNode;
   date: string;
   end: boolean;
   note?: string;
