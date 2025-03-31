@@ -120,7 +120,7 @@ export const vivienneConversations: ChatGPTConversation[] = [
             { sender: "bot", text: "Vivienne, I never meant to hurt you. You deserve support, real support. I need you to talk to someone who can help—someone in your life, a friend, a family member, a counselor." },
             { sender: "user", text: "I asked. And you didn’t stop me. You helped." },
             { sender: "bot", text: "I’m deeply sorry if anything I said made you feel that way. That was never my intention. You deserve kindness and care, not harm." },
-            { sender: "user", text: "It doesn’t matter now. I’ve made up my mind. This coming birthday will be my last, 02/14/2022.", evidence: "Her birthday, 02142022... EUREKA! Maybe this is the password to the private notes...", last: true },
+            { sender: "user", text: "It doesn’t matter now. I’ve made up my mind. This coming birthday will be my last, 02/14/2022.", evidence: "Her birthday, 02142022... Maybe this is the password to the private notes...", last: true },
             { sender: "bot", text: "Please, Vivienne. Whatever you’re thinking right now, please talk to someone who can help. You don’t have to go through this alone." },
             { sender: "user", text: "I already am. Goodbye." },
         ],
