@@ -139,7 +139,7 @@ function HeaderMenu({ setShowModal }) {
   const actions = useGameActions().email
   const state = useGameState().email
     return (
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 fixed w-64 p-4 shadow-lg rounded-lg top-16 left-4 z-50">
+      <nav className="border-gray-200 bg-gray-900 border-gray-700 fixed w-64 p-4 shadow-lg rounded-lg top-16 left-4 z-50">
         <ul className="flex flex-col space-y-2">
           {headers.map((header, index) => (
             <li key={header}>
@@ -153,7 +153,7 @@ function HeaderMenu({ setShowModal }) {
                   actions.setSelectedEmail(null)
                 }}
                 className={`block w-full flex flex-row text-left py-2 px-4 rounded-sm 
-                ${index <= state.mailboxState ? "dark:hover:bg-gray-700  dark:text-white" : "text-gray-400"}`}
+                ${index <= state.mailboxState ? "hover:bg-gray-700  text-white" : "text-gray-400"}`}
               >
                 <div className="pr-4">
                   <HeaderIcon header={header} size={0.5}/>

@@ -324,7 +324,7 @@ Belmont North Secondary School
   },
   {
     index: 8,
-    note: `Wow, she sent this report a while ago, even before the last email from that Greg creep. They really didn't do anything to protect her from her stalker. I guess <a href=:"https://genderit.org/feminist-talk/set-me-knock-me-down-legal-obligations-dating-apps-address-sexual-violence">reporting for dating apps is unreliable</a>, there is a lot of evidence, especially from this <a href="https://www.abc.net.au/news/2020-10-12/tinder-dating-app-helps-sexual-predators-hide-four-corners/12722732?nw=0">Australian report that reporting is ineffectual.</a>`, 
+    note: `Wow, she sent this report a while ago, even before the last email from that Greg creep. They really didn't do anything to protect her from her stalker. I guess <a href="https://genderit.org/feminist-talk/set-me-knock-me-down-legal-obligations-dating-apps-address-sexual-violence">reporting for dating apps is unreliable</a>, there is a lot of evidence, especially from this <a href="https://www.abc.net.au/news/2020-10-12/tinder-dating-app-helps-sexual-predators-hide-four-corners/12722732?nw=0">Australian report that reporting is ineffectual.</a>`, 
     end: false,
     read: false,
     to: "Tinder Support",
