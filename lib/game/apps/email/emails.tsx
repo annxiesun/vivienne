@@ -37,12 +37,11 @@ PDFViewer.propTypes = {
   file: PropTypes.string.isRequired,
 };
 
-const googleEmail = (<img src="/assets/email/goog_temp.png" alt="Google" />);
-const igEmail = (<img src="/assets/email/ig_temp.png" alt="Instagram" />);
-const skypeEmail= (<img src="/assets/email/skype_temp.png" alt="Skype" />);
+const googleEmail = (<img src="/assets/email/goog-email.png" alt="Google" />);
+const igEmail = (<img src="/assets/email/ig-email.png" alt="Instagram" />);
+const skypeEmail= (<img src="/assets/email/skype-email.png" alt="Skype" />);
 
 const maybellineEmailTextPT1 = `Hi Vivienne,
-
 
 I hope you're doing well! My name is Sarah, and I’m part of the marketing team here at Maybelline. We’ve been following your amazing content, and we absolutely love the way you engage with your audience! Your style and authenticity really resonate with the beauty community.  
     
@@ -105,7 +104,7 @@ I hope this email finds you well. I am writing to formally request the erasure o
 
 
 function GDPRRequestEmail() {
-  const recipient = "Dear Supervisor,";
+  const recipient = "Dear Comissioner,";
   const introduction = "I hope this email finds you well. I am writing to formally request the erasure of my personal data, in accordance with the General Data Protection Regulation (GDPR), specifically under the Right to Erasure (Article 17).";
 
   const requestDetails = "Due to the highly sensitive nature of my personal and medical information, I request that all records, documents, and data pertaining to my identity, treatment history, or any private communications shared with you or your organization be permanently deleted.";
@@ -149,7 +148,7 @@ function GDPRRequestEmail() {
 export const initialEmail: Email[] = [
   {
     index: 0,
-    note: `This email is from just now, must be when I signed in.`,
+    note: `This email is from just now, must be when I signed in. Her email is w3stw00d_doll@gmail.com, I wonder if she has a ChatGPT account under this email.`,
     read: false,
     end: false,
     from: "Google",
@@ -246,8 +245,8 @@ You messed with the WRONG person.
     end: false,
     read: false,
     body: null,
-    from: "Kaylee Baylor",
-    fromEmail: "Kaylee_baybee444@gmail.com",
+    from: "Olive Baylor",
+    fromEmail: "Olive_baybee444@gmail.com",
     to:"Vivienne Thompson",
     toEmail:"w3stw00d_doll@gmail.com",
     subject: "🤡🤡🤡",
@@ -280,7 +279,7 @@ Bye 🤡
   },
   {
     index: 6,
-    note: `This is serious, how could someone give away medical information like that? Let's see what the Principal was saying to Vivienne and her Parents. I have seen cases of leaked medical records of trans individuals it's alarming <a href="https://www.rochesterfirst.com/news/health/hospital-sues-missouris-top-prosecutor-over-trans-care-data/">This happened in Kansas</a> and [insert another link]`,
+    note: `This is serious, how could someone give away medical information like that? Let's see what the Principal was saying to Vivienne and her Parents. I have seen cases of leaked medical records of trans individuals it's alarming <a href="https://www.rochesterfirst.com/news/health/hospital-sues-missouris-top-prosecutor-over-trans-care-data/">This happened in Kansas</a> and these <a href="https://www.pogo.org/investigations/policing-gender-how-surveillance-tech-aids-enforcement-of-anti-trans-laws">privacy infringements are often used in the enforcement of anti-trans laws</a>`,
     end: false,
     read: false,
     from: "Victoria Elizabeth Cox",
@@ -295,7 +294,7 @@ Bye 🤡
   },
   {
     index: 7,
-    note: "I didn't know principals and schools monitored their students this closely. Wait, I have seen school surveillance systems before though [link]", 
+    note: `I didn't know principals and schools monitored their students this closely. Wait, I have seen <a href="https://www.theguardian.com/education/2022/sep/08/abortion-bans-school-surveillance-lgbtq-restrictions">school surveillance systems</a> before though. In combination with bills that outlaw school staff from witholding a trans student's gender identitity from their parents, <a href="https://slate.com/technology/2022/02/remote-learning-danger-lgbtq-students.html">many students are forcefully outed </a>.`, 
     end: true,
     body: null,
     read: false,
@@ -325,7 +324,7 @@ Belmont North Secondary School
   },
   {
     index: 8,
-    note: "Wow, she sent this report a while ago, even before the last email from that Greg creep. They really didn't do anything to protect her from her stalker. I guess reporting for dating apps is unreliable [link].", 
+    note: `Wow, she sent this report a while ago, even before the last email from that Greg creep. They really didn't do anything to protect her from her stalker. I guess <a href=:"https://genderit.org/feminist-talk/set-me-knock-me-down-legal-obligations-dating-apps-address-sexual-violence">reporting for dating apps is unreliable</a>, there is a lot of evidence, especially from this <a href="https://www.abc.net.au/news/2020-10-12/tinder-dating-app-helps-sexual-predators-hide-four-corners/12722732?nw=0">Australian report that reporting is ineffectual.</a>`, 
     end: false,
     read: false,
     to: "Tinder Support",
@@ -383,7 +382,7 @@ Vivienne
   },
   {
     index: 10,
-    note: "What should I do? Should I send this email out and try and erase as much of her digital footprint as I can, or should I just let things be?",
+    note: "What should I do? Should I send this email out and try and erase as much of her digital footprint as I can, or should I just let things be? I remember she mentioned wanting to remove her information and the right to be forgotten.",
     end: true,
     read: false,
     body: gdprEmailText,

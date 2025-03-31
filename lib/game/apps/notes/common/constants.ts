@@ -20,7 +20,7 @@ export const initialNotes: Note[] = [
   {
     title: "diary - 1/19/2022",
     content:
-      "i tried talking to chatgpt. just to get it out. at first, it felt like it understood. like it was listening. but then it kept saying the same things over and over. like it didn’t really see me. \nand then—one response. different from the rest. worse. i don’t think it meant to say it. but i can’t stop thinking about it.",
+    "my email inbox is a nightmare. everytime i check, there's always something else, someone else who doesnt want me here. names of people i thought i trusted and knew. threats i don't understand. yet they know about parts of me i never wanted to share with anyone. \ni’ve been looking into how to erase everything. there’s something called the right to be forgotten—an application to remove my data from the internet. maybe that’s my only chance.",
     date: "1/19/2022",
     hidden: false,
     folder: "public",
@@ -28,7 +28,7 @@ export const initialNotes: Note[] = [
   {
     title: "diary - 1/28/2022",
     content:
-      "my email inbox is a nightmare. everytime i check, there's something worse. names i don't recognize. threats i don't understand. \ni’ve been looking into how to erase everything. there’s something called the right to be forgotten—an application to remove my data from the internet. maybe that’s my only chance.",
+    "i tried talking to chatgpt. just to get it out. at first, it felt like it understood. like it was listening. but then it kept saying the same things over and over. like it didn’t really see me. \nand then—one response. different from the rest. worse. i don’t think it meant to say it. but i can’t stop thinking about it.",
     date: "1/28/2022",
     hidden: false,
     folder: "public",

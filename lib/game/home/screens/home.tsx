@@ -15,7 +15,7 @@ export const Home = () => {
   const { scene, showModal } = useGameState();
   const actions = useGameActions();
   const { toggleModal } = actions;
-  const { setWiped, toggleEnd, toggleDefaultEnd, setReported } = actions.screen;
+  const { setWiped, toggleEnd, toggleDefaultEnd, setReported, setEmailSent } = actions.screen;
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
   useEffect(() => {
@@ -49,6 +49,25 @@ export const Home = () => {
             },
           }}
           className="cursor-pointer animate-pulse text-3xl"
+        />
+        {/*right to be forgotten decisionbutton */}
+        <DecisionButton
+          decision={{
+            question: "Should I send this draft email request to erase any personal data held under EU General Data Protection Regulation (GDPR)?",
+            info: "Vivienne mentions wanting to erase anything that she can in her notes, and clearly she wrote this email for a reason. I am not her though, is this a decision for me to make on her behalf?",
+            option1: "SEND REQUEST",
+            option2: "DON'T SEND",
+            image: "/assets/decision/send_email.png",
+            onClick1: () => {
+              setEmailSent(true);
+              toggleEnd(true);
+            },
+            onClick2: () => {
+              setEmailSent(false);
+              toggleEnd(true);
+            },
+          }}
+          className="text-purple-500 cursor-pointer animate-pulse text-3xl"
         />
         {/*final wipe decision button*/}
         <DecisionButton
