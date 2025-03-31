@@ -24,7 +24,7 @@ export default function EmailApp() {
       state.selectedEmail.read = true
 
     if (state.selectedEmail.end && state.selectedEmail.folder == 'Drafts') { // add this to send email button
-      next.setScene(i => i+1)
+      next.setScene(3)
     }
     if (state.selectedEmail.end) {
       actions.setMailboxState(state.mailboxState + 1)
