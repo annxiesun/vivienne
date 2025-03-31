@@ -88,6 +88,7 @@ export const GameContextProvider = ({ children }: Props) => {
           console.log("scene set", i)
           return i;
         }
+        return prev
       }),
     setThought,
     setDecision,

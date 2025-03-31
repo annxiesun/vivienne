@@ -5,7 +5,6 @@ import { INSTAGRAM_CHATS } from "./common/chats";
 import InstagramProfilePicture from "./components/instagram_profile_picture";
 import { useCallback } from "react";
 import { useGameActions, useGameState } from "../../../state/context";
-import { Lock } from "lucide-react";
 
 export default function Messages() {
   // const [selected, setSelected] = useState(INSTAGRAM_CHATS[0].username);
@@ -22,8 +21,8 @@ export default function Messages() {
         defaultValue={lastMessagedPerson}
         className="flex flex-row h-full relative"
       >
-        <Tabs.List className="h-full flex flex-col w-[300px] gap-8 items-start border-r-2 border-r-gray-200 fixed">
-          <div className="font-semibold text-[24px] p-4 pb-0">Messages</div>
+        <Tabs.List className="h-full flex flex-col w-[300px] gap-0 items-start border-r-2 border-r-gray-200 fixed">
+          <div className="font-semibold text-[24px] p-4 pb-5">Messages</div>
           {INSTAGRAM_CHATS.filter(
             (chat) =>
               (chat.unlocked_after_unblock && !blocked) ||
@@ -32,7 +31,6 @@ export default function Messages() {
             <Tabs.Trigger
               disabled={chat.stage > chatStage}
               onClick={useCallback(() => {
-                console.log("jisjdisjd", chatStage, chat.stage);
                 if (chat.stage == chatStage) incrementChatStage();
                 setLastMessagedPerson(chat.username);
               }, [chatStage])}
@@ -40,11 +38,10 @@ export default function Messages() {
               value={chat.username}
               className={`p-4 w-full flex justify-start items-center ${
                 lastMessagedPerson == chat.username ? "bg-gray-100" : "bg-white"
-              }`}
+              } ${chat.stage > chatStage && "!bg-gray-200"}`}
             >
               <InstagramProfilePicture username={chat.username} pfp_size="md" />
               {chat.username}
-              {chat.stage > chatStage && <Lock className="ml-4" />}
             </Tabs.Trigger>
           ))}
         </Tabs.List>

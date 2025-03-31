@@ -47,7 +47,7 @@ export default function InstagramProfile(props: InstagramProfileProps) {
             <p className="mt-2">{user.description}</p>
           </div>
           {user.profile_thought && (
-            <ThoughtButton thought={user.profile_thought} onClick={user.stage ? () => incrementPageStage(user.stage) :null} />
+            <ThoughtButton className="w-[30px] h-[30px]" thought={user.profile_thought} onClick={user.stage ? () => incrementPageStage(user.stage) :null} />
           )}
         </div>
         <Separator.Root className="w-full h-[1px] bg-gray-400" />

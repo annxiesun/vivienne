@@ -10,7 +10,7 @@ export default function Settings() {
   const { unblock } = actions.instagram;
 
   return (
-    <div className="w-full h-full flex text-black flex-col p-20">
+    <div className="w-full h-full flex text-black flex-col py-10 px-20">
       <div className="text-[36px] font-bold">Settings</div>
       <div className="text-xl font-black">App Version</div>
       <div className="mb-5">7.8.12</div>
@@ -21,7 +21,7 @@ export default function Settings() {
       {blocked && (
         <>
           <div className="text-xl mb-5 font-black">Blocked List</div>
-          <div className="flex flex-row gap-40 items-center mb-4">
+          <div className="flex flex-col gap-1 items-start mb-4 justify-start">
             <InstagramUsernameButton username="olivveee" disabled hasPicture />
             <InstagramUsernameButton username="realea" disabled hasPicture />
             <InstagramUsernameButton
@@ -31,14 +31,14 @@ export default function Settings() {
             />
             <InstagramUsernameButton username="xavier27" disabled hasPicture />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <button
               onClick={unblock}
               className="p-2 border-solid border-gray-800 rounded-md border-[2px] flex items-center"
             >
               Unblock All
             </button>
-            <ThoughtButton thought="Maybe I should unblock them to get more context" />
+            <ThoughtButton className="w-[30px] h-[30px]" thought="Maybe I should unblock them to get more context" />
           </div>
         </>
       )}

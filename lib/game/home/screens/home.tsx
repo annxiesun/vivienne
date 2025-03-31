@@ -19,6 +19,8 @@ export const Home = () => {
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
 
   useEffect(() => {
+    console.log({scene})
+    console.log(HOME_THOUGHTS[scene])
     setModalMessage(HOME_THOUGHTS[scene]);
   }, [scene]);
 
