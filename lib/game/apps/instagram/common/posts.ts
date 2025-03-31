@@ -108,7 +108,7 @@ export const EXPOSE_POST = [
         username: "sweetpotato2482",
         text: "it's people like her that make the LGBTQ community look bad, just be honest!",
         thought:
-          'How are these comments allowed on here, they\'re so hateful. Ever since the changes at Meta, comments on Instagram have been so horrid. <a href="https://www.nytimes.com/2025/01/07/business/meta-lgbtq-hate-speech.html">[Link]</a>',
+          'How are these comments allowed on here, they\'re so hateful. Ever since the changes at Meta, comments on Instagram have been so horrid. <a href="https://www.nytimes.com/2025/01/07/business/meta-lgbtq-hate-speech.html">[Link]</a>. This is completely different than the image the Instagram account portrays...',
       },
     ],
     thought: "I’ve come across a story like this before <a href=\"https://www.vox.com/2020/1/15/21065520/nikkietutorials-coming-out-too-faced-backlash\">[Link]</a>. It’s scary how unsafe it can be to be trans online.",
@@ -284,9 +284,22 @@ export const MAKEUP_POSTS = [
   },
 ];
 
+export const INSTAGRAM_POSTS = [
+  {
+    username: "instagram",
+    images: ["/assets/instagram/posts/home/lgbt.png"],
+    date: new Date("2025-03-13"),
+    description: "Celebrating the LGBTQ+ community today!",
+    number_likes: 320_500,
+    comments: [],
+    thought: "Wow this is a nice post from Instagram celebrating the LGBTQ+ community!",
+  },
+]
+
 export const HOME_POSTS = [
   ASHLEY_POSTS[0],
   SKINCARE_POSTS[0],
+  INSTAGRAM_POSTS[0],
   MAKEUP_POSTS[0],
   CARRIE_POSTS[0],
   RACHEL_POSTS[0],

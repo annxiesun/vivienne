@@ -9,7 +9,7 @@ export default function InstagramProfilePicture(
   props: InstagramProfilePictureProps
 ) {
   const { username, pfp_size } = props;
-  console.log(PROFILE_MAP[username].profile_picture)
+
   return (
     <img
       src={PROFILE_MAP[username].profile_picture}

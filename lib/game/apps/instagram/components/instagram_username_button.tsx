@@ -1,4 +1,6 @@
+import { BadgeCheck } from "lucide-react";
 import { useGameActions } from "../../../../state/context";
+import { PROFILE_MAP } from "../common/users";
 import InstagramProfilePicture from "./instagram_profile_picture";
 
 type InstagramUsernameButtonProps = {
@@ -30,7 +32,10 @@ export default function InstagramUsernameButton(
       {hasPicture && (
         <InstagramProfilePicture username={username} pfp_size={pfp_size} />
       )}
-      <span className="font-semibold mr-2">{username}</span>
+      <span className="font-semibold mr-2">{username}
+        {PROFILE_MAP[username].verified &&
+          <BadgeCheck className="text-blue-400 inline h-[15px]"/>}
+      </span>
       {children}
     </button>
   );
