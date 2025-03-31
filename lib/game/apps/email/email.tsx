@@ -23,12 +23,12 @@ export default function EmailApp() {
       actions.setGameState(state.gameState + 1)
       state.selectedEmail.read = true
 
-    if (state.selectedEmail.end && state.selectedEmail.folder == 'Drafts') { // add this to send email button
-      next.setScene(i => i+1)
-    }
-    if (state.selectedEmail.end) {
-      actions.setMailboxState(state.mailboxState + 1)
-    }
+      if (state.selectedEmail.end && state.selectedEmail.folder == 'Drafts') { // add this to send email button
+        next.setScene(3)
+      }
+      if (state.selectedEmail.end) {
+        actions.setMailboxState(state.mailboxState + 1)
+      }
     }
     }
 
