@@ -6,6 +6,7 @@ export type ScreenState = {
   hasEnded: boolean;
   reported: boolean;
   wiped: boolean;
+  emailSent: boolean;
 };
 
 export type ScreenActions = {
@@ -26,7 +27,7 @@ export const useScreenContext = () => {
   const [hasEnded, toggleEnd] = useState<boolean>(false); // {DEBUG}
   const [reported, setReported] = useState<boolean>(false);
   const [wiped, setWiped] = useState<boolean>(false);
-  const [emailsent, setEmailSent] = useState<boolean>(false);
+  const [emailSent, setEmailSent] = useState<boolean>(false);
 
   return {
     screen_state: {
@@ -35,7 +36,7 @@ export const useScreenContext = () => {
       hasEnded,
       reported,
       wiped,
-      emailsent,
+      emailSent,
     },
     screen_actions: {
       toggleDefaultEnd,
