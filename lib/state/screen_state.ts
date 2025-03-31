@@ -14,6 +14,7 @@ export type ScreenActions = {
   toggleEnd: (end: boolean) => void;
   setReported: (reported: boolean) => void;
   setWiped: (wiped: boolean) => void;
+  setEmailSent: (sent: boolean) => void;
   startGame: () => void;
   endGame: () => void;
   resetState: () => void;
@@ -25,6 +26,7 @@ export const useScreenContext = () => {
   const [hasEnded, toggleEnd] = useState<boolean>(false); // {DEBUG}
   const [reported, setReported] = useState<boolean>(false);
   const [wiped, setWiped] = useState<boolean>(false);
+  const [emailsent, setEmailSent] = useState<boolean>(false);
 
   return {
     screen_state: {
@@ -33,6 +35,7 @@ export const useScreenContext = () => {
       hasEnded,
       reported,
       wiped,
+      emailsent,
     },
     screen_actions: {
       toggleDefaultEnd,
@@ -40,6 +43,7 @@ export const useScreenContext = () => {
       toggleEnd,
       setReported,
       setWiped,
+      setEmailSent,
       startGame: () => {
         toggleStart(true);
         toggleEnd(false);
@@ -53,6 +57,7 @@ export const useScreenContext = () => {
         toggleDefaultEnd(true);
         setReported(false);
         setWiped(false);
+        setEmailSent(false);
       },
     },
   };
