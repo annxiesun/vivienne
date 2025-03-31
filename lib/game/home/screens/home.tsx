@@ -34,7 +34,9 @@ export const Home = () => {
         <DecisionButton
           decision={{
             question: "Should I wipe the laptop?",
-            info: "idk",
+            info: "If you wipe the laptop, you won't find out the whole story",
+            ignoreOption: "Keep exploring",
+            image: "/assets/decision/wipe_bg.png",
             option1: "WIPE",
             option2: "DON'T WIPE",
             onClick1: () => {
@@ -49,8 +51,10 @@ export const Home = () => {
         {/*final wipe decision button*/}
         <DecisionButton
           decision={{
-            question: "Should I wipe the laptop? (FINAL)",
-            info: "idk",
+            question: "Should I wipe the laptop?",
+            info: "If you wipe the laptop, this information you discovered will be gone forever",
+            ignoreOption: "I need more time to think",
+            image: "/assets/decision/wipe_bg.png",
             option1: "WIPE",
             option2: "DON'T WIPE",
             onClick1: () => {
@@ -69,9 +73,10 @@ export const Home = () => {
         <DecisionButton
           decision={{
             question: "Should I report George for impersonating Vivienne?",
-            info: "idk",
+            info: "I was hired to clear this computer, but I discovered something I probably shouldn’t have.",
             option1: "REPORT",
             option2: "DON'T REPORT",
+            image: "/assets/decision/report_bg.png",
             onClick1: () => {
               setReported(true);
               toggleEnd(true);

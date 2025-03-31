@@ -16,4 +16,6 @@ export type Decision = {
   onClick1: () => void;
   option2: string;
   onClick2: () => void;
+  ignoreOption?: string
+  image?: string
 };
