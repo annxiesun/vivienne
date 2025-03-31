@@ -51,8 +51,12 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
     <div className="flex justify-center items-center flex-col h-screen px-4 relative">
       {step === 0 && (
         <>
-          <p className="text-[10vw] md:text-[8vw] lg:text-[6vw] font-bold">
-            Vivienne
+          <p className="text-[10vw] md:text-[8vw] lg:text-[6vw] font-bold relative">
+            <img
+              className="brightness-[1000%] transform -translate-y-1/2 absolute top-[45%] left-[-4vw] w-[10vw]"
+              src="/assets/logo.png"
+            />
+            <span className="text-black inline">V</span>ivienne
           </p>
           <label className="flex items-center mt-4">
             <input
