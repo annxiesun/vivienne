@@ -17,7 +17,7 @@ export default function Messages() {
   const { setLastMessagedPerson, incrementChatStage } = actions.instagram;
 
   return (
-    <div className="w-full h-full flex flex-1">
+    <div className="w-full h-full ">
       <Tabs.Root
         defaultValue={lastMessagedPerson}
         className="flex flex-row h-full relative"
