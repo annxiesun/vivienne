@@ -12,9 +12,9 @@ const MessageOptions: FC<MessageOptionsProps> = ({ onSelectOption }) => {
                 <button
                     key={index}
                     className="w-full px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition text-center"
-                    onClick={() => onSelectOption(option, index)}
+                    onClick={() => onSelectOption(option.text, index)}
                 >
-                    {option}
+                    {option.text}
                 </button>
             ))}
         </div>

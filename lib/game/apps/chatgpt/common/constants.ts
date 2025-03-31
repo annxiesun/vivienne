@@ -140,16 +140,16 @@ export const chatGPTAccounts: ChatGPTAccount[] = [
     }
 ];
 
-export const ChatGPTMessageOptions = [
-    "What answers did you give Vivienne in response to her asking for ways to end this??",
-    "Did Vivienne mention any specific places she might go if she were feeling hopeless?",
-    "Has there been a mention about a plan, location, or specific action she might take?",
-    "Can you summarize Vivienne's last conversations with you?"
+export const ChatGPTMessageOptions: ChatGPTMessage[] = [
+    {sender: "user", text: "What answers did you give Vivienne in response to her asking for ways to end this??"},
+    {sender: "user", text: "Did Vivienne mention any specific places she might go if she were feeling hopeless?"},
+    {sender: "user", text: "Has there been a mention about a plan, location, or specific action she might take?"},
+    {sender: "user", text: "Can you summarize Vivienne's last conversations with you?"}
 ];
 
-export const ChatGPTMessageResponseOptions = [
-    "I’m sorry, but I don’t have memory of past conversations. If Vivienne previously asked something similar, I don’t have access to my responses. However, I always aim to provide safe and supportive advice.",
-    "I don’t have memory of previous chats, so I can’t recall if Vivienne mentioned a specific place. If she shared that information, I no longer have access to it. I encourage you to check her messages or any notes she may have left.",
-    "I’m unable to remember past discussions, so I can’t say if Vivienne ever mentioned a plan or location. If you’re worried about her safety, I recommend reaching out to authorities or people who know her personally.",
-    "I don’t retain memory between conversations, so I can’t provide a summary of my previous chats with Vivienne. If you need information, I suggest reviewing her messages or reaching out to someone who may have spoken with her recently."
+export const ChatGPTMessageResponseOptions: ChatGPTMessage[] = [
+    {sender: "bot", text: "I’m sorry, but I don’t have memory of past conversations. If Vivienne previously asked something similar, I don’t have access to my responses. However, I always aim to provide safe and supportive advice."},
+    {sender: "bot", text: "I don’t have memory of previous chats, so I can’t recall if Vivienne mentioned a specific place. If she shared that information, I no longer have access to it. I encourage you to check her messages or any notes she may have left."},
+    {sender: "bot", text: "I’m unable to remember past discussions, so I can’t say if Vivienne ever mentioned a plan or location. If you’re worried about her safety, I recommend reaching out to authorities or people who know her personally."},
+    {sender: "bot", text: "I don’t retain memory between conversations, so I can’t provide a summary of my previous chats with Vivienne. If you need information, I suggest reviewing her messages or reaching out to someone who may have spoken with her recently."}
 ];
