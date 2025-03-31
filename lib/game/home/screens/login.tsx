@@ -21,7 +21,7 @@ const Login = () => {
         <DecisionButton
           decision={{
             question: "Should I report George for impersonating Vivienne?",
-            info: "idk",
+            info: "Should he be held accountable for his actions",
             option1: "REPORT",
             option2: "DON'T REPORT",
             onClick1: () => {
