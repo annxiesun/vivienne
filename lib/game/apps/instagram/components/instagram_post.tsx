@@ -48,7 +48,8 @@ export default function InstagramPost(props: InstagramPostProps) {
               />
             ))}
           </Carousel>
-          <div className="w-full bg-white p-4 h-full">
+          <div className="w-full bg-white p-4 h-full relative">
+          {thought && <ThoughtButton className="w-[30px] h-[30px] absolute left-[-50px]" thought={thought} onClick={stage ?()=> incrementPageStage(stage): null} />}
             <div className="w-full h-full flex flex-col justify-between py-3 items-start">
               <div className="w-full max-w-[400px]">
                 <div className="flex items-center space-x-3 pb-4">
@@ -89,7 +90,7 @@ export default function InstagramPost(props: InstagramPostProps) {
                       {date.toLocaleDateString()}
                     </div>
                   </div>
-                  {thought && <ThoughtButton thought={thought} onClick={stage ?()=> incrementPageStage(stage): null} />}
+          
                 </div>
               </div>
             </div>

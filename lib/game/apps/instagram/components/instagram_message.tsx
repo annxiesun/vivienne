@@ -23,7 +23,7 @@ export default function InstagramMessage(props: InstagramMessageProps) {
       >
         {value}
       </div>
-      {thought && <ThoughtButton thought={thought} onClick={next_scene && nextScene} />}
+      {thought && <ThoughtButton className="w-[30px] h-[30px]" thought={thought} onClick={next_scene && nextScene} />}
     </div>
   );
 }

@@ -8,6 +8,7 @@ export type InstagramMessageType = {
   thought?: string
   next_scene?: boolean
 }
+
 export type InstagramChatType = {
   username: string
   messages: InstagramMessageType[]
@@ -29,6 +30,7 @@ export type InstagramPostType = {
 export type InstagramCommentType = {
   username: string
   text: string
+  thought?: string
 }
 
 export type InstagramUser = {

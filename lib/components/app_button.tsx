@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import AppBase from "../game/apps/app_base";
+import { X } from "lucide-react";
 
 interface AppButtonProps {
   imageSrc: string;
@@ -28,15 +29,17 @@ export default function AppButton({
     <div>
       <button
         onClick={handleClick}
-        className={`flex justify-center items-center relative rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 ${
+        className={`flex justify-center items-center relative rounded-lg overflow-hidden transform transition-all duration-300 ease-in-out ${
           isVisible ? "pointer-events-none" : ""
-        }`}
+        } ${disabled ? "cursor-not-allowed" : "hover:scale-105 "}`}
         disabled={disabled}
       >
         <img
           src={imageSrc}
           alt={altText}
-          className="object-contain w-[12vh] h-[12vh]"
+          className={`object-contain w-[12vh] h-[12vh] ${
+            disabled && "brightness-50"
+          }`}
         />
       </button>
 
@@ -50,7 +53,7 @@ export default function AppButton({
               }}
               className="absolute p-1 top-2 right-2 text-white bg-red-500 transition font-bold"
             >
-              &times;
+              <X />
             </button>
           </AppBase>
         </div>
