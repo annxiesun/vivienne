@@ -4,12 +4,11 @@ const Sidebar = () => {
   const state = useGameState();
   const actions = useGameActions();
 
-  const { selectedChat, viewedChats, viewedEvidence } = state.skype;
+  const { selectedChat, viewedChats } = state.skype;
   const { selectChat, viewProfile, markChatAsViewed } = actions.skype;
 
   const isProfileUnlocked =
-    viewedChats.includes(contacts[0].name) &&
-    viewedEvidence.includes(contacts[0].name);
+    viewedChats.includes(contacts[0].name);
 
   return (
     <div className="w-1/4 h-full shadow-md bg-blue-50 border border-gray-300 flex flex-col">
@@ -46,8 +45,7 @@ const Sidebar = () => {
       {contacts.map((contact, index) => {
         const isUnlocked =
           index === 0 ||
-          (viewedChats.includes(contacts[index - 1].name) &&
-            viewedEvidence.includes(contacts[index - 1].name));
+          (viewedChats.includes(contacts[index - 1].name));
 
         if (contact.name === "profile") return;
 

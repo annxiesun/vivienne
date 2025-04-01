@@ -7,26 +7,9 @@ const ChatWindow = () => {
   const state = useGameState();
   const actions = useGameActions();
   const { selectedChat } = state.skype;
-  const { markEvidenceAsViewed } = actions.skype;
-
-  const [evidenceClicked, setEvidenceClicked] = useState(new Set());
+  const { markChatAsViewed } = actions.skype;
 
   const chatContainerRef = useRef(null);
-
-  useEffect(() => {
-    setEvidenceClicked(new Set());
-  }, [selectedChat]);
-
-  useEffect(() => {
-    if (!selectedChat) return;
-    const totalEvidence = selectedChat.messages.filter(
-      (m) => m.evidence
-    ).length;
-
-    if (evidenceClicked.size === totalEvidence) {
-      markEvidenceAsViewed(selectedChat.name);
-    }
-  }, [evidenceClicked, selectedChat, markEvidenceAsViewed]);
 
   useEffect(() => {
     // Scroll to the top when the selected chat changes
@@ -34,14 +17,6 @@ const ChatWindow = () => {
       chatContainerRef.current.scrollTop = 0;
     }
   }, [selectedChat]);
-
-  const handleEvidenceClick = (evidence) => {
-    setEvidenceClicked((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(evidence);
-      return newSet;
-    });
-  };
 
   if (!selectedChat) {
     return (
@@ -137,7 +112,7 @@ const ChatWindow = () => {
                     <ThoughtButton
                       thought={msg.evidence}
                       className="h-6 w-6"
-                      onClick={() => handleEvidenceClick(msg.evidence)}
+                      onClick={() => markChatAsViewed(selectedChat.name)}
                     />
                   )}
                 </>
