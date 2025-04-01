@@ -3,6 +3,7 @@ import Sidebar from "./components/sidebar";
 import ChatWindow from "./components/chatWindow";
 import { ChatGPTAccount, ChatGPTConversation, ChatGPTMessage, ChatGPTMessageResponseOptions, chatGPTAccounts } from "./common/constants";
 import LoginScreen from "./components/LoginScreen";
+import { useGameActions, useGameState } from "../../../state/context";
 
 // change the 2nd email to the email found in mail app
 const usersChatHistories: Record<string, ChatGPTAccount> = {
@@ -11,9 +12,13 @@ const usersChatHistories: Record<string, ChatGPTAccount> = {
 }
 
 const ChatGPTScreen: FC = () => {
-    const [accounts, setAccounts] = useState<{ email: string; password: string; }[]>([{ email: chatGPTAccounts[0].email, password: chatGPTAccounts[0].password}]);
-    const [currentUser, setCurrentUser] = useState<number>(0);
-    const [conversations, setConversations] = useState<ChatGPTConversation[]>(chatGPTAccounts[0].conversations);
+    const state = useGameState();
+    const actions = useGameActions();
+
+    const { accounts, currentUser, conversations } = state.gpt;
+
+    const { setAccounts, setCurrentUser, setConversations } = actions.gpt;
+
     const [selectedConversation, setSelectedConversation] = useState<ChatGPTConversation | null>(null);
     const [isAddingAccount, setIsAddingAccount] = useState(false);
     const [scrollPositions, setScrollPositions] = useState<Record<number, number>>({});
@@ -55,7 +60,7 @@ const ChatGPTScreen: FC = () => {
 
     const handleAddAccount = (newUser: { email: string; password: string; }) => {
         if (chatGPTAccounts[1].email == newUser.email && chatGPTAccounts[1].password == newUser.password) {
-            setAccounts((prev) => [...prev, newUser]);
+            setAccounts([{email: chatGPTAccounts[0].email, password: chatGPTAccounts[0].password}, newUser]);
             setCurrentUser(1);
             setConversations(chatGPTAccounts[1].conversations);
             setIsAddingAccount(false);

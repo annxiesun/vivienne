@@ -9,6 +9,7 @@ import {
   useInstagramContext,
 } from "./instagram_state";
 import { EmailActions, EmailState, useEmailContext } from "./email_state";
+import { ChatGPTActions, ChatGPTState, useChatGPTContext } from "./chatgpt_state";
 
 type Props = {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ type GameState = {
   notes: NotesState;
   instagram: InstagramState;
   email: EmailState;
+  gpt: ChatGPTState;
 };
 
 type GameActions = {
@@ -39,6 +41,7 @@ type GameActions = {
   notes: NotesActions;
   instagram: InstagramActions;
   email: EmailActions;
+  gpt: ChatGPTActions;
 };
 
 type Context = {
@@ -72,6 +75,7 @@ export const GameContextProvider = ({ children }: Props) => {
   const { skype_state, skype_actions } = useSkypeContext();
   const { notes_state, notes_actions } = useNotesContext();
   const { instagram_state, instagram_actions } = useInstagramContext();
+  const { chatgpt_state, chatgpt_actions } = useChatGPTContext();
 
   const state = {
     scene,
@@ -83,7 +87,8 @@ export const GameContextProvider = ({ children }: Props) => {
     screen: screen_state,
     notes: notes_state,
     instagram: instagram_state,
-    email: email_state
+    email: email_state,
+    gpt: chatgpt_state,
   };
 
   const actions = {
@@ -111,6 +116,7 @@ export const GameContextProvider = ({ children }: Props) => {
     email: email_actions,
     notes: notes_actions,
     instagram: instagram_actions,
+    gpt: chatgpt_actions,
   };
 
   return (
