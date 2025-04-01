@@ -1,7 +1,7 @@
 import { Phone, PhoneOutgoing, Video } from "lucide-react";
 import { useGameActions, useGameState } from "../../../../state/context";
 import ThoughtButton from "../../../../components/thought_button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const ChatWindow = () => {
   const state = useGameState();
