@@ -1,3 +1,4 @@
+import ThoughtButton from "../../../../components/thought_button";
 import { useGameState } from "../../../../state/context";
 
 const Main = () => {
@@ -21,6 +22,14 @@ const Main = () => {
           </h2>
           <p className="text-gray-500 mb-2">{selectedNote.date}</p>
           {renderContentWithNewlines(selectedNote.content)}
+          {selectedNote.folder == "private" && (
+            <div className="flex justify-center">
+              <ThoughtButton
+                thought="She was struggling with so much—rejection, hatred, and never being seen for who she really was. Her 16th birthday should have been a celebration, but instead, it felt like the end. It’s so sad she had to go through all of that."
+                className="h-8 w-8"
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className="text-center text-gray-500">

@@ -14,13 +14,16 @@ import ChatGPTScreen from "../../apps/chatgpt/index";
 export const Home = () => {
   const { scene, showModal } = useGameState();
   const actions = useGameActions();
+
   const { toggleModal } = actions;
-  const { setWiped, toggleEnd, toggleDefaultEnd, setReported, setEmailSent } = actions.screen;
+  const { setWiped, toggleEnd, toggleDefaultEnd, setReported } =
+    actions.screen;
   const [modalMessage, setModalMessage] = useState(HOME_THOUGHTS[scene]);
+  const [showReportDecision, setShowReportDecision] = useState(false);
 
   useEffect(() => {
-    console.log({scene})
-    console.log(HOME_THOUGHTS[scene])
+    console.log({ scene });
+    console.log(HOME_THOUGHTS[scene]);
     setModalMessage(HOME_THOUGHTS[scene]);
   }, [scene]);
 
@@ -31,29 +34,78 @@ export const Home = () => {
         backgroundImage: "url('/assets/bg/bg.png')",
       }}
     >
-      <div className="absolute top-6 right-6 flex flex-col gap-4">
-        {/*first wipe decision button*/}
-        <DecisionButton
-          decision={{
-            question: "Should I wipe the laptop?",
-            info: "If you wipe the laptop, you won't find out the whole story",
-            ignoreOption: "Keep exploring",
-            image: "/assets/decision/wipe_bg.png",
-            option1: "WIPE",
-            option2: "DON'T WIPE",
-            onClick1: () => {
-              toggleEnd(true);
-            },
-            onClick2: () => {
-              toggleModal(false);
-            },
-          }}
+      <div className="absolute top-6 right-6 flex gap-4">
+        <ThoughtButton
+          thought={modalMessage}
           className="cursor-pointer animate-pulse text-3xl"
         />
+        {showReportDecision ? (
+          <DecisionButton
+            decision={{
+              question: "Should I report George for impersonating Vivienne?",
+              info: "I was hired to clear this computer, but I discovered something I probably shouldn’t have.",
+              option1: "REPORT",
+              option2: "DON'T REPORT",
+              image: "/assets/decision/report_bg.png",
+              onClick1: () => {
+                setReported(true);
+                toggleEnd(true);
+              },
+              onClick2: () => {
+                setReported(false);
+                toggleEnd(true);
+              },
+            }}
+            className="text-green-700 cursor-pointer animate-pulse text-3xl"
+          />
+        ) : scene < 5 ? (
+          <DecisionButton
+            decision={{
+              question: "Should I wipe the laptop?",
+              info: "If you wipe the laptop, you won't find out the whole story!",
+              ignoreOption: "Keep exploring",
+              image: "/assets/decision/wipe_bg.png",
+              option1: "WIPE",
+              option2: "KEEP EXPLORING",
+              onClick1: () => {
+                toggleEnd(true);
+              },
+              onClick2: () => {
+                toggleModal(false);
+              },
+            }}
+            className="cursor-pointer animate-pulse text-3xl"
+          />
+        ) : (
+          <DecisionButton
+            decision={{
+              question: "Should I wipe the laptop?",
+              info: "If you wipe the laptop, this information you discovered will be gone forever",
+              ignoreOption: "I need more time to think",
+              image: "/assets/decision/wipe_bg.png",
+              option1: "WIPE",
+              option2: "DON'T WIPE",
+              onClick1: () => {
+                setWiped(true);
+                toggleDefaultEnd(false);
+                toggleModal(false);
+              },
+              onClick2: () => {
+                setWiped(false);
+                setShowReportDecision(true); // Show report decision
+                toggleDefaultEnd(false);
+                toggleModal(false);
+              },
+            }}
+            className="text-red-500 cursor-pointer animate-pulse text-3xl"
+          />
+        )}
+
         {/*right to be forgotten decisionbutton */}
-        <DecisionButton
+        {/* <DecisionButton
           decision={{
-            question: "Should I send this draft email request to erase any personal data held under EU General Data Protection Regulation (GDPR)?",
+            question:
+              "Should I send this draft email request to erase any personal data held under EU General Data Protection Regulation (GDPR)?",
             info: "Vivienne mentions wanting to erase anything that she can in her notes, and clearly she wrote this email for a reason. I am not her though, is this a decision for me to make on her behalf?",
             option1: "SEND REQUEST",
             option2: "DON'T SEND",
@@ -68,51 +120,7 @@ export const Home = () => {
             },
           }}
           className="text-purple-500 cursor-pointer animate-pulse text-3xl"
-        />
-        {/*final wipe decision button*/}
-        <DecisionButton
-          decision={{
-            question: "Should I wipe the laptop?",
-            info: "If you wipe the laptop, this information you discovered will be gone forever",
-            ignoreOption: "I need more time to think",
-            image: "/assets/decision/wipe_bg.png",
-            option1: "WIPE",
-            option2: "DON'T WIPE",
-            onClick1: () => {
-              setWiped(true);
-              toggleDefaultEnd(false);
-              toggleModal(false);
-            },
-            onClick2: () => {
-              toggleDefaultEnd(false);
-              toggleModal(false);
-            },
-          }}
-          className="text-red-500 cursor-pointer animate-pulse text-3xl"
-        />
-        {/*report decision button (if no wipe)*/}
-        <DecisionButton
-          decision={{
-            question: "Should I report George for impersonating Vivienne?",
-            info: "I was hired to clear this computer, but I discovered something I probably shouldn’t have.",
-            option1: "REPORT",
-            option2: "DON'T REPORT",
-            image: "/assets/decision/report_bg.png",
-            onClick1: () => {
-              setReported(true);
-              toggleEnd(true);
-            },
-            onClick2: () => {
-              setReported(false);
-              toggleEnd(true);
-            },
-          }}
-          className="text-green-500 cursor-pointer animate-pulse text-3xl"
-        />
-        <ThoughtButton
-          thought={modalMessage}
-          className="cursor-pointer animate-pulse text-3xl"
-        />
+        /> */}
       </div>
 
       {showModal && <GlobalModal />}
@@ -150,12 +158,6 @@ export const Home = () => {
           <Skype />
         </AppButton>
       </div>
-
-      {/* Taskbar at the bottom of the screen */}
-      {/* <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-60 p-4 flex justify-between items-center xl:shadow-xl">
-        <div className="text-lg font-bold text-white"></div>
-        <div className="flex items-center"></div>
-      </div> */}
     </div>
   );
 };
