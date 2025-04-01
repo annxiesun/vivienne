@@ -21,9 +21,10 @@ const Login = () => {
         <DecisionButton
           decision={{
             question: "Should I report George for impersonating Vivienne?",
-            info: "Should he be held accountable for his actions",
+            info: "I was hired to clear this computer, but I discovered something I probably shouldn’t have.",
             option1: "REPORT",
             option2: "DON'T REPORT",
+            image: "/assets/decision/report_bg.png",
             onClick1: () => {
               setReported(true);
               toggleEnd(true);
