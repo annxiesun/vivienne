@@ -50,7 +50,7 @@ const GameContext = createContext<Context | null>(null);
 
 export const GameContextProvider = ({ children }: Props) => {
   // GLOBAL STATE
-  const [scene, setScene] = useState(1); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
+  const [scene, setScene] = useState(0); // {DEBUG}: we normally set this to 0 but i set it to 5 so we can click all apps on refresh
   const [showModal, toggleModal] = useState(false);
   const [thought, setThought] = useState("");
   const [decision, setDecision] = useState<Decision>({
@@ -100,6 +100,7 @@ export const GameContextProvider = ({ children }: Props) => {
     toggleModal,
     setModalType,
     restartGame: () => {
+      setScene(0);
       screen_actions.resetState();
       skype_actions.resetState();
       notes_actions.resetState();
