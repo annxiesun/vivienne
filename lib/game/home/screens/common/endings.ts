@@ -1,7 +1,7 @@
 // END SCREEN CONSTANTS
 export const sentEmailEnding = (sentEmail: boolean) => ({
   info: sentEmail
-    ? "The email request to be forgotten was approved, and Vivienne's leaked data was successfully removed from the internet."
+    ? "The email request to be forgotten was approved, and Vivienne's leaked data was successfully removed from the internet by the EU, some of it may still remain."
     : "The leaked data about Vivienne still remains online.",
   image: sentEmail ? "/assets/end/removed.png" : "/assets/intro/missing.png",
 });

@@ -72,11 +72,11 @@ const victoriaEmailText = `Hello Vivienne,
 
 I hope this email finds you well, what a beautiful name you've chosen, if only you were actually fit for the name, Alexander. You can run, but you cannot hide. I overheard your argument with your parents in the Principal's office yesterday and what all the other parents have been gossiping about.
 
-You thought your records were private? Think again. People are watching, and they’re not happy. We know what you’ve done, where you’ve been, and what you’re trying to keep secret. I know you’re a boy trying to be a wh*** to seduce my son and all the other unsuspecting men you've lured. I can’t believe you! You tricked my son into sending you a candygram on Valentines and asking you out to homecoming. You need to stay away. You will corrupt his pure innocent soul. I can’t let you fool him anymore.
+I've started an official investigation into your circumstances and I am emailing to notify you that we have requested your medical data due to public safety and consent laws. You thought your records were private? Think again. People are watching, and they’re not happy. We know what you’ve done, where you’ve been, and what you’re trying to keep secret. I know you’re a boy trying to be a wh*** to seduce my son and all the other unsuspecting men you've lured. I can’t believe you! You tricked my son into sending you a candygram on Valentines and asking you out to homecoming. You need to stay away. You will corrupt his pure innocent soul. I can’t let you fool him anymore.
 
-I had a conversation with my best friend, you might know her! She works at the hospital. It would be a shame if certain details about your "treatment" became public. Maybe your family should know. Maybe your little online fans should, too. Maybe the whole world should see what’s really going on.
+It would be a shame if certain details about your "treatment" became public. Maybe your family should know. Maybe your little online fans should, too. Maybe the whole world should see what’s really going on.
 
-I can't let you hurt my son or anyone else for much longer. You have a choice—do the right thing, or deal with the consequences.
+I can't let you hurt my son or anyone else for much longer. You have a choice—do the right thing, or deal with the consequences. If you do not confess for your wrong-doings, our investigations will reveal all that needs to be revealed.
 
 We’ll be in touch.
 
@@ -213,7 +213,7 @@ Didn't she go missing before this? Why would she change her password?`,
   {
     index: 4,
     note: `Weird... AND CREEPY... 
-    Tom? Medical records? Lying? What on earth he talking about, how did he get Vivienne's email if they met on...Tinder? Let's dig further`,
+    Greg? Medical records? Lying? What on earth he talking about, how did he get Vivienne's email if they met on...Tinder? Also, isn't she 16?? Let's dig further`,
     end: false,
     read: false,
     body: null,
@@ -279,11 +279,11 @@ Bye 🤡
   },
   {
     index: 6,
-    note: `This is serious, how could someone give away medical information like that? Let's see what the Principal was saying to Vivienne and her Parents. I have seen cases of leaked medical records of trans individuals it's alarming <a href="https://www.rochesterfirst.com/news/health/hospital-sues-missouris-top-prosecutor-over-trans-care-data/">This happened in Kansas</a> and these <a href="https://www.pogo.org/investigations/policing-gender-how-surveillance-tech-aids-enforcement-of-anti-trans-laws">privacy infringements are often used in the enforcement of anti-trans laws</a>`,
+    note: `Victoria Cox, that name sounds so familiar? Right! She's a local government official, I've seen her campaign posters throughout the neighborhood. This is serious, how could someone request and recieve medical information on the grounds of "public safety"? Let's see what the Principal was saying to Vivienne and her Parents. I have seen cases of government officals requesting the medical records of trans individuals ands it's alarming <a href="https://www.rochesterfirst.com/news/health/hospital-sues-missouris-top-prosecutor-over-trans-care-data/">This happened in Missouri</a> and these <a href="https://www.pogo.org/investigations/policing-gender-how-surveillance-tech-aids-enforcement-of-anti-trans-laws">privacy infringements are often used in the enforcement of anti-trans laws</a>`,
     end: false,
     read: false,
     from: "Victoria Elizabeth Cox",
-    fromEmail: "victoria.elizabeth.cox@outlook.com",
+    fromEmail: "victoria.elizabeth.cox@state.gov",
     to:"Vivienne Thompson",
     toEmail:"w3stw00d_doll@gmail.com",
     body: victoriaEmailText,
