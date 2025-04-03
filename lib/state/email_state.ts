@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Email, initialEmail } from "../game/apps/email/emails";
+import { Email, initialEmail } from "../game/apps/email/common/emails";
 
 export type EmailState = {
   emails: Email[];
