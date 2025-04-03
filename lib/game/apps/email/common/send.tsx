@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import DecisionButton from '../../../../components/decision_button';
 import { useGameActions, useGameState } from "../../../../state/context";
 import { Send } from "lucide-react";
