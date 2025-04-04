@@ -27,7 +27,9 @@ export default function InstagramHomePost(props: InstagramHomePostProps) {
     <div
       className={`w-[500px] border-solid border-[1px] border-gray-400 flex flex-col ${className}`}
     >
-      <Carousel className="h-[500px] w-[500px]" arrows dots infinite={false}>
+      <Carousel className="h-[500px] w-[500px]
+      
+      " arrows dots infinite={false}>
         {images.map((img, i) => (
           <img
             key={i}

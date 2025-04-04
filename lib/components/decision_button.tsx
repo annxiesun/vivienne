@@ -15,7 +15,7 @@ const DecisionButton = ({ decision, className }: DecisionButtonProps) => {
     <MessageCircleQuestion
       className={
         className +
-        " text-blue-700 animate-pulse cursor-pointer ml-2 inline-block h-12 w-12"
+        "text-blue-700 animate-pulse cursor-pointer ml-2 inline-block h-12 w-12"
       }
       onClick={() => {
         setDecision(decision);

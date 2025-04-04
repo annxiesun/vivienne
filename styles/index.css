@@ -50,4 +50,9 @@ body {
   .skype-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #005a8b;
   }
+  
+}
+
+.slick-arrow {
+  color:gray !important;
 }

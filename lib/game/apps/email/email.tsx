@@ -1,22 +1,16 @@
 import { useState } from "react";
 import { AlignJustify, PencilLine, Inbox, Send, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
-import { Email, headers } from "./emails";
+import { Email, headers } from "./common/emails";
 import ThoughtButton from "../../../components/thought_button";
 import { useGameActions, useGameState } from "../../../state/context";
+import SendButton from "./common/send";
 
 export default function EmailApp() {
   const state = useGameState().email;
   const actions = useGameActions().email;
   const next = useGameActions()
-
-
-  // const [gameState, setGameState] = useState(0)
-  // const [mailboxState, setMailboxState] = useState(0)
-  // const [emailState, setEmailState] = useState(0)
   const [showModal, setShowModal] = useState(false);
-  // const [emails] = useState<Email[]>(initialEmail);
-  // const [selectedEmail, setselectedEmail] = useState<Email | null>(null);
 
   const handleClickThought = () => {
     if (!state.selectedEmail.read) {
@@ -87,20 +81,22 @@ export default function EmailApp() {
       <div className="w-3/4 px-8 py-6 h-full">
         {state.selectedEmail ? (
           <div className="flex flex-col h-full text-gray-700">
-            <div className="pb-2 flex flex-col border-gray-700 border-b w-full">
-              <div className="flex align-bottom justify-between w-full">
+            <div className="pb-2 flex  justify-between border-gray-700 border-b w-full">
+              <div className="flex flex-col align-bottom">
                 <h2 className="text-2xl text-gray-200 font-semibold">
                   {state.selectedEmail.from}
                 </h2>
-                <p className="text-gray-500">{state.selectedEmail.date}</p>
-              </div>
-              <div>
                 <p className="text-gray-200">{state.selectedEmail.subject}</p>
 
                 <div className="flex space-x-2"><p className="text-gray-200">From: </p> <p className="text-gray-500">{state.selectedEmail.from + " <" + state.selectedEmail.fromEmail + ">"}</p></div>
                 <div className="flex space-x-2"><p className="text-gray-200">To: </p> <p className="text-gray-500">{state.selectedEmail.to + " <" + state.selectedEmail.toEmail + ">"}</p></div>
               </div>
+              <div className="flex flex-col items-end">
+                <p className="text-gray-500">{state.selectedEmail.date}</p>
+                {state.selectedEmail.index == 10 ? <SendButton /> : <></>}
+              </div>
             </div>
+
             <NoteRenderer content={state.selectedEmail.content} />  
             <div className="mt-4 w-full flex justify-center">
               <ThoughtButton onClick={handleClickThought} thought={state.selectedEmail.note}/> 
