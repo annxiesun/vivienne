@@ -104,7 +104,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
 
 
   ashley_baby: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "livin' it up",
     username: "ashley_baby",
     num_followers: "1.2M",
     num_following: 132,
@@ -112,7 +112,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     profile_picture: "/assets/instagram/pfps/ashley_baby.png",
   },
   carriebunny: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "beauty & lifestyle // 18 in LA ♡",
     username: "carriebunny",
     num_followers: "683K",
     num_following: 820,
@@ -120,7 +120,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     profile_picture: "/assets/instagram/pfps/carriebunny.png",
   },
   rachels_life: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "i ♡ l.a",
     username: "rachels_life",
     num_followers: "222K",
     num_following: 120,
@@ -128,7 +128,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     profile_picture: "/assets/instagram/pfps/rachels_life.png",
   },
   i_heart_makeup: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "makeup, beauty, fun!",
     username: "i_heart_makeup",
     num_followers: "222K",
     num_following: 120,
@@ -136,7 +136,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     profile_picture: "/assets/instagram/pfps/i_heart_makeup.png",
   },
   glow_skin: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "revitalize your skin",
     username: "glow_skin",
     num_followers: "58K",
     num_following: 1220,
@@ -144,7 +144,7 @@ export const PROFILE_MAP: Record<string, InstagramUser> = {
     profile_picture: "/assets/instagram/pfps/glow_skin.png",
   },
   instagram: {
-    description: "beauty & wellness // losangeles ♡",
+    description: "",
     username: "instagram",
     num_followers: "283M",
     num_following: 0,
