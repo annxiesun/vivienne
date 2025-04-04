@@ -74,7 +74,7 @@ export const Home = () => {
                 toggleModal(false);
               },
             }}
-            className="cursor-pointer animate-pulse text-3xl"
+              className="text-blue-700 cursor-pointer animate-pulse text-3xl"
           />
         ) : (
           <DecisionButton
