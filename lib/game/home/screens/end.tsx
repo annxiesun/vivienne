@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getEnding } from "./common/endings";
 import { useGameState } from "../../../state/context";
 
-interface EndScreenProps {
-  onRestart: () => void;
-}
-
-const EndScreen = ({ onRestart }: EndScreenProps) => {
+const EndScreen = () => {
   const [step, setStep] = useState<number>(0);
   const [typedText, setTypedText] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -17,6 +13,9 @@ const EndScreen = ({ onRestart }: EndScreenProps) => {
 
   const ending = getEnding(reported, wiped, foundNote, emailSent, defaultEnd);
 
+  const onRestart = () => {
+    window.location.reload()
+  }
   const handleNextStep = () => {
     if (step <= ending.length) {
       setStep(step + 1);

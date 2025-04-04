@@ -9,14 +9,13 @@ const MainScreen = () => {
   const actions = useGameActions();
   const { hasStarted, hasEnded, wiped } = state.screen;
   const { startGame } = actions.screen;
-  const { restartGame } = actions;
 
   return (
     <>
       {!hasStarted ? (
         <StartScreen onStart={startGame} />
       ) : hasEnded ? (
-        <EndScreen onRestart={restartGame} />
+        <EndScreen />
       ) : wiped ? (
         <Login />
       ) : (
