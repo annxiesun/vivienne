@@ -93,7 +93,7 @@ export default function EmailApp() {
               </div>
               <div className="flex flex-col items-end">
                 <p className="text-gray-500">{state.selectedEmail.date}</p>
-                {state.gameState == 10? <SendButton /> : <></>}
+                {state.selectedEmail.index == 10 ? <SendButton /> : <></>}
               </div>
             </div>
 
